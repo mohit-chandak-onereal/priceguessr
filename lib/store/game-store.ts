@@ -19,6 +19,13 @@ interface GameState {
   hintsRevealed: number;
   gameStatus: 'idle' | 'playing' | 'won' | 'lost';
   
+  // Score and streaks
+  currentScore: number;
+  sessionScore: number; // Score earned in current game
+  highScore: number;
+  currentStreak: number;
+  bestStreak: number;
+  
   // UI state
   isLoading: boolean;
   error: string | null;
@@ -36,6 +43,20 @@ interface GameState {
   clearError: () => void;
 }
 
+// Score calculation helper
+const calculateScore = (accuracy: number, attempts: number, timeBonus: number = 0): number => {
+  // Base score based on accuracy (max 1000 points)
+  const accuracyScore = Math.round((100 - accuracy) * 10);
+  
+  // Attempt bonus (fewer attempts = more points)
+  const attemptBonus = Math.max(0, (7 - attempts) * 100);
+  
+  // Time bonus (0-150 points based on how quickly they guessed)
+  const timeBonusScore = Math.round(timeBonus * 10);
+  
+  return accuracyScore + attemptBonus + timeBonusScore;
+};
+
 export const useGameStore = create<GameState>((set, get) => ({
   // Initial state
   currentItem: null,
@@ -44,6 +65,11 @@ export const useGameStore = create<GameState>((set, get) => ({
   currentGuess: '',
   hintsRevealed: 1,
   gameStatus: 'idle',
+  currentScore: 0,
+  sessionScore: 0,
+  highScore: typeof window !== 'undefined' ? Number(localStorage.getItem('highScore') || 0) : 0,
+  currentStreak: 0,
+  bestStreak: typeof window !== 'undefined' ? Number(localStorage.getItem('bestStreak') || 0) : 0,
   isLoading: false,
   error: null,
   attemptsRemaining: GAME_CONFIG.MAX_ATTEMPTS,
@@ -80,6 +106,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         attemptsRemaining: GAME_CONFIG.MAX_ATTEMPTS,
         availableHints: getAvailableHints(0),
         isLoading: false,
+        sessionScore: 0, // Reset session score for new game
       });
     } catch (error) {
       set({ 
@@ -122,12 +149,32 @@ export const useGameStore = create<GameState>((set, get) => ({
     const attempts = newGuesses.length;
     const attemptsRemaining = GAME_CONFIG.MAX_ATTEMPTS - attempts;
     
-    // Determine game status
+    // Determine game status and calculate score
     let gameStatus: GameState['gameStatus'] = 'playing';
+    let scoreEarned = 0;
+    let newStreak = state.currentStreak;
+    
     if (isCorrect) {
       gameStatus = 'won';
+      // Calculate score (you can pass timeBonus from timer later)
+      scoreEarned = calculateScore(accuracy, attempts);
+      newStreak = state.currentStreak + 1;
     } else if (attempts >= GAME_CONFIG.MAX_ATTEMPTS) {
       gameStatus = 'lost';
+      newStreak = 0; // Reset streak on loss
+    }
+    
+    // Update high scores
+    const newScore = state.currentScore + scoreEarned;
+    const newHighScore = Math.max(state.highScore, newScore);
+    const newBestStreak = Math.max(state.bestStreak, newStreak);
+    
+    // Save to localStorage
+    if (newHighScore > state.highScore) {
+      localStorage.setItem('highScore', newHighScore.toString());
+    }
+    if (newBestStreak > state.bestStreak) {
+      localStorage.setItem('bestStreak', newBestStreak.toString());
     }
     
     // Update session
@@ -148,6 +195,11 @@ export const useGameStore = create<GameState>((set, get) => ({
       attemptsRemaining,
       availableHints: getAvailableHints(attempts),
       error: null,
+      currentScore: newScore,
+      sessionScore: scoreEarned,
+      highScore: newHighScore,
+      currentStreak: newStreak,
+      bestStreak: newBestStreak,
     });
     
     // Auto-reveal next hint if not won
@@ -182,6 +234,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       error: null,
       attemptsRemaining: GAME_CONFIG.MAX_ATTEMPTS,
       availableHints: [],
+      currentScore: 0, // Reset current score but keep high score and streaks
     });
   },
   

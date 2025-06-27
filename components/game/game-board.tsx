@@ -9,6 +9,7 @@ import { GuessHistory } from './guess-history';
 import { GameOverModal } from './game-over-modal';
 import { ItemImage } from './item-image';
 import { GameTimer } from './game-timer';
+import { ScoreDisplay } from './score-display';
 import { mockCategories } from '@/lib/mock-data';
 
 interface GameBoardProps {
@@ -139,8 +140,11 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           </div>
         </div>
 
-        {/* Right Side - Hints and History */}
+        {/* Right Side - Score, Hints and History */}
         <div className="lg:col-span-2 space-y-6">
+          {/* Score Display */}
+          <ScoreDisplay />
+
           {/* Hints Section */}
           <div className="panel-game-show p-6">
             <HintDisplay />

@@ -16,7 +16,7 @@ export function GameOverModal({
   onPlayAgain,
   onBackToCategories,
 }: GameOverModalProps) {
-  const { gameStatus, currentItem, guesses } = useGameStore();
+  const { gameStatus, currentItem, guesses, sessionScore, currentScore, highScore, currentStreak } = useGameStore();
 
   useEffect(() => {
     if (isOpen) {
@@ -74,6 +74,28 @@ export function GameOverModal({
                 <p className="text-lg text-muted">
                   Accuracy: {accuracy.toFixed(2)}% • Attempts: {guesses.length}/6
                 </p>
+                
+                {/* Score Display */}
+                <div className="mt-4 p-4 bg-stage-dark/50 rounded-lg">
+                  <p className="text-sm text-muted mb-1">SCORE EARNED</p>
+                  <p className="text-3xl font-bold text-yellow-bright">
+                    +{sessionScore.toLocaleString()} pts
+                  </p>
+                  {currentScore >= highScore && (
+                    <p className="text-sm text-green-bright font-bold mt-1 animate-pulse">
+                      NEW HIGH SCORE!
+                    </p>
+                  )}
+                </div>
+                
+                {/* Streak Display */}
+                {currentStreak > 1 && (
+                  <div className="mt-2">
+                    <p className="text-lg text-orange-bright font-bold">
+                      🔥 {currentStreak} Game Streak!
+                    </p>
+                  </div>
+                )}
               </>
             ) : (
               <>
@@ -83,6 +105,11 @@ export function GameOverModal({
                 <p className="text-xl text-yellow-bright mb-2">
                   Better luck next time!
                 </p>
+                {currentStreak > 0 && (
+                  <p className="text-lg text-muted">
+                    Streak Lost: {currentStreak} 😢
+                  </p>
+                )}
               </>
             )}
           </div>
