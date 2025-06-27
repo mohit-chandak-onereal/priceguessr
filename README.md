@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 PriceGuessr
 
-## Getting Started
+A browser-based price guessing game where players have 6 attempts to guess item prices within 5% using progressive hints. Think Wordle meets The Price is Right!
 
-First, run the development server:
+## 🚀 Quick Start
 
+### Prerequisites
+- Node.js 20+ 
+- npm or yarn
+- Git
+
+### Local Development
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/[your-username]/priceguessr.git
+cd priceguessr
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Then edit `.env.local` with your credentials:
+- Supabase URL and keys
+- Google Gemini API key
 
-## Learn More
+4. Run the development server:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎯 Game Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Core Mechanics
+- **6 Attempts**: Guess the price within 5% to win
+- **Progressive Hints**: Each wrong guess reveals new clues
+- **Multiple Categories**: Houses, Cars, Watches, Fashion, Art, and more
+- **Score Labels**: From "Price Whisperer" 🎯 to "Wildly Off" 🎪
 
-## Deploy on Vercel
+### Hint System (Progressive)
+1. **Guess 1**: Blurred/ambiguous photo only
+2. **Guess 2**: Different angle photo
+3. **Guess 3**: Basic metadata (location, year, brand initial)
+4. **Guess 4**: AI-generated clue
+5. **Guess 5**: Detailed photo + full specs
+6. **Guess 6**: Direct hint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠 Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend**: Next.js 14 + TypeScript + TailwindCSS
+- **Database**: PostgreSQL via Supabase
+- **AI**: Google Gemini API for dynamic hints
+- **Auth**: Supabase Auth
+- **Hosting**: Vercel
+
+## 📁 Project Structure
+
+```
+priceguessr/
+├── app/              # Next.js app router pages
+├── components/       # React components
+├── contexts/         # React contexts (theme)
+├── hooks/           # Custom React hooks
+├── lib/             # Utilities and configurations
+│   ├── database.ts  # Database helpers
+│   ├── mock-data.ts # Mock data for testing
+│   └── supabase.ts  # Supabase client
+├── types/           # TypeScript type definitions
+└── design-system.json # Design tokens
+```
+
+## 🎨 Features Implemented
+
+### Phase 1-3 ✅
+- Dark theme with CSS variables (light theme ready)
+- Type-safe database layer
+- Mock data for development
+- Theme system with next-themes
+- Comprehensive TypeScript interfaces
+
+### Coming Soon
+- Game state management
+- UI components (PhotoViewer, GuessInput, etc.)
+- API routes
+- Real-time features
+- Daily challenges
+- Leaderboards
+
+## 🚀 Deployment
+
+The app is configured for easy deployment on Vercel:
+
+1. Push to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy!
+
+## 🔐 Environment Variables
+
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-key
+
+# Google Gemini
+GEMINI_API_KEY=your-gemini-api-key
+
+# App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+## 📝 License
+
+MIT License - feel free to use this project for your own purposes!
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+---
+
+Built with ❤️ using Next.js and TypeScript
