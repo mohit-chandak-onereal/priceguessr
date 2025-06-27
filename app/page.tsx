@@ -51,44 +51,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-game-show text-white">
-            <span className="star-decoration">HOW TO PLAY</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="panel-game-show p-8 hover:transform hover:scale-105 transition-all spotlight">
-              <div className="text-6xl mb-4 text-center">🎯</div>
-              <h3 className="text-2xl font-bold mb-3 text-center text-yellow-bright text-game-show">GUESS RIGHT!</h3>
-              <p className="text-center text-lg">
-                You get 6 chances to guess within 5% of the actual retail price!
-              </p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="panel-game-show p-8 hover:transform hover:scale-105 transition-all spotlight">
-              <div className="text-6xl mb-4 text-center">💡</div>
-              <h3 className="text-2xl font-bold mb-3 text-center text-green-bright text-game-show">GET HINTS!</h3>
-              <p className="text-center text-lg">
-                Each guess reveals more clues about the fabulous item!
-              </p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="panel-game-show p-8 hover:transform hover:scale-105 transition-all spotlight">
-              <div className="text-6xl mb-4 text-center">🏆</div>
-              <h3 className="text-2xl font-bold mb-3 text-center text-orange-bright text-game-show">WIN BIG!</h3>
-              <p className="text-center text-lg">
-                Beat your friends and climb to the top of the leaderboard!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Categories Preview */}
       <section className="py-16 bg-gradient-to-b from-transparent via-stage-dark/20 to-transparent">
         <div className="container mx-auto px-4">
