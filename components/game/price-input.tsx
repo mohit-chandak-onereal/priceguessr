@@ -98,8 +98,8 @@ export function PriceInput() {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder="0"
-            className="bg-transparent outline-none text-green-bright font-mono inline-block w-auto min-w-[150px]"
-            style={{ width: `${Math.max(150, displayValue.length * 15)}px` }}
+            className="bg-transparent outline-none text-green-bright font-mono inline-block w-auto min-w-[150px] max-w-[300px]"
+            style={{ width: `${Math.max(150, Math.min(300, displayValue.length * 18))}px` }}
             autoFocus
           />
         </div>

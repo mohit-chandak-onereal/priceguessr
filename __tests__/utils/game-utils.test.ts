@@ -11,15 +11,15 @@ import {
 describe('Game Utilities', () => {
   describe('calculateAccuracy', () => {
     it('should calculate accuracy correctly', () => {
-      expect(calculateAccuracy(100, 100)).toBe(0); // Exact match
-      expect(calculateAccuracy(95, 100)).toBe(5); // 5% off
-      expect(calculateAccuracy(105, 100)).toBe(5); // 5% off (over)
-      expect(calculateAccuracy(50, 100)).toBe(50); // 50% off
-      expect(calculateAccuracy(150, 100)).toBe(50); // 50% off (over)
+      expect(calculateAccuracy(100, 100)).toBe(100); // Exact match = 100% accuracy
+      expect(calculateAccuracy(95, 100)).toBe(95); // 5% off = 95% accuracy
+      expect(calculateAccuracy(105, 100)).toBe(95); // 5% off = 95% accuracy
+      expect(calculateAccuracy(50, 100)).toBe(50); // 50% off = 50% accuracy
+      expect(calculateAccuracy(150, 100)).toBe(50); // 50% off = 50% accuracy
     });
 
     it('should handle zero actual price', () => {
-      expect(calculateAccuracy(100, 0)).toBe(0);
+      expect(calculateAccuracy(100, 0)).toBe(0); // Return 0 for invalid case
     });
   });
 
@@ -42,12 +42,12 @@ describe('Game Utilities', () => {
 
   describe('getGuessFeedback', () => {
     it('should return correct feedback based on accuracy', () => {
-      expect(getGuessFeedback(100, 100)).toBe('hot'); // 0% off
-      expect(getGuessFeedback(95, 100)).toBe('hot'); // 5% off
-      expect(getGuessFeedback(90, 100)).toBe('hot'); // 10% off
-      expect(getGuessFeedback(85, 100)).toBe('warm'); // 15% off
-      expect(getGuessFeedback(75, 100)).toBe('warm'); // 25% off
-      expect(getGuessFeedback(50, 100)).toBe('cold'); // 50% off
+      expect(getGuessFeedback(100, 100)).toBe('hot'); // 100% accuracy
+      expect(getGuessFeedback(95, 100)).toBe('hot'); // 95% accuracy
+      expect(getGuessFeedback(90, 100)).toBe('hot'); // 90% accuracy
+      expect(getGuessFeedback(85, 100)).toBe('warm'); // 85% accuracy
+      expect(getGuessFeedback(75, 100)).toBe('warm'); // 75% accuracy
+      expect(getGuessFeedback(50, 100)).toBe('cold'); // 50% accuracy
     });
   });
 

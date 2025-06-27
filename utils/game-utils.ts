@@ -1,18 +1,21 @@
 import { GAME_CONFIG } from '@/types/game';
 
 /**
- * Calculate the percentage difference between guess and actual price
+ * Calculate the accuracy percentage (how close the guess is, not how far off)
  */
 export function calculateAccuracy(guess: number, actual: number): number {
   if (actual === 0) return 0;
-  return Math.abs((guess - actual) / actual) * 100;
+  const percentageOff = Math.abs((guess - actual) / actual) * 100;
+  // Return accuracy as percentage (100% = perfect, 0% = very far off)
+  return Math.max(0, 100 - percentageOff);
 }
 
 /**
  * Check if the guess is within the winning threshold (default 5%)
  */
 export function isWinningGuess(guess: number, actual: number): boolean {
-  return calculateAccuracy(guess, actual) <= GAME_CONFIG.ACCURACY_THRESHOLD;
+  // Now accuracy is a percentage where 100% is perfect, so we need 95% or higher to win
+  return calculateAccuracy(guess, actual) >= (100 - GAME_CONFIG.ACCURACY_THRESHOLD);
 }
 
 /**
@@ -21,9 +24,10 @@ export function isWinningGuess(guess: number, actual: number): boolean {
 export function getGuessFeedback(guess: number, actual: number): 'hot' | 'warm' | 'cold' {
   const accuracy = calculateAccuracy(guess, actual);
   
-  if (accuracy <= 10) return 'hot';
-  if (accuracy <= 25) return 'warm';
-  return 'cold';
+  // Now accuracy is 0-100 where 100 is perfect
+  if (accuracy >= 90) return 'hot';  // 90%+ accuracy
+  if (accuracy >= 75) return 'warm'; // 75-90% accuracy
+  return 'cold'; // Less than 75% accuracy
 }
 
 /**

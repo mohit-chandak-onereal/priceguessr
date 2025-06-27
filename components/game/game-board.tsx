@@ -160,22 +160,20 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           </div>
         </div>
 
-        {/* Right Side - Score, Hints and History */}
+        {/* Right Side - Score, History and Hints */}
         <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           {/* Score Display */}
           <ScoreDisplay />
 
-          {/* Hints Section */}
+          {/* Guess History - Always visible and at top for reference */}
+          <div className="panel-game-show p-4 sm:p-6 min-h-[200px] max-h-[350px] overflow-y-auto">
+            <GuessHistory />
+          </div>
+
+          {/* Hints Section - Moved below history */}
           <div className="panel-game-show p-4 sm:p-6">
             <HintDisplay />
           </div>
-
-          {/* Guess History */}
-          {guesses.length > 0 && (
-            <div className="panel-game-show p-4 sm:p-6 max-h-[300px] overflow-y-auto">
-              <GuessHistory />
-            </div>
-          )}
         </div>
       </div>
 

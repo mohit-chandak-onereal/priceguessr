@@ -44,7 +44,7 @@ function getHintMessage(percentOff: number, index: number): string {
 export function GuessHistory() {
   const { guesses, currentItem } = useGameStore();
 
-  if (!currentItem || guesses.length === 0) return null;
+  if (!currentItem) return null;
 
   const actualPrice = currentItem.price;
 
@@ -54,15 +54,22 @@ export function GuessHistory() {
         YOUR GUESSES
       </h3>
 
-      <div className="space-y-2 max-h-64 overflow-y-auto">
-        {guesses.map((guess, index) => {
+      {guesses.length === 0 ? (
+        <div className="text-center text-muted py-8">
+          <p className="text-lg">No guesses yet!</p>
+          <p className="text-sm mt-2">Enter your price guess below</p>
+        </div>
+      ) : (
+        <div className="space-y-2 max-h-64 overflow-y-auto">
+          {[...guesses].reverse().map((guess, reversedIndex) => {
+            const index = guesses.length - 1 - reversedIndex; // Get original index
           const difference = guess.value - actualPrice;
           const isHigher = difference > 0;
           const percentOff = Math.abs((difference / actualPrice) * 100);
 
           return (
             <div
-              key={index}
+              key={reversedIndex}
               className={`
                 flex items-center justify-between p-3 rounded-lg border-2 text-sm
                 ${
@@ -119,7 +126,8 @@ export function GuessHistory() {
             </div>
           );
         })}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
