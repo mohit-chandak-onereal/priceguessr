@@ -1,7 +1,93 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Colors */
+  --color-background: rgb(10 10 11);
+  --color-foreground: rgb(255 255 255);
+  
+  --color-surface: rgb(26 26 28);
+  --color-surface-hover: rgb(36 36 38);
+  --color-surface-active: rgb(45 45 48);
+  
+  --color-border: rgb(64 64 64);
+  --color-border-subtle: rgb(42 42 44);
+  --color-border-strong: rgb(96 96 96);
+  
+  --color-primary: rgb(139 92 246);
+  --color-primary-hover: rgb(124 58 237);
+  --color-primary-active: rgb(109 40 217);
+  --color-primary-foreground: rgb(255 255 255);
+  
+  --color-secondary: rgb(59 130 246);
+  --color-secondary-hover: rgb(37 99 235);
+  --color-secondary-active: rgb(29 78 216);
+  --color-secondary-foreground: rgb(255 255 255);
+  
+  --color-success: rgb(16 185 129);
+  --color-success-hover: rgb(5 150 105);
+  --color-success-active: rgb(4 120 87);
+  --color-success-foreground: rgb(255 255 255);
+  
+  --color-warning: rgb(245 158 11);
+  --color-warning-hover: rgb(217 119 6);
+  --color-warning-active: rgb(180 83 9);
+  --color-warning-foreground: rgb(255 255 255);
+  
+  --color-error: rgb(239 68 68);
+  --color-error-hover: rgb(220 38 38);
+  --color-error-active: rgb(185 28 28);
+  --color-error-foreground: rgb(255 255 255);
+  
+  --color-muted: rgb(113 113 122);
+  --color-muted-foreground: rgb(161 161 170);
+  
+  /* Font families */
+  --font-family-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-family-mono: 'JetBrains Mono', Consolas, monospace;
+  
+  /* Animations */
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-fade-out: fade-out 0.3s ease-out;
+  --animate-slide-in: slide-in 0.3s ease-out;
+  --animate-slide-out: slide-out 0.3s ease-out;
+  --animate-bounce-in: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animate-pulse-glow: pulse-glow 2s infinite;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slide-in {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-out {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(10px); opacity: 0; }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.8); }
+}
+
+/* CSS Variables for runtime theme switching */
 @layer base {
   :root {
     /* Dark theme (default) */
@@ -103,8 +189,7 @@
     --muted-foreground: 107 114 128;
   }
   
-  /* Remove the * selector temporarily for Tailwind v4 compatibility */
-  
+  /* Base styles */
   body {
     background-color: rgb(var(--background));
     color: rgb(var(--foreground));
@@ -158,5 +243,10 @@
   
   .button-press:active {
     transform: scale(0.98);
+  }
+  
+  /* Custom backdrop blur support */
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
   }
 }
