@@ -14,6 +14,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       defaultTheme="dark"
       enableSystem={false}
       storageKey="priceguessr-theme"
+      themes={['light', 'dark']}
     >
       {children}
     </NextThemesProvider>

@@ -2,45 +2,45 @@
 
 /* Tailwind v4 Theme Configuration */
 @theme {
-  /* Colors */
-  --color-background: rgb(10 10 11);
-  --color-foreground: rgb(255 255 255);
+  /* Dynamic color references using CSS variables */
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
   
-  --color-surface: rgb(26 26 28);
-  --color-surface-hover: rgb(36 36 38);
-  --color-surface-active: rgb(45 45 48);
+  --color-surface: rgb(var(--surface));
+  --color-surface-hover: rgb(var(--surface-hover));
+  --color-surface-active: rgb(var(--surface-active));
   
-  --color-border: rgb(64 64 64);
-  --color-border-subtle: rgb(42 42 44);
-  --color-border-strong: rgb(96 96 96);
+  --color-border: rgb(var(--border));
+  --color-border-subtle: rgb(var(--border-subtle));
+  --color-border-strong: rgb(var(--border-strong));
   
-  --color-primary: rgb(139 92 246);
-  --color-primary-hover: rgb(124 58 237);
-  --color-primary-active: rgb(109 40 217);
-  --color-primary-foreground: rgb(255 255 255);
+  --color-primary: rgb(var(--primary));
+  --color-primary-hover: rgb(var(--primary-hover));
+  --color-primary-active: rgb(var(--primary-active));
+  --color-primary-foreground: rgb(var(--primary-foreground));
   
-  --color-secondary: rgb(59 130 246);
-  --color-secondary-hover: rgb(37 99 235);
-  --color-secondary-active: rgb(29 78 216);
-  --color-secondary-foreground: rgb(255 255 255);
+  --color-secondary: rgb(var(--secondary));
+  --color-secondary-hover: rgb(var(--secondary-hover));
+  --color-secondary-active: rgb(var(--secondary-active));
+  --color-secondary-foreground: rgb(var(--secondary-foreground));
   
-  --color-success: rgb(16 185 129);
-  --color-success-hover: rgb(5 150 105);
-  --color-success-active: rgb(4 120 87);
-  --color-success-foreground: rgb(255 255 255);
+  --color-success: rgb(var(--success));
+  --color-success-hover: rgb(var(--success-hover));
+  --color-success-active: rgb(var(--success-active));
+  --color-success-foreground: rgb(var(--success-foreground));
   
-  --color-warning: rgb(245 158 11);
-  --color-warning-hover: rgb(217 119 6);
-  --color-warning-active: rgb(180 83 9);
-  --color-warning-foreground: rgb(255 255 255);
+  --color-warning: rgb(var(--warning));
+  --color-warning-hover: rgb(var(--warning-hover));
+  --color-warning-active: rgb(var(--warning-active));
+  --color-warning-foreground: rgb(var(--warning-foreground));
   
-  --color-error: rgb(239 68 68);
-  --color-error-hover: rgb(220 38 38);
-  --color-error-active: rgb(185 28 28);
-  --color-error-foreground: rgb(255 255 255);
+  --color-error: rgb(var(--error));
+  --color-error-hover: rgb(var(--error-hover));
+  --color-error-active: rgb(var(--error-active));
+  --color-error-foreground: rgb(var(--error-foreground));
   
-  --color-muted: rgb(113 113 122);
-  --color-muted-foreground: rgb(161 161 170);
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
   
   /* Font families */
   --font-family-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
