@@ -205,7 +205,7 @@ export const mockItems: Item[] = [
     price: 44995,
     currency: 'USD',
     images: [
-      'https://images.unsplash.com/photo-1679263422683-a531baa971e0?w=800&q=80', // Honda Civic Type R
+      'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=800&q=80', // Honda Civic Type R
     ],
     metadata: {
       year: 2024,

@@ -51,42 +51,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Preview */}
-      <section className="py-12 sm:py-16 bg-gradient-to-b from-transparent via-stage-dark/20 to-transparent">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 text-game-show text-white">
-            FABULOUS SHOWCASES
-          </h2>
-          <p className="text-center text-base sm:text-xl mb-8 sm:mb-12 text-yellow-bright px-4">Choose your category and play for incredible prizes!</p>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-            {[
-              { name: 'DREAM HOMES', emoji: '🏠', color: 'bg-blue-bright' },
-              { name: 'LUXURY CARS', emoji: '🚗', color: 'bg-red-bright' },
-              { name: 'TECH TREASURES', emoji: '📱', color: 'bg-green-bright' },
-              { name: 'FASHION FINDS', emoji: '👗', color: 'bg-purple-bright' },
-              { name: 'TIMEPIECES', emoji: '⌚', color: 'bg-orange-bright' },
-              { name: 'RARE COLLECTIBLES', emoji: '🎨', color: 'bg-pink-bright' },
-              { name: 'GOURMET DELIGHTS', emoji: '🍽️', color: 'bg-yellow-bright' },
-              { name: 'DREAM VACATIONS', emoji: '✈️', color: 'bg-blue-bright' },
-            ].map((category) => (
-              <Link
-                key={category.name}
-                href={`/play?category=${category.name.toLowerCase().replace(/\s+/g, '-')}`}
-                className="group relative panel-game-show aspect-square hover:transform hover:scale-110 transition-all min-h-[120px] sm:min-h-[140px]"
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-2 sm:p-4">
-                  <div className={`w-12 h-12 sm:w-16 md:w-20 sm:h-16 md:h-20 ${category.color} rounded-full flex items-center justify-center mb-2 sm:mb-3 group-hover:animate-bounce`}>
-                    <span className="text-2xl sm:text-3xl md:text-4xl">{category.emoji}</span>
-                  </div>
-                  <span className="font-bold text-center text-xs sm:text-sm md:text-base text-game-show leading-tight">{category.name}</span>
-                </div>
-                <div className="absolute top-1 right-1 sm:top-2 sm:right-2 text-yellow-bright text-xs sm:text-sm font-bold animate-pulse">NEW!</div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">

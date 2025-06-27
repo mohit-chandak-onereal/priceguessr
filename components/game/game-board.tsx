@@ -98,11 +98,18 @@ export function GameBoard({ categoryId }: GameBoardProps) {
 
   return (
     <div className="max-w-7xl mx-auto px-4">
-      {/* Category Header */}
+      {/* Category and Item Header */}
       <div className="text-center mb-4 sm:mb-6">
-        <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-stage-dark rounded-full border-2 border-yellow-bright">
-          <span className="text-xl sm:text-2xl">{category?.icon}</span>
-          <span className="text-base sm:text-xl font-bold text-yellow-bright">{category?.name.toUpperCase()}</span>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-2 bg-stage-dark rounded-full border-2 border-yellow-bright">
+            <span className="text-lg sm:text-xl">{category?.icon}</span>
+            <span className="text-sm sm:text-base font-bold text-yellow-bright">{category?.name.toUpperCase()}</span>
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-game-show text-white">
+              {currentItem.name} <span className="text-yellow-bright">by {currentItem.brand}</span>
+            </h2>
+          </div>
         </div>
       </div>
 
@@ -112,13 +119,6 @@ export function GameBoard({ categoryId }: GameBoardProps) {
       }`}>
         {/* Left Side - Image and Guess Section */}
         <div className="lg:col-span-3 space-y-4 sm:space-y-6">
-          {/* Item Name */}
-          <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-game-show text-white mb-1 sm:mb-2">
-              {currentItem.name}
-            </h2>
-            <p className="text-base sm:text-lg text-yellow-bright">by {currentItem.brand}</p>
-          </div>
 
           {/* Item Image */}
           <div className="aspect-[4/3] w-full">

@@ -6,7 +6,7 @@ import { soundManager } from '@/utils/sound-manager';
 
 export function GameTimer() {
   const [timeLeft, setTimeLeft] = useState(15);
-  const { makeGuess, currentGuess, gameStatus } = useGameStore();
+  const { makeGuess, gameStatus } = useGameStore();
   
   useEffect(() => {
     if (gameStatus !== 'playing') {
@@ -17,10 +17,8 @@ export function GameTimer() {
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          // Time's up - submit whatever is in the input
-          if (currentGuess.trim()) {
-            makeGuess();
-          }
+          // Time's up - count as a failed attempt
+          makeGuess(); // This will submit empty guess which counts as wrong
           return 15; // Reset for next round
         }
         
@@ -34,7 +32,7 @@ export function GameTimer() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [gameStatus, makeGuess, currentGuess]);
+  }, [gameStatus, makeGuess]);
 
   // Reset timer when a guess is made
   const guessCount = useGameStore((state) => state.guesses.length);

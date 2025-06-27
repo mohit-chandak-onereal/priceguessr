@@ -46,12 +46,15 @@ export function Header() {
             >
               Leaderboard
             </Link>
-            <Link 
-              href="/about" 
-              className="text-muted hover:text-foreground transition-colors"
+            <button 
+              onClick={() => {
+                const modal = document.getElementById('how-to-play-modal');
+                if (modal) modal.classList.remove('hidden');
+              }}
+              className="text-muted hover:text-foreground transition-colors cursor-pointer"
             >
-              About
-            </Link>
+              How to Play
+            </button>
           </div>
 
           {/* Actions */}

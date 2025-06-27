@@ -2,6 +2,45 @@
 
 import { useGameStore } from '@/lib/store/game-store';
 
+function getHintMessage(percentOff: number, index: number): string {
+  const messages = {
+    farOff: [
+      "Way off!",
+      "Not even close!",
+      "Miles away!",
+      "Keep trying!",
+      "Far from it!"
+    ],
+    stillOff: [
+      "Getting warmer",
+      "Still searching",
+      "Keep going",
+      "Not quite there",
+      "Getting closer"
+    ],
+    close: [
+      "Almost there!",
+      "So close!",
+      "Nearly got it!",
+      "Just a bit more!",
+      "You're burning up!"
+    ]
+  };
+  
+  let messageArray;
+  if (percentOff >= 40) {
+    messageArray = messages.farOff;
+  } else if (percentOff >= 25) {
+    messageArray = messages.stillOff;
+  } else if (percentOff >= 10) {
+    messageArray = messages.close;
+  } else {
+    return "Too close!";
+  }
+  
+  return messageArray[index % messageArray.length];
+}
+
 export function GuessHistory() {
   const { guesses, currentItem } = useGameStore();
 
@@ -71,11 +110,8 @@ export function GuessHistory() {
                           ${isHigher ? 'text-red-bright' : 'text-blue-bright'}
                         `}
                       >
-                        {isHigher ? '↑ TOO HIGH' : '↓ TOO LOW'}
+                        {isHigher ? '↑' : '↓'} {getHintMessage(percentOff, index)}
                       </span>
-                    </div>
-                    <div className="text-sm text-muted">
-                      {percentOff.toFixed(1)}% off
                     </div>
                   </div>
                 )}

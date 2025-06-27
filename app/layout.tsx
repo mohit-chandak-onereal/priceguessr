@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { UsernameModal } from "@/components/ui/username-modal";
+import { HowToPlayModal } from "@/components/ui/how-to-play-modal";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,6 +43,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <UsernameModal />
+          <HowToPlayModal />
           {children}
         </ThemeProvider>
       </body>

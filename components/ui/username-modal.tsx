@@ -22,24 +22,20 @@ export function UsernameModal() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate username
-    const trimmedUsername = username.trim();
-    if (trimmedUsername.length < 2) {
-      setError('Username must be at least 2 characters');
+    // Validate username - must be exactly 3 letters
+    const upperUsername = username.toUpperCase().trim();
+    if (upperUsername.length !== 3) {
+      setError('Must be exactly 3 letters');
       return;
     }
-    if (trimmedUsername.length > 20) {
-      setError('Username must be less than 20 characters');
-      return;
-    }
-    if (!/^[a-zA-Z0-9_-]+$/.test(trimmedUsername)) {
-      setError('Username can only contain letters, numbers, _ and -');
+    if (!/^[A-Z]{3}$/.test(upperUsername)) {
+      setError('Only letters allowed (A-Z)');
       return;
     }
 
     // Save username
-    localStorage.setItem('priceguessr_username', trimmedUsername);
-    setPlayerName(trimmedUsername);
+    localStorage.setItem('priceguessr_username', upperUsername);
+    setPlayerName(upperUsername);
     setIsOpen(false);
   };
 
@@ -71,7 +67,7 @@ export function UsernameModal() {
               WELCOME CONTESTANT!
             </h2>
             <p className="text-base sm:text-lg text-yellow-bright mb-6">
-              Enter your name for the leaderboard
+              Enter your 3-letter initials
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -80,13 +76,14 @@ export function UsernameModal() {
                   type="text"
                   value={username}
                   onChange={(e) => {
-                    setUsername(e.target.value);
+                    const value = e.target.value.toUpperCase().replace(/[^A-Z]/g, '');
+                    setUsername(value);
                     setError('');
                   }}
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 bg-stage-dark border-2 border-yellow-bright rounded-lg text-white text-center text-xl focus:outline-none focus:border-white"
+                  placeholder="ABC"
+                  className="w-full px-4 py-3 bg-stage-dark border-2 border-yellow-bright rounded-lg text-white text-center text-3xl font-bold tracking-widest focus:outline-none focus:border-white"
                   autoFocus
-                  maxLength={20}
+                  maxLength={3}
                 />
                 {error && (
                   <p className="text-sm text-red-bright mt-1">{error}</p>
@@ -103,7 +100,7 @@ export function UsernameModal() {
             </form>
 
             <p className="text-xs text-muted mt-4">
-              This will be displayed on the global leaderboard
+              Classic arcade style - 3 letters only!
             </p>
           </div>
         </div>
