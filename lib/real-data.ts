@@ -83,7 +83,7 @@ export const items: Item[] = [
     price: 88000,
     currency: 'USD',
     description: 'The Tesla Model S is a groundbreaking electric luxury sedan introduced in 2012, known for its minimalist design, long range, and insane acceleration, especially in the Plaid variant.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 2012,
       type: 'Luxury electric sedan',
@@ -99,7 +99,7 @@ export const items: Item[] = [
     price: 76000,
     currency: 'USD',
     description: 'The BMW M3 is a high-performance version of the 3 Series, blending luxury with motorsport DNA. The latest G80 model emphasizes power, agility, and controversial design with large kidney grilles.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 1986,
       type: 'Performance sports sedan',
@@ -115,7 +115,7 @@ export const items: Item[] = [
     price: 45000,
     currency: 'USD',
     description: 'Revived in 2019, the fifth-gen Toyota Supra shares its platform with the BMW Z4, offering sharp handling and a sporty feel with a strong heritage from its legendary Mk4 predecessor.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 2019,
       type: 'Two-door sports coupe',
@@ -131,7 +131,7 @@ export const items: Item[] = [
     price: 115000,
     currency: 'USD',
     description: 'The S-Class is Mercedes-Benz\'s flagship sedan, setting industry standards in comfort, technology, and innovation. It\'s a favorite among executives and luxury buyers worldwide.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 1972,
       type: 'Full-size luxury sedan',
@@ -147,7 +147,7 @@ export const items: Item[] = [
     price: 43000,
     currency: 'USD',
     description: 'An iconic American muscle car, the Mustang GT delivers raw power and old-school charm with a modern twist, powered by a 5.0L V8 in its latest form.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 1964,
       type: 'Muscle car coupe',
@@ -163,7 +163,7 @@ export const items: Item[] = [
     price: 125000,
     currency: 'USD',
     description: 'The Audi RS6 Avant is a family-friendly powerhouse, blending supercar performance with daily usability. It features Audi\'s Quattro AWD system and aggressive styling.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 2002,
       type: 'High-performance station wagon',
@@ -179,7 +179,7 @@ export const items: Item[] = [
     price: 114000,
     currency: 'USD',
     description: 'The Porsche 911 is one of the most enduring and revered sports cars ever made. The Carrera variants balance daily drivability with thrilling performance and timeless design.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 1964,
       type: 'Rear-engine sports car',
@@ -195,7 +195,7 @@ export const items: Item[] = [
     price: 98000,
     currency: 'USD',
     description: 'The Lexus LC 500 is a visually striking luxury coupe that pairs a naturally aspirated V8 with refined handling and rich interior craftsmanship, making it a standout GT.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 2017,
       type: 'Luxury grand tourer coupe',
@@ -211,7 +211,7 @@ export const items: Item[] = [
     price: 70000,
     currency: 'USD',
     description: 'The C8 Corvette marks a radical shift for the legendary nameplate, moving to a mid-engine layout to compete with European exotics while retaining its American identity and value.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 2020,
       type: 'Mid-engine sports car',
@@ -227,7 +227,7 @@ export const items: Item[] = [
     price: 92000,
     currency: 'USD',
     description: 'The Range Rover Sport offers a blend of luxury and off-road capability, with upscale interiors, strong performance, and the prestige associated with the Range Rover badge.',
-    images: ['https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Car+Image'],
+    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
     metadata: {
       year: 2005,
       type: 'Luxury SUV',
@@ -245,7 +245,7 @@ export const items: Item[] = [
     price: 5000000000,
     currency: 'USD',
     description: 'Originally a hunting lodge, the Palace of Versailles became the seat of political power in France under Louis XIV. It\'s known for its lavish gardens, Hall of Mirrors, and role in French history.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1661,
       location: 'Versailles, France',
@@ -263,7 +263,7 @@ export const items: Item[] = [
     price: 400000000,
     currency: 'USD',
     description: 'The official residence and workplace of the President of the United States. It has been the home of every U.S. president since John Adams.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1800,
       location: 'Washington, D.C., USA',
@@ -281,7 +281,7 @@ export const items: Item[] = [
     price: 4900000000,
     currency: 'USD',
     description: 'Buckingham Palace is the London residence and administrative headquarters of the British monarch. It\'s widely used for state occasions and royal hospitality.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1703,
       location: 'London, United Kingdom',
@@ -299,7 +299,7 @@ export const items: Item[] = [
     price: 10000000,
     currency: 'USD',
     description: 'Designed by Frank Lloyd Wright, Fallingwater is a masterpiece of organic architecture, built over a waterfall and blending seamlessly with its natural surroundings.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1935,
       location: 'Pennsylvania, USA',
@@ -317,7 +317,7 @@ export const items: Item[] = [
     price: 3500000,
     currency: 'USD',
     description: 'A seminal modernist house designed by Le Corbusier, Villa Savoye exemplifies the \'Five Points of Architecture\' and is a UNESCO World Heritage Site.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1931,
       location: 'Poissy, France',
@@ -335,7 +335,7 @@ export const items: Item[] = [
     price: 85000000,
     currency: 'USD',
     description: 'A landmark of Antoni Gaudí\'s creative genius, Casa Batlló features a skeletal, marine-inspired façade and imaginative interiors, making it a key attraction in Barcelona.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1906,
       location: 'Barcelona, Spain',
@@ -353,7 +353,7 @@ export const items: Item[] = [
     price: 250000000,
     currency: 'USD',
     description: 'Commissioned by Ludwig II of Bavaria, Neuschwanstein Castle looks like something from a fairytale. It inspired the design of Disney\'s Sleeping Beauty Castle.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1886,
       location: 'Bavaria, Germany',
@@ -371,7 +371,7 @@ export const items: Item[] = [
     price: 700000000,
     currency: 'USD',
     description: 'Built for newspaper magnate William Randolph Hearst, Hearst Castle is a lavish hilltop estate featuring elaborate pools, art collections, and guest houses.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1947,
       location: 'California, USA',
@@ -389,7 +389,7 @@ export const items: Item[] = [
     price: 75000000,
     currency: 'USD',
     description: 'Famous for its labyrinthine design and paranormal legend, this house was continuously built by Sarah Winchester in response to supposed ghostly voices.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1922,
       location: 'San Jose, California, USA',
@@ -407,7 +407,7 @@ export const items: Item[] = [
     price: 2000000,
     currency: 'USD',
     description: 'Designed by Ludwig Mies van der Rohe, Villa Tugendhat is a pioneering modernist home known for its open plan, minimalist elegance, and use of luxury materials.',
-    images: ['https://via.placeholder.com/600x400/4ECDC4/FFFFFF?text=House+Image'],
+    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop'],
     metadata: {
       year: 1930,
       location: 'Brno, Czech Republic',
@@ -427,7 +427,7 @@ export const items: Item[] = [
     price: 10400,
     currency: 'USD',
     description: 'The Rolex Submariner is an iconic diver\'s watch first released in 1953. It\'s celebrated for its water resistance (300 m), robust build, and timeless design.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1953,
       type: 'Dive watch',
@@ -445,7 +445,7 @@ export const items: Item[] = [
     price: 5350,
     currency: 'USD',
     description: 'Famous as the \'Moonwatch\', the Speedmaster Professional was the first watch on the Moon, worn by astronauts during the Apollo missions.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1957,
       type: 'Chronograph',
@@ -463,7 +463,7 @@ export const items: Item[] = [
     price: 60000,
     currency: 'USD',
     description: 'Designed by Gerald Genta, the Nautilus 5711 features a distinctive porthole-inspired case and is one of the most sought‑after watches in the world.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1976,
       type: 'Luxury sports watch',
@@ -481,7 +481,7 @@ export const items: Item[] = [
     price: 50000,
     currency: 'USD',
     description: 'Another Genta classic, the Royal Oak features an octagonal bezel, integrated bracelet, and paved the way for the luxury sports watch category.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1972,
       type: 'Luxury sports watch',
@@ -499,7 +499,7 @@ export const items: Item[] = [
     price: 4500,
     currency: 'USD',
     description: 'Inspired by motor racing, the Carrera is known for its clean racing dial and functional chronograph layout.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1963,
       type: 'Chronograph',
@@ -517,7 +517,7 @@ export const items: Item[] = [
     price: 7450,
     currency: 'USD',
     description: 'Originally created for polo players, the Reverso flips the dial to protect it during matches. It\'s a 20th‑century Art Deco icon.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1931,
       type: 'Reversible dress watch',
@@ -535,7 +535,7 @@ export const items: Item[] = [
     price: 8450,
     currency: 'USD',
     description: 'Famous for its circular slide rule bezel used by pilots, the Navitimer is a legendary instrument watch for aviation.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1952,
       type: 'Pilot chronograph',
@@ -553,7 +553,7 @@ export const items: Item[] = [
     price: 9750,
     currency: 'USD',
     description: 'Originated from large marine chronometer movements, the Portugieser is celebrated for its classic, legible dial and elegant case.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1939,
       type: 'Dress watch',
@@ -571,7 +571,7 @@ export const items: Item[] = [
     price: 450,
     currency: 'USD',
     description: 'A reliable, affordable dive watch famous for its durability, ISO certification, and value-packed specs.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1965,
       type: 'Dive watch',
@@ -589,7 +589,7 @@ export const items: Item[] = [
     price: 2000,
     currency: 'USD',
     description: 'Produced by Nomos Glashütte, the Tangente is minimalist, precision-made, and a standout in modern German watchmaking.',
-    images: ['https://via.placeholder.com/600x400/FFD93D/333333?text=Watch+Image'],
+    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
     metadata: {
       year: 1992,
       type: 'Modern Bauhaus dress watch',
@@ -609,7 +609,7 @@ export const items: Item[] = [
     price: 8500,
     currency: 'USD',
     description: 'Timeless quilted leather flap bag designed by Coco Chanel and popularized by Karl Lagerfeld.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 1955,
       type: 'Shoulder bag',
@@ -626,7 +626,7 @@ export const items: Item[] = [
     price: 12500,
     currency: 'USD',
     description: 'Iconic luxury handbag commissioned by Jane Birkin, known for exclusivity and high resale value.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 1984,
       type: 'Top-handle tote',
@@ -643,7 +643,7 @@ export const items: Item[] = [
     price: 1650,
     currency: 'USD',
     description: 'Classic monogram canvas bag originally created for travel and still popular today.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 1930,
       type: 'Carryall bag',
@@ -660,7 +660,7 @@ export const items: Item[] = [
     price: 2400,
     currency: 'USD',
     description: 'Quilted leather bag with signature Double G and heart interior detail.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 2015,
       type: 'Shoulder bag',
@@ -677,7 +677,7 @@ export const items: Item[] = [
     price: 2700,
     currency: 'USD',
     description: 'Structured Saffiano leather workhack bag named after Prada\'s original Milan flagship.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 2000,
       type: 'Tote bag',
@@ -694,7 +694,7 @@ export const items: Item[] = [
     price: 5200,
     currency: 'USD',
     description: 'Iconic cannage-stitch quilted bag favored by Princess Diana and designer Raf Simons.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 1995,
       type: 'Top-handle bag',
@@ -711,7 +711,7 @@ export const items: Item[] = [
     price: 2500,
     currency: 'USD',
     description: '"It\'s so baguette," tiny-shoulder bag trendsetter from Fendi\'s spring 1997 collection.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 1997,
       type: 'Shoulder bag',
@@ -728,7 +728,7 @@ export const items: Item[] = [
     price: 3000,
     currency: 'USD',
     description: 'Structured tote with winged sides and zipped front pocket—a minimalist hero bag.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 2010,
       type: 'Tote bag',
@@ -745,7 +745,7 @@ export const items: Item[] = [
     price: 1950,
     currency: 'USD',
     description: 'Rustic city satchel with motorcycle-inspired studs and soft, broken-in leather.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 2001,
       type: 'Satchel',
@@ -762,7 +762,7 @@ export const items: Item[] = [
     price: 2600,
     currency: 'USD',
     description: 'Crisp, architectural tote that became a modern classic among luxury work bags.',
-    images: ['https://via.placeholder.com/600x400/FF6BCB/FFFFFF?text=Fashion+Item'],
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
     metadata: {
       year: 2013,
       type: 'Structured tote',
@@ -781,7 +781,7 @@ export const items: Item[] = [
     price: 850000000,
     currency: 'USD',
     description: 'World-famous portrait housed in the Louvre, noted for its enigmatic smile and outstanding technique.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1503,
       artist: 'Leonardo da Vinci',
@@ -799,7 +799,7 @@ export const items: Item[] = [
     price: 100000000,
     currency: 'USD',
     description: 'One of the most iconic Post‑Impressionist works, depicting swirling night sky over Saint‑Rémy.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1889,
       artist: 'Vincent van Gogh',
@@ -817,7 +817,7 @@ export const items: Item[] = [
     price: 150000000,
     currency: 'USD',
     description: 'Famous for its melting clocks motif, this painting symbolizes the fluidity of time.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1931,
       artist: 'Salvador Dalí',
@@ -835,7 +835,7 @@ export const items: Item[] = [
     price: 30000000,
     currency: 'USD',
     description: 'Known as the \'Mona Lisa of the North\', the painting captures a girl\'s transient expression.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1665,
       artist: 'Johannes Vermeer',
@@ -853,7 +853,7 @@ export const items: Item[] = [
     price: 120000000,
     currency: 'USD',
     description: 'One of the most recognizable images of existential angst in art history.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1893,
       artist: 'Edvard Munch',
@@ -871,7 +871,7 @@ export const items: Item[] = [
     price: 200000000,
     currency: 'USD',
     description: 'Powerful political statement against war, depicting the bombing of Guernica during the Spanish Civil War.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1937,
       artist: 'Pablo Picasso',
@@ -889,7 +889,7 @@ export const items: Item[] = [
     price: 100000000,
     currency: 'USD',
     description: 'Icon of Viennese Secession style, celebrated for its decorative richness and intimate subject.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1908,
       artist: 'Gustav Klimt',
@@ -907,7 +907,7 @@ export const items: Item[] = [
     price: 12000000,
     currency: 'USD',
     description: 'Iconic depiction of Midwestern American rural life, featuring a stern farmer and daughter.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1930,
       artist: 'Grant Wood',
@@ -925,7 +925,7 @@ export const items: Item[] = [
     price: 100000000,
     currency: 'USD',
     description: 'Early Renaissance masterpiece celebrating mythological beauty and classical ideals.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1486,
       artist: 'Sandro Botticelli',
@@ -943,7 +943,7 @@ export const items: Item[] = [
     price: 500000000,
     currency: 'USD',
     description: 'Renowned for its dramatic use of light and shadow and dynamic group composition.',
-    images: ['https://via.placeholder.com/600x400/C589E8/FFFFFF?text=Art+Piece'],
+    images: ['https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=600&h=400&fit=crop'],
     metadata: {
       year: 1642,
       artist: 'Rembrandt',
@@ -963,7 +963,7 @@ export const items: Item[] = [
     price: 2,
     currency: 'USD',
     description: 'High‑potassium fruit, great for snacks, smoothies, and baking.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Fruit',
       unit: '3.5 lbs bunch',
@@ -979,7 +979,7 @@ export const items: Item[] = [
     price: 3.50,
     currency: 'USD',
     description: 'Standard dairy milk with full milk fat—used for drinking, cooking, and baking.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Dairy',
       unit: 'Gallon',
@@ -995,7 +995,7 @@ export const items: Item[] = [
     price: 5,
     currency: 'USD',
     description: 'Whole‑grain rice rich in fiber and nutrition; good staple for meals.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Grains',
       unit: '4 lb bag',
@@ -1011,7 +1011,7 @@ export const items: Item[] = [
     price: 2,
     currency: 'USD',
     description: 'Farm‑fresh chicken eggs—protein‑rich and versatile for cooking and baking.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Dairy',
       unit: 'Dozen',
@@ -1027,7 +1027,7 @@ export const items: Item[] = [
     price: 10,
     currency: 'USD',
     description: 'Extra‑virgin olive oil, cold‑pressed, ideal for dressings and low‑temp cooking.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Cooking oil',
       unit: 'Liter',
@@ -1043,7 +1043,7 @@ export const items: Item[] = [
     price: 3,
     currency: 'USD',
     description: 'Green cruciferous vegetable high in vitamins, fiber, and antioxidants.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Vegetable',
       unit: '1.5 lbs',
@@ -1059,7 +1059,7 @@ export const items: Item[] = [
     price: 12,
     currency: 'USD',
     description: 'Boneless, skinless chicken breast—lean protein staple for many diets.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Meat',
       unit: '3 lbs',
@@ -1075,7 +1075,7 @@ export const items: Item[] = [
     price: 2.50,
     currency: 'USD',
     description: '100% whole‑grain bread with fiber and nutrients; good for sandwiches and toasts.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Bakery',
       unit: 'Loaf',
@@ -1091,7 +1091,7 @@ export const items: Item[] = [
     price: 4,
     currency: 'USD',
     description: 'Protein‑rich thick yogurt, good for snacks, cooking, or smoothies.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Dairy',
       unit: '32 oz tub',
@@ -1107,7 +1107,7 @@ export const items: Item[] = [
     price: 8,
     currency: 'USD',
     description: 'Raw or roasted almonds—heart‑healthy snack and cooking ingredient.',
-    images: ['https://via.placeholder.com/600x400/95E1D3/333333?text=Grocery+Item'],
+    images: ['https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop'],
     metadata: {
       category: 'Nuts',
       unit: 'Pound',
@@ -1125,7 +1125,7 @@ export const items: Item[] = [
     price: 999,
     currency: 'USD',
     description: 'Flagship iPhone with ProMotion display, A16 chip, and advanced camera system.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2022,
       type: 'Smartphone',
@@ -1142,7 +1142,7 @@ export const items: Item[] = [
     price: 1199,
     currency: 'USD',
     description: 'High-end Android phone with 200MP camera, S Pen support, and large AMOLED display.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Smartphone',
@@ -1159,7 +1159,7 @@ export const items: Item[] = [
     price: 999,
     currency: 'USD',
     description: 'Compact, premium laptop with InfinityEdge display and Intel Evo certification.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2021,
       type: 'Laptop ultrabook',
@@ -1176,7 +1176,7 @@ export const items: Item[] = [
     price: 399,
     currency: 'USD',
     description: 'Top-tier ANC headphones with excellent sound quality and comfort.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2022,
       type: 'Noise‑cancelling headphones',
@@ -1193,7 +1193,7 @@ export const items: Item[] = [
     price: 1999,
     currency: 'USD',
     description: 'Newest MacBook Pro featuring Apple\'s M3 chip—performance boost and battery life.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Laptop',
@@ -1210,7 +1210,7 @@ export const items: Item[] = [
     price: 499,
     currency: 'USD',
     description: 'Compact, rugged camera for capturing 5.3K video in extreme conditions.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Action camera',
@@ -1227,7 +1227,7 @@ export const items: Item[] = [
     price: 2499,
     currency: 'USD',
     description: 'Full-frame camera balancing resolution, video prowess, and autofocus speed.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2021,
       type: 'Mirrorless camera',
@@ -1244,7 +1244,7 @@ export const items: Item[] = [
     price: 349,
     currency: 'USD',
     description: 'Improved Nintendo Switch model featuring an OLED screen and better audio.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2021,
       type: 'Hybrid gaming console',
@@ -1261,7 +1261,7 @@ export const items: Item[] = [
     price: 399,
     currency: 'USD',
     description: 'Latest Apple Watch offering faster performance and enhanced health tracking.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Smartwatch',
@@ -1278,7 +1278,7 @@ export const items: Item[] = [
     price: 99,
     currency: 'USD',
     description: 'Voice‑controlled smart speaker with Alexa support and improved sound quality.',
-    images: ['https://via.placeholder.com/600x400/3D5A80/FFFFFF?text=Electronics'],
+    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Smart speaker',
@@ -1297,7 +1297,7 @@ export const items: Item[] = [
     price: 60,
     currency: 'USD',
     description: 'Popular composite leather basketball used at high‑school level for its grip and feel.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Basketball',
       type: 'Indoor/outdoor',
@@ -1314,7 +1314,7 @@ export const items: Item[] = [
     price: 55,
     currency: 'USD',
     description: 'Tour‑level golf ball known for consistent flight and soft feel.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Golf',
       type: 'Golf ball',
@@ -1331,7 +1331,7 @@ export const items: Item[] = [
     price: 549,
     currency: 'USD',
     description: 'High‑performance titanium driver with adjustable weighting and forgiveness.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Golf',
       type: 'Driver (club)',
@@ -1348,7 +1348,7 @@ export const items: Item[] = [
     price: 275,
     currency: 'USD',
     description: 'Elite football boot known for lightweight design and traction.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Soccer',
       type: 'Firm‑ground cleats',
@@ -1365,7 +1365,7 @@ export const items: Item[] = [
     price: 320,
     currency: 'USD',
     description: 'Control‑focused boot with textured zones for ball manipulation.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Soccer',
       type: 'Firm‑ground cleats',
@@ -1382,7 +1382,7 @@ export const items: Item[] = [
     price: 249,
     currency: 'USD',
     description: 'High‑end racket favored for power‑oriented play and head‑heavy feel.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Badminton',
       type: 'Racket',
@@ -1399,7 +1399,7 @@ export const items: Item[] = [
     price: 265,
     currency: 'USD',
     description: 'Durable multipurpose barbell used in strength and Olympic lifting gyms.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Weightlifting',
       type: 'Center knurl',
@@ -1416,7 +1416,7 @@ export const items: Item[] = [
     price: 5,
     currency: 'USD',
     description: 'Economical and consistent‑quality tennis balls suitable for recreational play.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Tennis',
       type: 'Pressurized ball',
@@ -1433,7 +1433,7 @@ export const items: Item[] = [
     price: 125,
     currency: 'USD',
     description: 'Made of full-grain leather and used in professional play.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Basketball',
       type: 'Official game ball',
@@ -1450,7 +1450,7 @@ export const items: Item[] = [
     price: 799,
     currency: 'USD',
     description: 'Folding treadmill with motorized incline, cushioned deck, and touchscreen display.',
-    images: ['https://via.placeholder.com/600x400/FF8C42/FFFFFF?text=Sports+Equipment'],
+    images: ['https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop'],
     metadata: {
       sport: 'Running / Fitness',
       type: 'Home treadmill',
@@ -1469,7 +1469,7 @@ export const items: Item[] = [
     price: 6300,
     currency: 'USD',
     description: 'Iconic screw‑locked bracelet symbolizing eternal love (needs screwdriver to open).',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Bangle',
       material: '18k gold',
@@ -1486,7 +1486,7 @@ export const items: Item[] = [
     price: 9500,
     currency: 'USD',
     description: 'Signature Tiffany setting lifts the diamond for maximum brilliance and visibility.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Engagement ring',
       material: 'Platinum and diamond',
@@ -1503,7 +1503,7 @@ export const items: Item[] = [
     price: 12000,
     currency: 'USD',
     description: 'Elegant cluster design featuring multiple brilliant-cut diamonds.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Stud earrings',
       material: 'Diamonds and platinum',
@@ -1520,7 +1520,7 @@ export const items: Item[] = [
     price: 3200,
     currency: 'USD',
     description: 'Signature quatre‑foil motif necklace, symbolizing luck and elegance.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Pendant necklace',
       material: 'Mother‑of‑pearl and gold',
@@ -1537,7 +1537,7 @@ export const items: Item[] = [
     price: 8500,
     currency: 'USD',
     description: 'Serpentine-themed wraparound design combining high jewelry and timepiece.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Watch-bracelet hybrid',
       material: 'Gold and diamonds',
@@ -1554,7 +1554,7 @@ export const items: Item[] = [
     price: 5800,
     currency: 'USD',
     description: 'Features moving diamonds inside transparent casing for playful sparkle.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Ring',
       material: 'Gold and free-moving diamonds',
@@ -1571,7 +1571,7 @@ export const items: Item[] = [
     price: 7200,
     currency: 'USD',
     description: 'Delicate vine motif bracelet with mixed-cut diamonds.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Bracelet',
       material: 'Vine‑inspired design in gold and diamonds',
@@ -1588,7 +1588,7 @@ export const items: Item[] = [
     price: 95000,
     currency: 'USD',
     description: 'High‑jewelry butterfly design encrusted with colored diamonds.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Brooch',
       material: 'Platinum and colored diamonds',
@@ -1605,7 +1605,7 @@ export const items: Item[] = [
     price: 4800,
     currency: 'USD',
     description: 'Signature quatre‑spirals band combining multiple metals and pavé diamonds.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Ring',
       material: 'Gold and diamonds',
@@ -1622,7 +1622,7 @@ export const items: Item[] = [
     price: 6000,
     currency: 'USD',
     description: 'Elegant pendant that spins within a fixed ring—symbolizing joy and elegance.',
-    images: ['https://via.placeholder.com/600x400/38A3A5/FFFFFF?text=Jewelry+Item'],
+    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Rotating pendant necklace',
       material: 'Gold',
@@ -1641,7 +1641,7 @@ export const items: Item[] = [
     price: 5295,
     currency: 'USD',
     description: 'Iconic mid‑century chair with molded plywood and leather—designed for ultimate comfort.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Charles & Ray Eames',
       year: 1956,
@@ -1658,7 +1658,7 @@ export const items: Item[] = [
     price: 6500,
     currency: 'USD',
     description: 'Modernist classic created for the German Pavilion at the Barcelona World\'s Fair.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Mies van der Rohe & Lilly Reich',
       year: 1929,
@@ -1675,7 +1675,7 @@ export const items: Item[] = [
     price: 3250,
     currency: 'USD',
     description: 'Organic sculptural table featuring a curved wood base and tempered glass top.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Isamu Noguchi',
       year: 1944,
@@ -1692,7 +1692,7 @@ export const items: Item[] = [
     price: 4800,
     currency: 'USD',
     description: 'Icon of 20th‑century modernism with geometric steel frame and plush cushions.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Le Corbusier, Pierre Jeanneret, Charlotte Perriand',
       year: 1928,
@@ -1709,7 +1709,7 @@ export const items: Item[] = [
     price: 6400,
     currency: 'USD',
     description: 'Sculptural chair with enveloping form—designed for the SAS Royal Hotel in Copenhagen.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Arne Jacobsen',
       year: 1958,
@@ -1726,7 +1726,7 @@ export const items: Item[] = [
     price: 2800,
     currency: 'USD',
     description: 'Bauhaus classic using tubular steel and leather straps—built for the modern home.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Marcel Breuer',
       year: 1925,
@@ -1743,7 +1743,7 @@ export const items: Item[] = [
     price: 600,
     currency: 'USD',
     description: 'Iconic Danish chair with curved wooden frame and woven seat.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Hans Wegner',
       year: 1949,
@@ -1760,7 +1760,7 @@ export const items: Item[] = [
     price: 290,
     currency: 'USD',
     description: 'Industrial-style metal chair popular in cafés and bistros worldwide.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Xavier Pauchard',
       year: 1934,
@@ -1777,7 +1777,7 @@ export const items: Item[] = [
     price: 2500,
     currency: 'USD',
     description: 'Overhanging marble-base lamp—an elegant blend of form and engineering.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Achille & Pier Giacomo Castiglioni',
       year: 1962,
@@ -1794,7 +1794,7 @@ export const items: Item[] = [
     price: 79,
     currency: 'USD',
     description: 'Comfortable, affordable bentwood armchair with wide popularity.',
-    images: ['https://via.placeholder.com/600x400/8B5A3C/FFFFFF?text=Furniture'],
+    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Redesign in 1976 (original 1970)',
       type: 'Armchair',
