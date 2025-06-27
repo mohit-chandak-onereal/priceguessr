@@ -24,27 +24,27 @@ export function CategorySelection() {
             href={`/play?category=${category.id}`}
             className="group relative"
           >
-            <div className="panel-game-show p-6 sm:p-8 h-full hover:transform hover:scale-105 transition-all spotlight min-h-[180px]">
+            <div className="panel-game-show p-5 sm:p-7 h-full hover:transform hover:scale-105 transition-all spotlight min-h-[162px]">
               {/* Spotlight effect */}
-              <div className="absolute -top-2 -right-2 w-16 sm:w-20 h-16 sm:h-20 bg-yellow-bright rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
+              <div className="absolute -top-2 -right-2 w-14 sm:w-18 h-14 sm:h-18 bg-yellow-bright rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
               
               {/* Content */}
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{category.icon}</div>
-                <h2 className="text-xl sm:text-2xl font-bold text-game-show text-yellow-bright mb-2">
+                <div className="text-4xl sm:text-5xl mb-2 sm:mb-3">{category.icon}</div>
+                <h2 className="text-lg sm:text-xl font-bold text-game-show text-yellow-bright mb-2">
                   {category.name.toUpperCase()}
                 </h2>
                 
                 {/* Item count badge */}
-                <div className="mt-3 sm:mt-4 px-3 sm:px-4 py-2 bg-stage-dark rounded-full border-2 border-yellow-bright">
-                  <span className="text-xs sm:text-sm font-bold text-yellow-bright">
+                <div className="mt-2 sm:mt-3 px-3 sm:px-3 py-1.5 bg-stage-dark rounded-full border-2 border-yellow-bright">
+                  <span className="text-xs sm:text-xs font-bold text-yellow-bright">
                     FEATURED ITEMS
                   </span>
                 </div>
               </div>
               
               {/* Hover state star */}
-              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-xl sm:text-2xl text-yellow-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
+              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 text-lg sm:text-xl text-yellow-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
                 ★
               </div>
             </div>
