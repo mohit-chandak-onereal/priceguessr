@@ -1,26 +1,149 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark theme (default) */
+    --background: 10 10 11;
+    --foreground: 255 255 255;
+    
+    /* Surface colors */
+    --surface: 26 26 28;
+    --surface-hover: 36 36 38;
+    --surface-active: 45 45 48;
+    
+    /* Border colors */
+    --border: 64 64 64;
+    --border-subtle: 42 42 44;
+    --border-strong: 96 96 96;
+    
+    /* Primary colors */
+    --primary: 139 92 246;
+    --primary-hover: 124 58 237;
+    --primary-active: 109 40 217;
+    --primary-foreground: 255 255 255;
+    
+    /* Secondary colors */
+    --secondary: 59 130 246;
+    --secondary-hover: 37 99 235;
+    --secondary-active: 29 78 216;
+    --secondary-foreground: 255 255 255;
+    
+    /* Success colors */
+    --success: 16 185 129;
+    --success-hover: 5 150 105;
+    --success-active: 4 120 87;
+    --success-foreground: 255 255 255;
+    
+    /* Warning colors */
+    --warning: 245 158 11;
+    --warning-hover: 217 119 6;
+    --warning-active: 180 83 9;
+    --warning-foreground: 255 255 255;
+    
+    /* Error colors */
+    --error: 239 68 68;
+    --error-hover: 220 38 38;
+    --error-active: 185 28 28;
+    --error-foreground: 255 255 255;
+    
+    /* Muted colors */
+    --muted: 113 113 122;
+    --muted-foreground: 161 161 170;
+  }
+  
+  /* Light theme (future) */
+  [data-theme='light'] {
+    --background: 255 255 255;
+    --foreground: 10 10 11;
+    
+    /* Surface colors */
+    --surface: 249 250 251;
+    --surface-hover: 243 244 246;
+    --surface-active: 229 231 235;
+    
+    /* Border colors */
+    --border: 229 231 235;
+    --border-subtle: 243 244 246;
+    --border-strong: 209 213 219;
+    
+    /* Primary colors remain the same */
+    --primary: 139 92 246;
+    --primary-hover: 124 58 237;
+    --primary-active: 109 40 217;
+    --primary-foreground: 255 255 255;
+    
+    /* Secondary colors remain the same */
+    --secondary: 59 130 246;
+    --secondary-hover: 37 99 235;
+    --secondary-active: 29 78 216;
+    --secondary-foreground: 255 255 255;
+    
+    /* Success colors remain the same */
+    --success: 16 185 129;
+    --success-hover: 5 150 105;
+    --success-active: 4 120 87;
+    --success-foreground: 255 255 255;
+    
+    /* Warning colors remain the same */
+    --warning: 245 158 11;
+    --warning-hover: 217 119 6;
+    --warning-active: 180 83 9;
+    --warning-foreground: 255 255 255;
+    
+    /* Error colors remain the same */
+    --error: 239 68 68;
+    --error-hover: 220 38 38;
+    --error-active: 185 28 28;
+    --error-foreground: 255 255 255;
+    
+    /* Muted colors */
+    --muted: 156 163 175;
+    --muted-foreground: 107 114 128;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-md bg-surface/80 border border-border/50;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    @apply shadow-glow-primary;
+  }
+  
+  .glow-secondary {
+    @apply shadow-glow-secondary;
+  }
+  
+  .glow-success {
+    @apply shadow-glow-success;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+  }
+  
+  /* Button press effect */
+  .button-press {
+    @apply transition-all duration-150 active:scale-[0.98];
+  }
 }
