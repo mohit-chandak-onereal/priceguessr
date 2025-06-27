@@ -7,6 +7,7 @@ import {
 } from '@/utils/game-utils';
 import { validateGuess } from '@/utils/validation';
 import { getRandomItem, getAvailableHints } from '@/lib/helpers/game-helpers';
+import { soundManager } from '@/utils/sound-manager';
 
 interface GameState {
   // Current game data
@@ -159,9 +160,14 @@ export const useGameStore = create<GameState>((set, get) => ({
       // Calculate score (you can pass timeBonus from timer later)
       scoreEarned = calculateScore(accuracy, attempts);
       newStreak = state.currentStreak + 1;
+      soundManager.play('correct');
     } else if (attempts >= GAME_CONFIG.MAX_ATTEMPTS) {
       gameStatus = 'lost';
       newStreak = 0; // Reset streak on loss
+      soundManager.play('gameOver');
+    } else {
+      // Wrong guess but game continues
+      soundManager.play('wrong');
     }
     
     // Update high scores
@@ -172,6 +178,9 @@ export const useGameStore = create<GameState>((set, get) => ({
     // Save to localStorage
     if (newHighScore > state.highScore) {
       localStorage.setItem('highScore', newHighScore.toString());
+      if (gameStatus === 'won') {
+        soundManager.play('newHighScore');
+      }
     }
     if (newBestStreak > state.bestStreak) {
       localStorage.setItem('bestStreak', newBestStreak.toString());
@@ -218,6 +227,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const state = get();
     if (state.hintsRevealed < state.guesses.length + 1) {
       set({ hintsRevealed: state.hintsRevealed + 1 });
+      soundManager.play('reveal');
     }
   },
   

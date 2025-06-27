@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useGameStore } from '@/lib/store/game-store';
+import { soundManager } from '@/utils/sound-manager';
 
 export function GameTimer() {
   const [timeLeft, setTimeLeft] = useState(15);
@@ -22,6 +23,12 @@ export function GameTimer() {
           }
           return 15; // Reset for next round
         }
+        
+        // Play tick sound for last 5 seconds
+        if (prev <= 6) {
+          soundManager.play('tick');
+        }
+        
         return prev - 1;
       });
     }, 1000);

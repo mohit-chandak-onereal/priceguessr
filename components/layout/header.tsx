@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { SoundToggle } from '@/components/ui/sound-toggle';
 
 export function Header() {
 
@@ -49,6 +50,9 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
+            {/* Sound Toggle */}
+            <SoundToggle />
+            
             {/* Play Now Button */}
             <Link 
               href="/play" 
