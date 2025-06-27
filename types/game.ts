@@ -26,7 +26,7 @@ export interface Item {
   currency: string;
   images: string[];
   metadata: ItemMetadata;
-  ai_hints: string[];
+  description: string;
   created_at: string;
 }
 

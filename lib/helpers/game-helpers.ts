@@ -75,8 +75,8 @@ export function formatHintContent(hint: HintData, item: Item): string {
       return `Location: ${item.metadata.location || 'Unknown'} • Year: ${item.metadata.year || 'Unknown'}`;
     
     case 'ai_clue':
-      // Return the AI hint at the appropriate index
-      return item.ai_hints[0] || 'No additional hints available';
+      // Return a portion of the description
+      return item.description ? item.description.split('.')[0] + '.' : 'No additional hints available';
     
     case 'direct_hint':
       // Give a very direct hint about the price range

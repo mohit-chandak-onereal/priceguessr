@@ -8,6 +8,11 @@ export function HintDisplay() {
 
   if (!currentItem) return null;
 
+  // Generate hints from description
+  const descriptionHints = currentItem.description ? 
+    currentItem.description.split('.').filter(s => s.trim().length > 0).slice(0, 3) : 
+    ['No additional information available'];
+
   const hints = [
     // Hint 1: Basic metadata
     {
@@ -30,11 +35,11 @@ export function HintDisplay() {
         </div>
       ),
     },
-    // Hint 2: First AI hint
+    // Hint 2: First description hint
     {
       level: 2,
       title: 'CLUE #1',
-      content: <p className="italic">&quot;{currentItem.ai_hints[0]}&quot;</p>,
+      content: <p className="italic">&quot;{descriptionHints[0]}&quot;</p>,
     },
     // Hint 3: More metadata
     {
@@ -60,11 +65,11 @@ export function HintDisplay() {
         </div>
       ),
     },
-    // Hint 4: Second AI hint
+    // Hint 4: Second description hint
     {
       level: 4,
       title: 'CLUE #2',
-      content: <p className="italic">&quot;{currentItem.ai_hints[1]}&quot;</p>,
+      content: <p className="italic">&quot;{descriptionHints[1] || 'Additional information not available'}&quot;</p>,
     },
     // Hint 5: Currency hint
     {
@@ -84,11 +89,11 @@ export function HintDisplay() {
         </p>
       ),
     },
-    // Hint 6: Final AI hint
+    // Hint 6: Final description hint
     {
       level: 6,
       title: 'FINAL CLUE',
-      content: <p className="italic">&quot;{currentItem.ai_hints[2]}&quot;</p>,
+      content: <p className="italic">&quot;{descriptionHints[2] || descriptionHints[0]}&quot;</p>,
     },
   ];
 

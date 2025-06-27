@@ -97,11 +97,6 @@ export function GameTimer() {
         </div>
       </div>
       
-      {timeLeft <= 5 && (
-        <p className="text-center text-sm text-red-bright font-bold mt-2 animate-pulse">
-          HURRY UP!
-        </p>
-      )}
     </div>
   );
 }
