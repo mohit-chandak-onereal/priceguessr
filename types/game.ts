@@ -14,7 +14,7 @@ export interface ItemMetadata {
   brand?: string;
   model?: string;
   condition?: string;
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | boolean | undefined;
 }
 
 export interface Item {
