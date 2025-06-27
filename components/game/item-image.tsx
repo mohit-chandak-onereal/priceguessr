@@ -1,11 +1,10 @@
 'use client';
 
 interface ItemImageProps {
-  name: string;
   category: string;
 }
 
-export function ItemImage({ name, category }: ItemImageProps) {
+export function ItemImage({ category }: ItemImageProps) {
   // For now, we'll use placeholder images
   // In production, these would be actual product images
   const placeholderColors = {
