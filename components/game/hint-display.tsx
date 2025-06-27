@@ -93,12 +93,12 @@ export function HintDisplay() {
   ];
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-xl font-bold text-center text-yellow-bright text-game-show mb-4">
+    <div className="space-y-3">
+      <h3 className="text-lg font-bold text-center text-yellow-bright text-game-show mb-3">
         HINTS & CLUES
       </h3>
 
-      <div className="grid gap-3">
+      <div className="grid gap-2">
         {hints.map((hint, index) => {
           const isUnlocked = index < hintsRevealed;
           const isAvailable = index <= guesses.length;
@@ -107,7 +107,7 @@ export function HintDisplay() {
             <div
               key={hint.level}
               className={`
-                relative p-4 rounded-lg border-2 transition-all duration-300
+                relative p-3 rounded-lg border-2 transition-all duration-300 text-sm
                 ${
                   isUnlocked
                     ? 'bg-stage-dark/50 border-yellow-bright'

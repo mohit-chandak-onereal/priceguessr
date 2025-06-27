@@ -7,6 +7,8 @@ import { PriceInput } from './price-input';
 import { HintDisplay } from './hint-display';
 import { GuessHistory } from './guess-history';
 import { GameOverModal } from './game-over-modal';
+import { ItemImage } from './item-image';
+import { GameTimer } from './game-timer';
 import { mockCategories } from '@/lib/mock-data';
 
 interface GameBoardProps {
@@ -21,6 +23,7 @@ export function GameBoard({ categoryId }: GameBoardProps) {
     currentItem,
     gameStatus,
     attemptsRemaining,
+    guesses,
     isLoading,
     error,
     startNewGame,
@@ -78,57 +81,77 @@ export function GameBoard({ categoryId }: GameBoardProps) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-7xl mx-auto">
       {/* Category Header */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-6 py-3 bg-stage-dark rounded-full border-2 border-yellow-bright mb-4">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center gap-2 px-6 py-3 bg-stage-dark rounded-full border-2 border-yellow-bright">
           <span className="text-2xl">{category?.icon}</span>
           <span className="text-xl font-bold text-yellow-bright">{category?.name.toUpperCase()}</span>
         </div>
       </div>
 
-      {/* Main Game Panel */}
-      <div className="panel-game-show p-8 mb-8">
-        {/* Item Name */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-game-show text-white mb-2">
-            {currentItem.name}
-          </h2>
-          <p className="text-xl text-yellow-bright">by {currentItem.brand}</p>
-        </div>
+      {/* Main Game Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        {/* Left Side - Image and Guess Section */}
+        <div className="lg:col-span-3 space-y-6">
+          {/* Item Name */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-game-show text-white mb-2">
+              {currentItem.name}
+            </h2>
+            <p className="text-lg text-yellow-bright">by {currentItem.brand}</p>
+          </div>
 
-        {/* Attempts Remaining */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2">
-            <span className="text-lg text-muted">Attempts Remaining:</span>
-            <div className="flex gap-1">
-              {Array.from({ length: 6 }, (_, i) => (
-                <div
-                  key={i}
-                  className={`w-3 h-3 rounded-full ${
-                    i < attemptsRemaining
-                      ? 'bg-green-bright'
-                      : 'bg-red-bright'
-                  }`}
-                />
-              ))}
+          {/* Item Image */}
+          <div className="aspect-[4/3] w-full">
+            <ItemImage name={currentItem.name} category={category?.name || ''} />
+          </div>
+
+          {/* Timer */}
+          <div className="panel-game-show p-4">
+            <GameTimer />
+          </div>
+
+          {/* Price Input Section */}
+          {gameStatus === 'playing' && (
+            <div className="panel-game-show p-6">
+              <PriceInput />
+            </div>
+          )}
+
+          {/* Attempts Remaining */}
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2">
+              <span className="text-sm text-muted">Attempts:</span>
+              <div className="flex gap-1">
+                {Array.from({ length: 6 }, (_, i) => (
+                  <div
+                    key={i}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      i < attemptsRemaining
+                        ? 'bg-green-bright'
+                        : 'bg-red-bright'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Hints Section */}
-        <HintDisplay />
-
-        {/* Price Input */}
-        {gameStatus === 'playing' && (
-          <div className="mt-8">
-            <PriceInput />
+        {/* Right Side - Hints and History */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Hints Section */}
+          <div className="panel-game-show p-6">
+            <HintDisplay />
           </div>
-        )}
 
-        {/* Guess History */}
-        <div className="mt-8">
-          <GuessHistory />
+          {/* Guess History */}
+          {guesses.length > 0 && (
+            <div className="panel-game-show p-6">
+              <GuessHistory />
+            </div>
+          )}
         </div>
       </div>
 

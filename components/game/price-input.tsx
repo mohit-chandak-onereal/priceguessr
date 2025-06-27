@@ -24,16 +24,16 @@ export function PriceInput() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="text-center mb-4">
-        <h3 className="text-2xl font-bold text-game-show text-yellow-bright">
-          WHAT&apos;S YOUR GUESS?
+      <div className="text-center mb-3">
+        <h3 className="text-xl font-bold text-game-show text-yellow-bright">
+          ENTER YOUR GUESS
         </h3>
       </div>
 
       <div className="relative">
         {/* Price Display Container */}
         <div className={`
-          price-display text-3xl md:text-4xl text-center p-6
+          price-display text-2xl md:text-3xl text-center p-4
           transition-all duration-200
           ${isFocused ? 'border-yellow-bright shadow-lg shadow-yellow-bright/50' : ''}
           ${error ? 'border-red-bright shadow-lg shadow-red-bright/50' : ''}
@@ -46,28 +46,28 @@ export function PriceInput() {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder="0.00"
-            className="bg-transparent outline-none text-green-bright font-mono inline-block w-auto min-w-[200px]"
-            style={{ width: `${Math.max(200, currentGuess.length * 25)}px` }}
+            className="bg-transparent outline-none text-green-bright font-mono inline-block w-auto min-w-[150px]"
+            style={{ width: `${Math.max(150, currentGuess.length * 20)}px` }}
             autoFocus
           />
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="absolute -bottom-8 left-0 right-0 text-center">
-            <span className="text-sm text-red-bright">{error}</span>
+          <div className="absolute -bottom-6 left-0 right-0 text-center">
+            <span className="text-xs text-red-bright">{error}</span>
           </div>
         )}
       </div>
 
       {/* Submit Button */}
-      <div className="text-center mt-12">
+      <div className="text-center mt-8">
         <button
           type="submit"
           disabled={!currentGuess.trim()}
-          className="btn-game-show text-white text-xl px-12 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="btn-game-show text-white text-lg px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed w-full"
         >
-          MAKE YOUR GUESS!
+          SUBMIT GUESS
         </button>
       </div>
     </form>

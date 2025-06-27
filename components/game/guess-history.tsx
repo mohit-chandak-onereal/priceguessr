@@ -10,12 +10,12 @@ export function GuessHistory() {
   const actualPrice = currentItem.price;
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-xl font-bold text-center text-yellow-bright text-game-show">
+    <div className="space-y-3">
+      <h3 className="text-lg font-bold text-center text-yellow-bright text-game-show">
         YOUR GUESSES
       </h3>
 
-      <div className="space-y-2">
+      <div className="space-y-2 max-h-64 overflow-y-auto">
         {guesses.map((guess, index) => {
           const difference = guess.value - actualPrice;
           const isHigher = difference > 0;
@@ -25,7 +25,7 @@ export function GuessHistory() {
             <div
               key={index}
               className={`
-                flex items-center justify-between p-4 rounded-lg border-2
+                flex items-center justify-between p-3 rounded-lg border-2 text-sm
                 ${
                   guess.isWithinRange
                     ? 'bg-green-bright/20 border-green-bright'
