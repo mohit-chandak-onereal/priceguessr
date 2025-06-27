@@ -103,12 +103,11 @@
     --muted-foreground: 107 114 128;
   }
   
-  * {
-    @apply border-border;
-  }
+  /* Remove the * selector temporarily for Tailwind v4 compatibility */
   
   body {
-    @apply bg-background text-foreground;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -116,34 +115,48 @@
 @layer utilities {
   /* Glass morphism effect */
   .glass {
-    @apply backdrop-blur-md bg-surface/80 border border-border/50;
+    backdrop-filter: blur(12px);
+    background-color: rgba(var(--surface), 0.8);
+    border: 1px solid rgba(var(--border), 0.5);
   }
   
   /* Gradient text */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    background: linear-gradient(to right, rgb(var(--primary)), rgb(var(--secondary)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   
   /* Glow effects */
   .glow-primary {
-    @apply shadow-glow-primary;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
   }
   
   .glow-secondary {
-    @apply shadow-glow-secondary;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
   }
   
   .glow-success {
-    @apply shadow-glow-success;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
   }
   
   /* Card hover effect */
   .card-hover {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
   
   /* Button press effect */
   .button-press {
-    @apply transition-all duration-150 active:scale-[0.98];
+    transition: all 0.15s ease;
+  }
+  
+  .button-press:active {
+    transform: scale(0.98);
   }
 }

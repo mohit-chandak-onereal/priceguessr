@@ -15,21 +15,26 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       onClick={toggleTheme}
       className={clsx(
         'relative inline-flex h-7 w-14 items-center rounded-full',
-        'bg-surface transition-colors duration-200',
-        'hover:bg-surface-hover focus:outline-none focus:ring-2',
-        'focus:ring-primary focus:ring-offset-2 focus:ring-offset-background',
+        'transition-colors duration-200',
+        'focus:outline-none focus:ring-2',
         'button-press',
         className
       )}
+      style={{
+        backgroundColor: 'rgb(var(--surface))',
+      }}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <span className="sr-only">Toggle theme</span>
       <span
         className={clsx(
           'inline-block h-5 w-5 transform rounded-full',
-          'bg-primary transition-transform duration-200',
+          'transition-transform duration-200',
           isDark ? 'translate-x-8' : 'translate-x-1'
         )}
+        style={{
+          backgroundColor: 'rgb(var(--primary))',
+        }}
       >
         <span className="flex h-full w-full items-center justify-center text-xs">
           {isDark ? '🌙' : '☀️'}
