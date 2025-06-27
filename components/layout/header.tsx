@@ -35,6 +35,12 @@ export function Header() {
               Play
             </Link>
             <Link 
+              href="/stats" 
+              className="text-muted hover:text-foreground transition-colors"
+            >
+              Stats
+            </Link>
+            <Link 
               href="/leaderboard" 
               className="text-muted hover:text-foreground transition-colors"
             >

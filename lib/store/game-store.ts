@@ -8,11 +8,13 @@ import {
 import { validateGuess } from '@/utils/validation';
 import { getRandomItem, getAvailableHints } from '@/lib/helpers/game-helpers';
 import { soundManager } from '@/utils/sound-manager';
+import { useStatsStore } from './stats-store';
 
 interface GameState {
   // Current game data
   currentItem: Item | null;
   currentSession: GameSession | null;
+  gameStartTime: number | null;
   
   // Game progress
   guesses: Guess[];
@@ -62,6 +64,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   // Initial state
   currentItem: null,
   currentSession: null,
+  gameStartTime: null,
   guesses: [],
   currentGuess: '',
   hintsRevealed: 1,
@@ -108,6 +111,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         availableHints: getAvailableHints(0),
         isLoading: false,
         sessionScore: 0, // Reset session score for new game
+        gameStartTime: Date.now(), // Track game start time
       });
     } catch (error) {
       set({ 
@@ -214,6 +218,26 @@ export const useGameStore = create<GameState>((set, get) => ({
     // Auto-reveal next hint if not won
     if (gameStatus === 'playing' && GAME_CONFIG.HINT_UNLOCK_AFTER_GUESS) {
       get().revealNextHint();
+    }
+    
+    // Record statistics if game ended
+    if (gameStatus === 'won' || gameStatus === 'lost') {
+      const timeTaken = state.gameStartTime ? Math.floor((Date.now() - state.gameStartTime) / 1000) : 0;
+      const categoryId = state.currentItem.category_id;
+      
+      useStatsStore.getState().recordGameResult(
+        categoryId,
+        gameStatus === 'won',
+        gameStatus === 'won' ? accuracy : 0,
+        attempts,
+        scoreEarned,
+        timeTaken
+      );
+      
+      // Check if this was a high-value item (for achievement)
+      if (gameStatus === 'won' && state.currentItem.price > 100000) {
+        // This will be checked in the achievements system
+      }
     }
   },
   

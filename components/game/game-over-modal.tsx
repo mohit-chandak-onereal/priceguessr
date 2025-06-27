@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import { useGameStore } from '@/lib/store/game-store';
 
 interface GameOverModalProps {
@@ -136,6 +137,16 @@ export function GameOverModal({
             >
               NEW CATEGORY
             </button>
+          </div>
+          
+          {/* Stats Link */}
+          <div className="mt-6 text-center">
+            <Link
+              href="/stats"
+              className="text-muted hover:text-yellow-bright transition-colors text-sm"
+            >
+              View Detailed Statistics →
+            </Link>
           </div>
         </div>
       </div>
