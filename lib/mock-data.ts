@@ -196,7 +196,7 @@ export const mockItems: Item[] = [
     ],
     metadata: {
       servings: 2,
-      organic: 'true',
+      organic: true,
       ingredients: 'Artisan bread, organic avocados, everything seasoning',
     },
     ai_hints: [
