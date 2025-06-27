@@ -16,7 +16,7 @@ export default function Home() {
             <div className="mb-8 relative">
               <h1 className="text-5xl md:text-7xl font-bold text-game-show text-white mb-4">
                 <span className="block">COME ON DOWN!</span>
-                <span className="block text-3xl md:text-5xl mt-2 text-yellow-bright">You're the next contestant on</span>
+                <span className="block text-3xl md:text-5xl mt-2 text-yellow-bright">You&apos;re the next contestant on</span>
               </h1>
               <div className="text-6xl md:text-8xl font-bold mt-4">
                 <span className="gradient-text text-outline">PRICEGUESSR</span>
@@ -107,7 +107,7 @@ export default function Home() {
               { name: 'RARE COLLECTIBLES', emoji: '🎨', color: 'bg-pink-bright' },
               { name: 'GOURMET DELIGHTS', emoji: '🍽️', color: 'bg-yellow-bright' },
               { name: 'DREAM VACATIONS', emoji: '✈️', color: 'bg-blue-bright' },
-            ].map((category, index) => (
+            ].map((category) => (
               <Link
                 key={category.name}
                 href={`/play?category=${category.name.toLowerCase().replace(/\s+/g, '-')}`}
