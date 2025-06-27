@@ -2,7 +2,16 @@
 
 /* The Price is Right Theme Configuration */
 @theme {
-  /* Game Show Colors */
+  /* 70s Retro Colors */
+  --color-retro-cream: rgb(254 243 199); /* Cream background */
+  --color-retro-orange: rgb(236 112 44); /* Burnt orange */
+  --color-retro-rust: rgb(193 71 42); /* Rust orange */
+  --color-retro-yellow: rgb(246 190 71); /* Mustard yellow */
+  --color-retro-teal: rgb(26 117 127); /* Deep teal */
+  --color-retro-blue: rgb(31 55 94); /* Navy blue */
+  --color-retro-pink: rgb(234 134 143); /* Dusty pink */
+  
+  /* Game Show Colors (keeping for game pages) */
   --color-stage-blue: rgb(13 71 161); /* Deep blue stage background */
   --color-stage-dark: rgb(7 47 95); /* Darker blue for depth */
   --color-spotlight: rgb(255 251 235); /* Warm spotlight color */
@@ -533,5 +542,137 @@
     .text-game-show {
       font-size: 90%;
     }
+  }
+  
+  /* 70s Retro Styles */
+  .retro-bg {
+    background: rgb(var(--retro-cream));
+  }
+  
+  .retro-text {
+    font-family: 'Arial Black', 'Helvetica Neue', sans-serif;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  
+  .retro-title {
+    background: linear-gradient(
+      180deg,
+      rgb(var(--retro-orange)) 0%,
+      rgb(var(--retro-rust)) 50%,
+      rgb(var(--retro-yellow)) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+      0 0 30px rgba(var(--retro-orange), 0.5),
+      0 0 60px rgba(var(--retro-yellow), 0.3);
+  }
+  
+  .retro-button {
+    background: linear-gradient(
+      135deg,
+      rgb(var(--retro-orange)) 0%,
+      rgb(var(--retro-rust)) 100%
+    );
+    color: rgb(var(--retro-cream));
+    border: 4px solid rgb(var(--retro-rust));
+    border-radius: 50px;
+    padding: 1.5rem 3rem;
+    font-family: 'Arial Black', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 
+      6px 6px 0px rgb(var(--retro-blue)),
+      6px 6px 0px 2px rgb(var(--retro-rust));
+    transform: translateY(0);
+    transition: all 0.1s ease;
+  }
+  
+  .retro-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 
+      8px 8px 0px rgb(var(--retro-blue)),
+      8px 8px 0px 2px rgb(var(--retro-rust));
+  }
+  
+  .retro-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 
+      4px 4px 0px rgb(var(--retro-blue)),
+      4px 4px 0px 2px rgb(var(--retro-rust));
+  }
+  
+  /* Sunburst Pattern */
+  .sunburst {
+    background: conic-gradient(
+      from 0deg,
+      rgb(var(--retro-yellow)) 0deg,
+      rgb(var(--retro-orange)) 20deg,
+      rgb(var(--retro-yellow)) 40deg,
+      rgb(var(--retro-orange)) 60deg,
+      rgb(var(--retro-yellow)) 80deg,
+      rgb(var(--retro-orange)) 100deg,
+      rgb(var(--retro-yellow)) 120deg,
+      rgb(var(--retro-orange)) 140deg,
+      rgb(var(--retro-yellow)) 160deg,
+      rgb(var(--retro-orange)) 180deg,
+      rgb(var(--retro-yellow)) 200deg,
+      rgb(var(--retro-orange)) 220deg,
+      rgb(var(--retro-yellow)) 240deg,
+      rgb(var(--retro-orange)) 260deg,
+      rgb(var(--retro-yellow)) 280deg,
+      rgb(var(--retro-orange)) 300deg,
+      rgb(var(--retro-yellow)) 320deg,
+      rgb(var(--retro-orange)) 340deg,
+      rgb(var(--retro-yellow)) 360deg
+    );
+    animation: rotate 30s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Wavy Pattern */
+  .wavy-pattern {
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        rgb(var(--retro-orange)) 0px,
+        rgb(var(--retro-orange)) 40px,
+        rgb(var(--retro-yellow)) 40px,
+        rgb(var(--retro-yellow)) 80px,
+        rgb(var(--retro-teal)) 80px,
+        rgb(var(--retro-teal)) 120px,
+        rgb(var(--retro-blue)) 120px,
+        rgb(var(--retro-blue)) 160px
+      );
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wavy-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(8px);
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+  
+  /* Retro Shadow Text */
+  .retro-shadow {
+    text-shadow: 
+      3px 3px 0px rgb(var(--retro-rust)),
+      6px 6px 0px rgb(var(--retro-blue)),
+      9px 9px 15px rgba(0, 0, 0, 0.3);
   }
 }

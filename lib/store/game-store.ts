@@ -53,16 +53,21 @@ interface GameState {
 }
 
 // Score calculation helper - New scoring system
-const calculateScore = (percentOff: number): number => {
+const calculateScore = (percentOff: number, attemptNumber: number): number => {
   // Only score if within winning threshold (5%)
   if (percentOff > 5) return 0;
   
-  // Linear scale from 200-1000 points within 0-5% range
+  // Start with linear scale from 200-1000 points within 0-5% range
   // 0% off = 1000 points
   // 5% off = 200 points
-  const score = 1000 - ((percentOff / 5) * 800);
+  const baseScore = 1000 - ((percentOff / 5) * 800);
   
-  return Math.round(score);
+  // Subtract 100 points for each previous wrong attempt
+  const penalty = (attemptNumber - 1) * 100;
+  const finalScore = baseScore - penalty;
+  
+  // Ensure minimum score of 200
+  return Math.max(200, Math.round(finalScore));
 };
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -169,7 +174,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       gameStatus = 'won';
       // Calculate score using new system (convert accuracy to percentOff)
       const percentOff = 100 - accuracy;
-      scoreEarned = calculateScore(percentOff);
+      scoreEarned = calculateScore(percentOff, attempts);
       newStreak = state.currentStreak + 1;
       soundManager.play('correct');
       
