@@ -55,9 +55,7 @@ export const mockItems: Item[] = [
     price: 2850000,
     currency: 'USD',
     images: [
-      '/images/house-1-blur.jpg',
-      '/images/house-1-interior.jpg',
-      '/images/house-1-full.jpg',
+      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80', // Modern house exterior
     ],
     metadata: {
       year: 2019,
@@ -82,9 +80,7 @@ export const mockItems: Item[] = [
     price: 207000,
     currency: 'USD',
     images: [
-      '/images/car-1-blur.jpg',
-      '/images/car-1-interior.jpg',
-      '/images/car-1-engine.jpg',
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80', // Porsche 911
     ],
     metadata: {
       year: 2024,
@@ -109,9 +105,7 @@ export const mockItems: Item[] = [
     price: 12500,
     currency: 'USD',
     images: [
-      '/images/watch-1-blur.jpg',
-      '/images/watch-1-back.jpg',
-      '/images/watch-1-detail.jpg',
+      'https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=800&q=80', // Rolex watch
     ],
     metadata: {
       year: 2023,
@@ -136,9 +130,7 @@ export const mockItems: Item[] = [
     price: 8800,
     currency: 'USD',
     images: [
-      '/images/bag-1-blur.jpg',
-      '/images/bag-1-detail.jpg',
-      '/images/bag-1-full.jpg',
+      'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80', // Designer handbag
     ],
     metadata: {
       year: 2024,
@@ -163,9 +155,7 @@ export const mockItems: Item[] = [
     price: 45000,
     currency: 'USD',
     images: [
-      '/images/art-1-blur.jpg',
-      '/images/art-1-detail.jpg',
-      '/images/art-1-full.jpg',
+      'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=800&q=80', // Abstract art
     ],
     metadata: {
       year: 2023,
@@ -190,9 +180,7 @@ export const mockItems: Item[] = [
     price: 12.99,
     currency: 'USD',
     images: [
-      '/images/grocery-1-blur.jpg',
-      '/images/grocery-1-ingredients.jpg',
-      '/images/grocery-1-full.jpg',
+      'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=800&q=80', // Avocado toast
     ],
     metadata: {
       servings: 2,

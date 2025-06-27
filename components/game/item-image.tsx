@@ -1,45 +1,112 @@
 'use client';
 
+import Image from 'next/image';
+import { useState } from 'react';
+import { useGameStore } from '@/lib/store/game-store';
+
 interface ItemImageProps {
-  category: string;
+  imageUrl: string;
+  itemName: string;
 }
 
-export function ItemImage({ category }: ItemImageProps) {
-  // For now, we'll use placeholder images
-  // In production, these would be actual product images
-  const placeholderColors = {
-    'Houses': 'from-blue-bright to-sky-500',
-    'Cars': 'from-red-bright to-orange-bright',
-    'Watches': 'from-gray-600 to-gray-800',
-    'Designer Fashion': 'from-pink-bright to-purple-bright',
-    'Art': 'from-yellow-bright to-orange-bright',
-    'Grocery Items': 'from-green-bright to-emerald-500',
+export function ItemImage({ imageUrl, itemName }: ItemImageProps) {
+  const [imageError, setImageError] = useState(false);
+  const { hintsRevealed, gameStatus } = useGameStore();
+  
+  // Calculate blur amount based on hints revealed
+  const getBlurAmount = () => {
+    if (gameStatus === 'won' || gameStatus === 'lost') return 0;
+    
+    switch (hintsRevealed) {
+      case 1: return 20;
+      case 2: return 15;
+      case 3: return 10;
+      case 4: return 6;
+      case 5: return 3;
+      case 6: return 0;
+      default: return 20;
+    }
   };
+  
+  const blurAmount = getBlurAmount();
+  const isRevealed = blurAmount === 0;
 
-  const gradient = placeholderColors[category as keyof typeof placeholderColors] || 'from-gray-500 to-gray-700';
+  // Fallback for broken images
+  if (imageError) {
+    return (
+      <div className="relative w-full h-full rounded-lg overflow-hidden border-4 border-yellow-bright shadow-2xl bg-stage-dark">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-6xl mb-4">🖼️</div>
+            <p className="text-muted">Image unavailable</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full h-full rounded-lg overflow-hidden border-4 border-yellow-bright shadow-2xl">
-      {/* Placeholder gradient background */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-20`} />
-      
-      {/* Blur overlay to simulate hidden image */}
-      <div className="absolute inset-0 backdrop-blur-xl bg-white/10" />
-      
-      {/* Question mark overlay */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-8xl md:text-9xl text-white/30 font-bold animate-pulse">
-          ?
-        </div>
+      {/* Main image with blur effect */}
+      <div className="relative w-full h-full">
+        <Image
+          src={imageUrl}
+          alt={itemName}
+          fill
+          className="object-cover transition-all duration-500"
+          style={{ 
+            filter: `blur(${blurAmount}px)`,
+            transform: isRevealed ? 'scale(1.05)' : 'scale(1)',
+          }}
+          onError={() => setImageError(true)}
+          priority
+        />
       </div>
       
-      {/* "Image Hidden" text */}
-      <div className="absolute bottom-4 left-4 right-4">
-        <div className="bg-black/50 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
-          <p className="text-yellow-bright font-bold text-sm">IMAGE HIDDEN</p>
-          <p className="text-white/70 text-xs">Make guesses to reveal details</p>
+      {/* Overlay effects */}
+      {!isRevealed && (
+        <>
+          {/* Dark overlay for better text visibility */}
+          <div className="absolute inset-0 bg-black/30" />
+          
+          {/* Status text */}
+          <div className="absolute bottom-4 left-4 right-4">
+            <div className="bg-black/70 backdrop-blur-sm rounded-lg px-4 py-3 text-center">
+              <p className="text-yellow-bright font-bold text-sm mb-1">
+                IMAGE OBSCURED
+              </p>
+              <p className="text-white/80 text-xs">
+                {6 - hintsRevealed} more hints to full reveal
+              </p>
+              <div className="flex justify-center gap-1 mt-2">
+                {Array.from({ length: 6 }, (_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 h-2 rounded-full ${
+                      i < hintsRevealed
+                        ? 'bg-yellow-bright'
+                        : 'bg-white/30'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+      
+      {/* Win/Loss overlay */}
+      {isRevealed && gameStatus !== 'playing' && (
+        <div className="absolute top-4 right-4">
+          <div className={`px-4 py-2 rounded-lg font-bold text-sm ${
+            gameStatus === 'won' 
+              ? 'bg-green-bright text-white' 
+              : 'bg-red-bright text-white'
+          }`}>
+            {gameStatus === 'won' ? '✓ REVEALED' : '✗ GAME OVER'}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

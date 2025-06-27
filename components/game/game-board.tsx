@@ -105,7 +105,10 @@ export function GameBoard({ categoryId }: GameBoardProps) {
 
           {/* Item Image */}
           <div className="aspect-[4/3] w-full">
-            <ItemImage category={category?.name || ''} />
+            <ItemImage 
+              imageUrl={currentItem.images[0]} 
+              itemName={currentItem.name} 
+            />
           </div>
 
           {/* Timer */}
