@@ -28,6 +28,14 @@ export function validateGuess(input: string): ValidationResult {
     };
   }
   
+  // Check if the original input had a negative sign
+  if (input.trim().startsWith('-')) {
+    return {
+      valid: false,
+      error: 'Price must be greater than $0',
+    };
+  }
+  
   // Check for negative or zero
   if (parsed <= 0) {
     return {
