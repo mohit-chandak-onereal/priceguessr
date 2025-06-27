@@ -61,7 +61,7 @@ export function GameOverModal({
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore]);
+  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore, finalGuess?.accuracy]);
 
   if (!isOpen || !currentItem) return null;
 

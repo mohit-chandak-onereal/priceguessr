@@ -1,13 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-
-// Initialize Supabase client with service role for server-side operations
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 // For now, we'll use a mock implementation until Supabase is set up
 // This will store data in memory (resets on server restart)
-let mockLeaderboard: any[] = [
+
+interface LeaderboardEntry {
+  id: string;
+  player_name: string;
+  score: number;
+  accuracy: number;
+  attempts: number;
+  category_name: string;
+  item_name: string;
+  created_at: string;
+}
+
+let mockLeaderboard: LeaderboardEntry[] = [
   {
     id: '1',
     player_name: 'PriceNinja',
@@ -35,7 +42,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const category = searchParams.get('category');
     const limit = parseInt(searchParams.get('limit') || '100');
-    const timeframe = searchParams.get('timeframe'); // today, week, month, all
+    // const timeframe = searchParams.get('timeframe'); // TODO: implement timeframe filtering
 
     // Filter by category if provided
     let results = [...mockLeaderboard];
