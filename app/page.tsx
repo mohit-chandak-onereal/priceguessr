@@ -51,65 +51,26 @@ export default function Home() {
         </div>
       </section>
 
-
-      {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-stage-dark to-stage-blue opacity-80" />
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 50%, rgba(251, 146, 60, 0.3) 0%, transparent 50%),
-              radial-gradient(circle at 80% 50%, rgba(250, 204, 21, 0.3) 0%, transparent 50%)
-            `
-          }} />
-        </div>
+      {/* Stats Section with Gradient */}
+      <section className="py-16 sm:py-20 md:py-24 relative">
+        {/* Subtle Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-stage-blue via-stage-blue/95 to-stage-dark/90" />
         
-        {/* Marquee Lights Effect */}
-        <div className="absolute top-0 left-0 right-0 h-1 sm:h-2 bg-gradient-to-r from-yellow-bright via-orange-bright to-yellow-bright animate-marquee" />
-        <div className="absolute bottom-0 left-0 right-0 h-1 sm:h-2 bg-gradient-to-r from-yellow-bright via-orange-bright to-yellow-bright animate-marquee" style={{ animationDelay: '-10s' }} />
-        
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 text-game-show text-white">
-              <span className="block">THE SHOWCASE</span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl text-yellow-bright mt-1 sm:mt-2">SHOWDOWN AWAITS!</span>
-            </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-muted mb-8 sm:mb-10 font-semibold px-4">
-              Join thousands of contestants competing for the ultimate prize!
-            </p>
-            
-            {/* Big CTA Button */}
-            <div className="relative inline-block">
-              <Link
-                href="/play"
-                className="relative inline-block"
-              >
-                <div className="absolute -inset-2 bg-gradient-to-r from-yellow-bright via-orange-bright to-yellow-bright rounded-xl blur-lg opacity-75 animate-pulse"></div>
-                <div className="relative btn-game-show text-white text-lg sm:text-xl md:text-2xl px-8 sm:px-12 py-4 sm:py-6">
-                  <span className="relative z-10">COME ON DOWN!</span>
-                  <div className="absolute top-0 right-0 -mt-2 -mr-2">
-                    <span className="text-yellow-bright text-2xl sm:text-3xl animate-spin-slow inline-block">★</span>
-                  </div>
-                </div>
-              </Link>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 text-yellow-bright">
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-game-show">10K+</div>
+              <div className="text-sm uppercase tracking-wider">Players</div>
             </div>
-            
-            <div className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-yellow-bright">
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-game-show">10K+</div>
-                <div className="text-xs sm:text-sm uppercase">Players</div>
-              </div>
-              <div className="text-xl sm:text-2xl animate-pulse hidden sm:block">★</div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-game-show">50K+</div>
-                <div className="text-xs sm:text-sm uppercase">Games</div>
-              </div>
-              <div className="text-xl sm:text-2xl animate-pulse hidden sm:block">★</div>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-game-show">$1M+</div>
-                <div className="text-xs sm:text-sm uppercase">Prizes</div>
-              </div>
+            <div className="text-2xl animate-pulse hidden sm:block">★</div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-game-show">50K+</div>
+              <div className="text-sm uppercase tracking-wider">Games</div>
+            </div>
+            <div className="text-2xl animate-pulse hidden sm:block">★</div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold text-game-show">100</div>
+              <div className="text-sm uppercase tracking-wider">Real Items</div>
             </div>
           </div>
         </div>
