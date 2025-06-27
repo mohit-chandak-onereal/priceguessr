@@ -1,248 +1,355 @@
 @import "tailwindcss";
 
-/* Tailwind v4 Theme Configuration */
+/* The Price is Right Theme Configuration */
 @theme {
-  /* Dynamic color references using CSS variables */
-  --color-background: rgb(var(--background));
-  --color-foreground: rgb(var(--foreground));
+  /* Game Show Colors */
+  --color-stage-blue: rgb(13 71 161); /* Deep blue stage background */
+  --color-stage-dark: rgb(7 47 95); /* Darker blue for depth */
+  --color-spotlight: rgb(255 251 235); /* Warm spotlight color */
   
-  --color-surface: rgb(var(--surface));
-  --color-surface-hover: rgb(var(--surface-hover));
-  --color-surface-active: rgb(var(--surface-active));
+  /* Vibrant Accent Colors */
+  --color-red-bright: rgb(239 68 68); /* Bright red */
+  --color-orange-bright: rgb(251 146 60); /* Bright orange */
+  --color-yellow-bright: rgb(250 204 21); /* Bright yellow */
+  --color-green-bright: rgb(34 197 94); /* Bright green */
+  --color-blue-bright: rgb(59 130 246); /* Bright blue */
+  --color-purple-bright: rgb(168 85 247); /* Bright purple */
+  --color-pink-bright: rgb(236 72 153); /* Bright pink */
   
-  --color-border: rgb(var(--border));
-  --color-border-subtle: rgb(var(--border-subtle));
-  --color-border-strong: rgb(var(--border-strong));
+  /* UI Colors */
+  --color-background: rgb(13 71 161); /* Stage blue */
+  --color-foreground: rgb(255 255 255); /* White text */
+  --color-surface: rgb(30 85 171); /* Lighter blue panels */
+  --color-surface-hover: rgb(37 99 235); /* Hover state */
+  --color-surface-active: rgb(59 130 246); /* Active state */
   
-  --color-primary: rgb(var(--primary));
-  --color-primary-hover: rgb(var(--primary-hover));
-  --color-primary-active: rgb(var(--primary-active));
-  --color-primary-foreground: rgb(var(--primary-foreground));
+  /* Border Colors */
+  --color-border: rgb(147 197 253); /* Light blue border */
+  --color-border-strong: rgb(255 255 255); /* White borders for emphasis */
   
-  --color-secondary: rgb(var(--secondary));
-  --color-secondary-hover: rgb(var(--secondary-hover));
-  --color-secondary-active: rgb(var(--secondary-active));
-  --color-secondary-foreground: rgb(var(--secondary-foreground));
+  /* Primary Action Colors */
+  --color-primary: rgb(251 146 60); /* Orange */
+  --color-primary-hover: rgb(245 124 20); /* Darker orange */
+  --color-primary-foreground: rgb(255 255 255);
   
-  --color-success: rgb(var(--success));
-  --color-success-hover: rgb(var(--success-hover));
-  --color-success-active: rgb(var(--success-active));
-  --color-success-foreground: rgb(var(--success-foreground));
+  /* Secondary Colors */
+  --color-secondary: rgb(34 197 94); /* Green */
+  --color-secondary-hover: rgb(22 163 74); /* Darker green */
+  --color-secondary-foreground: rgb(255 255 255);
   
-  --color-warning: rgb(var(--warning));
-  --color-warning-hover: rgb(var(--warning-hover));
-  --color-warning-active: rgb(var(--warning-active));
-  --color-warning-foreground: rgb(var(--warning-foreground));
+  /* Semantic Colors */
+  --color-success: rgb(34 197 94);
+  --color-warning: rgb(250 204 21);
+  --color-error: rgb(239 68 68);
   
-  --color-error: rgb(var(--error));
-  --color-error-hover: rgb(var(--error-hover));
-  --color-error-active: rgb(var(--error-active));
-  --color-error-foreground: rgb(var(--error-foreground));
-  
-  --color-muted: rgb(var(--muted));
-  --color-muted-foreground: rgb(var(--muted-foreground));
+  /* Text Colors */
+  --color-muted: rgb(147 197 253); /* Light blue for secondary text */
+  --color-muted-foreground: rgb(191 219 254); /* Even lighter blue */
   
   /* Font families */
   --font-family-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-family-mono: 'JetBrains Mono', Consolas, monospace;
+  --font-family-display: 'Arial Black', 'Helvetica Neue', sans-serif;
   
   /* Animations */
-  --animate-fade-in: fade-in 0.3s ease-out;
-  --animate-fade-out: fade-out 0.3s ease-out;
-  --animate-slide-in: slide-in 0.3s ease-out;
-  --animate-slide-out: slide-out 0.3s ease-out;
-  --animate-bounce-in: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --animate-spin-slow: spin 8s linear infinite;
   --animate-pulse-glow: pulse-glow 2s infinite;
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-spotlight: spotlight 3s ease-in-out infinite;
 }
 
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-@keyframes fade-out {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes slide-in {
-  0% { transform: translateY(10px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes slide-out {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(10px); opacity: 0; }
-}
-
-@keyframes bounce-in {
-  0% { transform: scale(0.3); opacity: 0; }
-  50% { transform: scale(1.05); }
-  70% { transform: scale(0.9); }
-  100% { transform: scale(1); opacity: 1; }
+/* Keyframe Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
-  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.8); }
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(251, 146, 60, 0.8),
+                0 0 40px rgba(251, 146, 60, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(251, 146, 60, 1),
+                0 0 60px rgba(251, 146, 60, 0.6);
+  }
 }
 
-/* CSS Variables for runtime theme switching */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes spotlight {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Base Styles */
 @layer base {
   :root {
-    /* Dark theme (default) */
-    --background: 10 10 11;
+    /* Stage Blue Background */
+    --background: 13 71 161;
     --foreground: 255 255 255;
     
     /* Surface colors */
-    --surface: 26 26 28;
-    --surface-hover: 36 36 38;
-    --surface-active: 45 45 48;
+    --surface: 30 85 171;
+    --surface-hover: 37 99 235;
+    --surface-active: 59 130 246;
     
     /* Border colors */
-    --border: 64 64 64;
-    --border-subtle: 42 42 44;
-    --border-strong: 96 96 96;
+    --border: 147 197 253;
+    --border-strong: 255 255 255;
     
-    /* Primary colors */
-    --primary: 139 92 246;
-    --primary-hover: 124 58 237;
-    --primary-active: 109 40 217;
+    /* Primary (Orange) */
+    --primary: 251 146 60;
+    --primary-hover: 245 124 20;
     --primary-foreground: 255 255 255;
     
-    /* Secondary colors */
-    --secondary: 59 130 246;
-    --secondary-hover: 37 99 235;
-    --secondary-active: 29 78 216;
+    /* Secondary (Green) */
+    --secondary: 34 197 94;
+    --secondary-hover: 22 163 74;
     --secondary-foreground: 255 255 255;
     
-    /* Success colors */
-    --success: 16 185 129;
-    --success-hover: 5 150 105;
-    --success-active: 4 120 87;
-    --success-foreground: 255 255 255;
-    
-    /* Warning colors */
-    --warning: 245 158 11;
-    --warning-hover: 217 119 6;
-    --warning-active: 180 83 9;
-    --warning-foreground: 255 255 255;
-    
-    /* Error colors */
+    /* Semantic colors */
+    --success: 34 197 94;
+    --warning: 250 204 21;
     --error: 239 68 68;
-    --error-hover: 220 38 38;
-    --error-active: 185 28 28;
-    --error-foreground: 255 255 255;
     
-    /* Muted colors */
-    --muted: 113 113 122;
-    --muted-foreground: 161 161 170;
+    /* Text colors */
+    --muted: 147 197 253;
+    --muted-foreground: 191 219 254;
   }
   
-  /* Light theme (future) */
-  [data-theme='light'] {
-    --background: 255 255 255;
-    --foreground: 10 10 11;
-    
-    /* Surface colors */
-    --surface: 249 250 251;
-    --surface-hover: 243 244 246;
-    --surface-active: 229 231 235;
-    
-    /* Border colors */
-    --border: 229 231 235;
-    --border-subtle: 243 244 246;
-    --border-strong: 209 213 219;
-    
-    /* Primary colors remain the same */
-    --primary: 139 92 246;
-    --primary-hover: 124 58 237;
-    --primary-active: 109 40 217;
-    --primary-foreground: 255 255 255;
-    
-    /* Secondary colors remain the same */
-    --secondary: 59 130 246;
-    --secondary-hover: 37 99 235;
-    --secondary-active: 29 78 216;
-    --secondary-foreground: 255 255 255;
-    
-    /* Success colors remain the same */
-    --success: 16 185 129;
-    --success-hover: 5 150 105;
-    --success-active: 4 120 87;
-    --success-foreground: 255 255 255;
-    
-    /* Warning colors remain the same */
-    --warning: 245 158 11;
-    --warning-hover: 217 119 6;
-    --warning-active: 180 83 9;
-    --warning-foreground: 255 255 255;
-    
-    /* Error colors remain the same */
-    --error: 239 68 68;
-    --error-hover: 220 38 38;
-    --error-active: 185 28 28;
-    --error-foreground: 255 255 255;
-    
-    /* Muted colors */
-    --muted: 156 163 175;
-    --muted-foreground: 107 114 128;
-  }
-  
-  /* Base styles */
   body {
     background-color: rgb(var(--background));
     color: rgb(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Add stage texture/pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  /* Ensure content is above the background effect */
+  #__next {
+    position: relative;
+    z-index: 2;
   }
 }
 
 @layer utilities {
-  /* Glass morphism effect */
-  .glass {
-    backdrop-filter: blur(12px);
-    background-color: rgba(var(--surface), 0.8);
-    border: 1px solid rgba(var(--border), 0.5);
+  /* Game Show Text Effects */
+  .text-game-show {
+    font-family: var(--font-family-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 
+      3px 3px 0px rgba(0, 0, 0, 0.5),
+      4px 4px 0px rgba(0, 0, 0, 0.3),
+      5px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-outline {
+    text-shadow: 
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 2px 0 #000,
+      4px 4px 0px rgba(0, 0, 0, 0.5);
   }
   
   /* Gradient text */
   .gradient-text {
-    background: linear-gradient(to right, rgb(var(--primary)), rgb(var(--secondary)));
+    background: linear-gradient(135deg, 
+      rgb(var(--primary)) 0%, 
+      rgb(var(--warning)) 50%, 
+      rgb(var(--primary)) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    filter: drop-shadow(2px 2px 0px rgba(0, 0, 0, 0.5));
   }
   
-  /* Glow effects */
-  .glow-primary {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  /* Panel Effects */
+  .panel-game-show {
+    background: linear-gradient(135deg, 
+      rgb(var(--surface)) 0%, 
+      rgb(var(--surface-hover)) 100%);
+    border: 3px solid rgb(var(--border-strong));
+    border-radius: 12px;
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.3),
+      0 8px 12px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
   }
   
-  .glow-secondary {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  /* Contestant Podium Style */
+  .podium {
+    background: linear-gradient(180deg,
+      #1e40af 0%,
+      #1e3a8a 50%,
+      #1e3a8a 90%,
+      #172554 100%);
+    border: 4px solid #fbbf24;
+    border-radius: 8px;
+    box-shadow: 
+      0 4px 6px rgba(0, 0, 0, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.1),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3);
   }
   
-  .glow-success {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  /* Price Display */
+  .price-display {
+    background: #000;
+    border: 3px solid #fbbf24;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #10b981;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.5),
+      0 2px 4px rgba(0, 0, 0, 0.3);
   }
   
-  /* Card hover effect */
-  .card-hover {
-    transition: all 0.3s ease;
+  /* Marquee Lights */
+  .marquee-lights {
+    position: relative;
+    padding: 1rem;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      transparent 100%);
+    border-radius: 8px;
+    overflow: hidden;
   }
   
-  .card-hover:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  .marquee-lights::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.4) 50%, 
+      transparent 100%);
+    animation: marquee 2s linear infinite;
   }
   
-  /* Button press effect */
-  .button-press {
-    transition: all 0.15s ease;
+  /* Star Decoration */
+  .star-decoration {
+    position: relative;
+    display: inline-block;
   }
   
-  .button-press:active {
-    transform: scale(0.98);
+  .star-decoration::before,
+  .star-decoration::after {
+    content: '★';
+    position: absolute;
+    color: #fbbf24;
+    font-size: 1.5em;
+    animation: flash 1s ease-in-out infinite;
+  }
+  
+  .star-decoration::before {
+    left: -1.5em;
+    animation-delay: 0s;
+  }
+  
+  .star-decoration::after {
+    right: -1.5em;
+    animation-delay: 0.5s;
+  }
+  
+  /* Button Game Show Style */
+  .btn-game-show {
+    background: linear-gradient(180deg, 
+      rgb(var(--primary)) 0%, 
+      rgb(var(--primary-hover)) 100%);
+    border: 3px solid rgb(var(--border-strong));
+    border-radius: 8px;
+    padding: 0.75rem 2rem;
+    font-family: var(--font-family-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+      0 4px 0px rgb(var(--primary-hover)),
+      0 6px 0px rgba(0, 0, 0, 0.3),
+      0 8px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: all 0.1s ease;
+  }
+  
+  .btn-game-show:hover {
+    transform: translateY(2px);
+    box-shadow: 
+      0 2px 0px rgb(var(--primary-hover)),
+      0 4px 0px rgba(0, 0, 0, 0.3),
+      0 6px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-game-show:active {
+    transform: translateY(4px);
+    box-shadow: 
+      0 0px 0px rgb(var(--primary-hover)),
+      0 2px 0px rgba(0, 0, 0, 0.3),
+      0 4px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Spinning elements */
+  .spin-slow {
+    animation: spin 8s linear infinite;
+  }
+  
+  /* Spotlight effect */
+  .spotlight {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .spotlight::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+      rgba(255, 255, 255, 0.1) 0%, 
+      transparent 70%);
+    animation: spotlight 3s ease-in-out infinite;
+  }
+  
+  /* Remove dark mode specific styles */
+  .glass {
+    background: rgba(var(--surface), 0.9);
+    border: 2px solid rgba(var(--border-strong), 0.8);
+    backdrop-filter: blur(8px);
   }
   
   /* Custom backdrop blur support */
