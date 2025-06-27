@@ -19,6 +19,7 @@ interface GameBoardProps {
 export function GameBoard({ categoryId }: GameBoardProps) {
   const router = useRouter();
   const [showGameOver, setShowGameOver] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
   const [shakeEffect, setShakeEffect] = useState(false);
   
   const {
@@ -35,16 +36,28 @@ export function GameBoard({ categoryId }: GameBoardProps) {
   const category = mockCategories.find(c => c.id === categoryId);
 
   useEffect(() => {
-    // Reset modal state when category changes
+    // Reset game state and modal when category changes
     setShowGameOver(false);
+    setHasInitialized(false); // Reset initialization flag
     startNewGame(categoryId);
+    
+    // Set initialized after a small delay to ensure state is settled
+    const timer = setTimeout(() => {
+      setHasInitialized(true);
+    }, 100);
+    
+    // Cleanup on unmount
+    return () => {
+      clearTimeout(timer);
+    };
   }, [categoryId, startNewGame]);
 
   useEffect(() => {
-    if (gameStatus === 'won' || gameStatus === 'lost') {
+    // Only show modal after initialization and when game actually ends
+    if (hasInitialized && (gameStatus === 'won' || gameStatus === 'lost')) {
       setShowGameOver(true);
     }
-  }, [gameStatus]);
+  }, [gameStatus, hasInitialized]);
   
   // Add shake effect on wrong guess
   useEffect(() => {

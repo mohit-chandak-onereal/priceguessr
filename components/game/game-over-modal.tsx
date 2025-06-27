@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useGameStore } from '@/lib/store/game-store';
 import { AnimatedPrice } from './animated-price';
 import { useLeaderboard } from '@/hooks/use-leaderboard';
@@ -158,11 +159,14 @@ export function GameOverModal({
             
             {/* Item Image */}
             <div className="mx-auto max-w-sm">
-              <img 
-                src={currentItem.images[0]} 
-                alt={currentItem.name}
-                className="w-full h-48 object-contain rounded-lg bg-stage-dark/50"
-              />
+              <div className="relative w-full h-48 rounded-lg bg-stage-dark/50 overflow-hidden">
+                <Image 
+                  src={currentItem.images[0]} 
+                  alt={currentItem.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
             
             {/* Price Reveal */}

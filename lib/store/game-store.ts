@@ -343,6 +343,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       attemptsRemaining: GAME_CONFIG.MAX_ATTEMPTS,
       availableHints: [],
       currentScore: 0, // Reset current score but keep high score and streaks
+      sessionScore: 0, // Reset session score
+      gameStartTime: null, // Reset game start time
     });
   },
   

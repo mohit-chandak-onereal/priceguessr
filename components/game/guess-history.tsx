@@ -35,7 +35,7 @@ function getHintMessage(percentOff: number, index: number): string {
   } else if (percentOff >= 10) {
     messageArray = messages.close;
   } else {
-    return "Too close!";
+    return "Soo close!";
   }
   
   return messageArray[index % messageArray.length];
