@@ -83,7 +83,7 @@ export const items: Item[] = [
     price: 88000,
     currency: 'USD',
     description: 'The Tesla Model S is a groundbreaking electric luxury sedan introduced in 2012, known for its minimalist design, long range, and insane acceleration, especially in the Plaid variant.',
-    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=600&h=400&fit=crop'],
     metadata: {
       year: 2012,
       type: 'Luxury electric sedan',
@@ -99,7 +99,7 @@ export const items: Item[] = [
     price: 76000,
     currency: 'USD',
     description: 'The BMW M3 is a high-performance version of the 3 Series, blending luxury with motorsport DNA. The latest G80 model emphasizes power, agility, and controversial design with large kidney grilles.',
-    images: ['https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&h=400&fit=crop'],
     metadata: {
       year: 1986,
       type: 'Performance sports sedan',
@@ -427,7 +427,7 @@ export const items: Item[] = [
     price: 10400,
     currency: 'USD',
     description: 'The Rolex Submariner is an iconic diver\'s watch first released in 1953. It\'s celebrated for its water resistance (300 m), robust build, and timeless design.',
-    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&h=400&fit=crop'],
     metadata: {
       year: 1953,
       type: 'Dive watch',
@@ -445,7 +445,7 @@ export const items: Item[] = [
     price: 5350,
     currency: 'USD',
     description: 'Famous as the \'Moonwatch\', the Speedmaster Professional was the first watch on the Moon, worn by astronauts during the Apollo missions.',
-    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1526045431048-f857369baa09?w=600&h=400&fit=crop'],
     metadata: {
       year: 1957,
       type: 'Chronograph',
@@ -553,7 +553,7 @@ export const items: Item[] = [
     price: 9750,
     currency: 'USD',
     description: 'Originated from large marine chronometer movements, the Portugieser is celebrated for its classic, legible dial and elegant case.',
-    images: ['https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&h=400&fit=crop'],
     metadata: {
       year: 1939,
       type: 'Dress watch',
@@ -609,7 +609,7 @@ export const items: Item[] = [
     price: 8500,
     currency: 'USD',
     description: 'Timeless quilted leather flap bag designed by Coco Chanel and popularized by Karl Lagerfeld.',
-    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&h=400&fit=crop'],
     metadata: {
       year: 1955,
       type: 'Shoulder bag',
@@ -677,7 +677,7 @@ export const items: Item[] = [
     price: 2700,
     currency: 'USD',
     description: 'Structured Saffiano leather workhack bag named after Prada\'s original Milan flagship.',
-    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&h=400&fit=crop'],
     metadata: {
       year: 2000,
       type: 'Tote bag',
@@ -728,7 +728,7 @@ export const items: Item[] = [
     price: 3000,
     currency: 'USD',
     description: 'Structured tote with winged sides and zipped front pocket—a minimalist hero bag.',
-    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=600&h=400&fit=crop'],
     metadata: {
       year: 2010,
       type: 'Tote bag',
@@ -745,7 +745,7 @@ export const items: Item[] = [
     price: 1950,
     currency: 'USD',
     description: 'Rustic city satchel with motorcycle-inspired studs and soft, broken-in leather.',
-    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1523779105320-d1cd346ff52b?w=600&h=400&fit=crop'],
     metadata: {
       year: 2001,
       type: 'Satchel',
@@ -1193,7 +1193,7 @@ export const items: Item[] = [
     price: 1999,
     currency: 'USD',
     description: 'Newest MacBook Pro featuring Apple\'s M3 chip—performance boost and battery life.',
-    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Laptop',
@@ -1261,7 +1261,7 @@ export const items: Item[] = [
     price: 399,
     currency: 'USD',
     description: 'Latest Apple Watch offering faster performance and enhanced health tracking.',
-    images: ['https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=600&h=400&fit=crop'],
     metadata: {
       year: 2023,
       type: 'Smartwatch',
@@ -1503,7 +1503,7 @@ export const items: Item[] = [
     price: 12000,
     currency: 'USD',
     description: 'Elegant cluster design featuring multiple brilliant-cut diamonds.',
-    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Stud earrings',
       material: 'Diamonds and platinum',
@@ -1520,7 +1520,7 @@ export const items: Item[] = [
     price: 3200,
     currency: 'USD',
     description: 'Signature quatre‑foil motif necklace, symbolizing luck and elegance.',
-    images: ['https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&h=400&fit=crop'],
     metadata: {
       type: 'Pendant necklace',
       material: 'Mother‑of‑pearl and gold',
@@ -1641,7 +1641,7 @@ export const items: Item[] = [
     price: 5295,
     currency: 'USD',
     description: 'Iconic mid‑century chair with molded plywood and leather—designed for ultimate comfort.',
-    images: ['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop'],
+    images: ['https://images.unsplash.com/photo-1592078615290-033ee584e267?w=600&h=400&fit=crop'],
     metadata: {
       designer: 'Charles & Ray Eames',
       year: 1956,
