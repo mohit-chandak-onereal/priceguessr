@@ -61,7 +61,7 @@ export function AchievementsList() {
                 <p className="text-sm text-muted mb-3">
                   {achievement.description}
                 </p>
-                {isUnlocked && (
+                {isUnlocked && achievement.unlockedAt && (
                   <div className="text-xs text-green-bright">
                     ✓ Unlocked {new Date(achievement.unlockedAt).toLocaleDateString()}
                   </div>
