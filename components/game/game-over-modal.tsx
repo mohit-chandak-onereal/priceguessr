@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useGameStore } from '@/lib/store/game-store';
 import { AnimatedPrice } from './animated-price';
+import { useLeaderboard } from '@/hooks/use-leaderboard';
+import { mockCategories } from '@/lib/mock-data';
 
 interface GameOverModalProps {
   isOpen: boolean;
@@ -18,28 +20,52 @@ export function GameOverModal({
   onPlayAgain,
   onBackToCategories,
 }: GameOverModalProps) {
-  const { gameStatus, currentItem, guesses, sessionScore, currentScore, highScore, currentStreak } = useGameStore();
+  const { gameStatus, currentItem, guesses, sessionScore, currentScore, highScore, currentStreak, playerName } = useGameStore();
   const [showPrice, setShowPrice] = useState(false);
+  const [scoreSubmitted, setScoreSubmitted] = useState(false);
+  const { submitScore } = useLeaderboard();
+  
+  const finalGuess = guesses[guesses.length - 1];
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       // Delay price reveal for dramatic effect
       setTimeout(() => setShowPrice(true), 500);
+      
+      // Submit score to leaderboard if won
+      if (gameStatus === 'won' && !scoreSubmitted && playerName && currentItem) {
+        const category = mockCategories.find(c => 
+          c.id === currentItem.category_id
+        );
+        
+        if (category) {
+          submitScore({
+            player_name: playerName,
+            score: sessionScore,
+            accuracy: finalGuess?.accuracy || 0,
+            attempts: guesses.length,
+            category_name: category.name,
+            item_name: currentItem.name,
+          }).then(() => {
+            setScoreSubmitted(true);
+          }).catch(console.error);
+        }
+      }
     } else {
       document.body.style.overflow = 'unset';
       setShowPrice(false);
+      setScoreSubmitted(false);
     }
 
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen]);
+  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore]);
 
   if (!isOpen || !currentItem) return null;
 
   const isWin = gameStatus === 'won';
-  const finalGuess = guesses[guesses.length - 1];
   const accuracy = finalGuess?.accuracy || 0;
 
   return (

@@ -30,6 +30,9 @@ interface GameState {
   currentStreak: number;
   bestStreak: number;
   
+  // Player
+  playerName: string | null;
+  
   // UI state
   isLoading: boolean;
   error: string | null;
@@ -45,6 +48,7 @@ interface GameState {
   revealNextHint: () => void;
   resetGame: () => void;
   clearError: () => void;
+  setPlayerName: (name: string) => void;
 }
 
 // Score calculation helper
@@ -75,6 +79,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   highScore: typeof window !== 'undefined' ? Number(localStorage.getItem('highScore') || 0) : 0,
   currentStreak: 0,
   bestStreak: typeof window !== 'undefined' ? Number(localStorage.getItem('bestStreak') || 0) : 0,
+  playerName: null,
   isLoading: false,
   error: null,
   attemptsRemaining: GAME_CONFIG.MAX_ATTEMPTS,
@@ -290,5 +295,10 @@ export const useGameStore = create<GameState>((set, get) => ({
   // Clear error
   clearError: () => {
     set({ error: null });
+  },
+  
+  // Set player name
+  setPlayerName: (name: string) => {
+    set({ playerName: name });
   },
 }))

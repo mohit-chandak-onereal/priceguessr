@@ -37,10 +37,10 @@ export default function Home() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-yellow-bright to-orange-bright rounded-lg blur opacity-75 animate-pulse"></div>
               </Link>
               <Link
-                href="/play/daily"
+                href="/leaderboard"
                 className="panel-game-show px-6 sm:px-8 py-4 font-bold text-base sm:text-lg hover:transform hover:scale-105 transition-all w-full sm:w-auto"
               >
-                <span className="text-yellow-bright">★</span> DAILY SHOWCASE <span className="text-yellow-bright">★</span>
+                <span className="text-yellow-bright">🏆</span> LEADERBOARD <span className="text-yellow-bright">🏆</span>
               </Link>
             </div>
             
