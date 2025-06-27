@@ -1,16 +1,29 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { useGameStore } from '@/lib/store/game-store';
 
 export function PriceInput() {
   const [isFocused, setIsFocused] = useState(false);
+  const [shake, setShake] = useState(false);
   const { currentGuess, setCurrentGuess, makeGuess, error } = useGameStore();
+  
+  // Shake on error
+  useEffect(() => {
+    if (error) {
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
+    }
+  }, [error]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (currentGuess.trim()) {
       makeGuess();
+    } else {
+      // Shake if empty
+      setShake(true);
+      setTimeout(() => setShake(false), 400);
     }
   };
 
@@ -37,6 +50,7 @@ export function PriceInput() {
           transition-all duration-200
           ${isFocused ? 'border-yellow-bright shadow-lg shadow-yellow-bright/50' : ''}
           ${error ? 'border-red-bright shadow-lg shadow-red-bright/50' : ''}
+          ${shake ? 'shake-input' : ''}
         `}>
           <span className="text-yellow-bright mr-2">$</span>
           <input

@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useGameStore } from '@/lib/store/game-store';
+import { AnimatedPrice } from './animated-price';
 
 interface GameOverModalProps {
   isOpen: boolean;
@@ -18,12 +19,16 @@ export function GameOverModal({
   onBackToCategories,
 }: GameOverModalProps) {
   const { gameStatus, currentItem, guesses, sessionScore, currentScore, highScore, currentStreak } = useGameStore();
+  const [showPrice, setShowPrice] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // Delay price reveal for dramatic effect
+      setTimeout(() => setShowPrice(true), 500);
     } else {
       document.body.style.overflow = 'unset';
+      setShowPrice(false);
     }
 
     return () => {
@@ -118,9 +123,13 @@ export function GameOverModal({
           {/* Actual Price Reveal */}
           <div className="mb-8 p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright">
             <p className="text-lg text-muted mb-2">The actual retail price was:</p>
-            <div className="text-5xl font-bold text-game-show text-green-bright">
-              ${currentItem.price.toLocaleString()}
-            </div>
+            {showPrice ? (
+              <AnimatedPrice targetPrice={currentItem.price} />
+            ) : (
+              <div className="text-5xl font-bold text-game-show text-white">
+                ???
+              </div>
+            )}
           </div>
 
           {/* Actions */}

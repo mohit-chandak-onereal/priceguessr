@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { showAchievementToast } from '@/components/ui/toast';
 
 interface CategoryStats {
   gamesPlayed: number;
@@ -205,6 +206,8 @@ export const useStatsStore = create<StatsState>()(
             if (shouldUnlock) {
               achievement.unlockedAt = new Date().toISOString();
               newlyUnlocked.push(achievement);
+              // Show toast notification
+              showAchievementToast(achievement.name, achievement.description, achievement.icon);
             }
           }
         });

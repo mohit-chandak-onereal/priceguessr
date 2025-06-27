@@ -19,6 +19,7 @@ interface GameBoardProps {
 export function GameBoard({ categoryId }: GameBoardProps) {
   const router = useRouter();
   const [showGameOver, setShowGameOver] = useState(false);
+  const [shakeEffect, setShakeEffect] = useState(false);
   
   const {
     currentItem,
@@ -42,6 +43,20 @@ export function GameBoard({ categoryId }: GameBoardProps) {
       setShowGameOver(true);
     }
   }, [gameStatus]);
+  
+  // Add shake effect on wrong guess
+  useEffect(() => {
+    const lastGuess = guesses[guesses.length - 1];
+    if (lastGuess && !lastGuess.isWithinRange && gameStatus === 'playing') {
+      setShakeEffect(true);
+      const isLastAttempt = attemptsRemaining === 0;
+      
+      // Remove shake class after animation
+      setTimeout(() => {
+        setShakeEffect(false);
+      }, isLastAttempt ? 600 : 500);
+    }
+  }, [guesses, gameStatus, attemptsRemaining]);
 
   const handlePlayAgain = () => {
     setShowGameOver(false);
@@ -92,7 +107,9 @@ export function GameBoard({ categoryId }: GameBoardProps) {
       </div>
 
       {/* Main Game Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+      <div className={`grid grid-cols-1 lg:grid-cols-5 gap-8 ${
+        shakeEffect ? (attemptsRemaining === 0 ? 'shake-hard' : 'shake') : ''
+      }`}>
         {/* Left Side - Image and Guess Section */}
         <div className="lg:col-span-3 space-y-6">
           {/* Item Name */}

@@ -57,7 +57,7 @@ export function GameTimer() {
   };
 
   return (
-    <div className="w-full">
+    <div className={`w-full ${timeLeft <= 3 ? 'timer-warning' : ''}`}>
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-bold text-yellow-bright">TIME REMAINING</span>
         <span className={`text-2xl font-bold font-mono ${timeLeft <= 5 ? 'text-red-bright animate-pulse' : 'text-white'}`}>

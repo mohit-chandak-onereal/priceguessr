@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Header } from './header';
+import { ToastContainer } from '@/components/ui/toast';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -12,6 +13,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       <main className="flex-1">
         {children}
       </main>
+      <ToastContainer />
     </div>
   );
 }

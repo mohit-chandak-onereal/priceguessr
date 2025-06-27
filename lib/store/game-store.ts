@@ -9,6 +9,7 @@ import { validateGuess } from '@/utils/validation';
 import { getRandomItem, getAvailableHints } from '@/lib/helpers/game-helpers';
 import { soundManager } from '@/utils/sound-manager';
 import { useStatsStore } from './stats-store';
+import { triggerWinConfetti, triggerPerfectConfetti, triggerFastWinConfetti, triggerHighScoreConfetti } from '@/utils/confetti';
 
 interface GameState {
   // Current game data
@@ -165,6 +166,17 @@ export const useGameStore = create<GameState>((set, get) => ({
       scoreEarned = calculateScore(accuracy, attempts);
       newStreak = state.currentStreak + 1;
       soundManager.play('correct');
+      
+      // Trigger appropriate confetti
+      setTimeout(() => {
+        if (accuracy === 100) {
+          triggerPerfectConfetti();
+        } else if (attempts <= 2) {
+          triggerFastWinConfetti();
+        } else {
+          triggerWinConfetti();
+        }
+      }, 500); // Slight delay for better effect
     } else if (attempts >= GAME_CONFIG.MAX_ATTEMPTS) {
       gameStatus = 'lost';
       newStreak = 0; // Reset streak on loss
@@ -184,6 +196,9 @@ export const useGameStore = create<GameState>((set, get) => ({
       localStorage.setItem('highScore', newHighScore.toString());
       if (gameStatus === 'won') {
         soundManager.play('newHighScore');
+        setTimeout(() => {
+          triggerHighScoreConfetti();
+        }, 1000); // After regular confetti
       }
     }
     if (newBestStreak > state.bestStreak) {

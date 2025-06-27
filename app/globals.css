@@ -303,6 +303,27 @@
       0 8px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(0);
     transition: all 0.1s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Ripple effect */
+  .btn-game-show::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  .btn-game-show:active::after {
+    width: 300px;
+    height: 300px;
   }
   
   .btn-game-show:hover {
@@ -374,6 +395,89 @@
     to {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+  
+  /* Screen shake animation */
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  .shake-hard {
+    animation: shake-hard 0.6s ease-in-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+  }
+  
+  @keyframes shake-hard {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+  }
+  
+  /* Input shake animation */
+  .shake-input {
+    animation: shake-input 0.4s ease-in-out;
+  }
+  
+  @keyframes shake-input {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+  }
+  
+  /* Price counter animation */
+  .price-counter {
+    transition: all 0.3s ease-out;
+  }
+  
+  /* Achievement toast animation */
+  .toast-enter {
+    animation: toast-slide-in 0.3s ease-out;
+  }
+  
+  .toast-exit {
+    animation: toast-slide-out 0.3s ease-in;
+  }
+  
+  @keyframes toast-slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes toast-slide-out {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  /* Timer warning glow */
+  .timer-warning {
+    animation: timer-glow 1s ease-in-out infinite;
+  }
+  
+  @keyframes timer-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 
+                  inset 0 0 20px rgba(239, 68, 68, 0.3);
     }
   }
 }
