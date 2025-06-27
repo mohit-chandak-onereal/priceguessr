@@ -167,8 +167,9 @@ export const useGameStore = create<GameState>((set, get) => ({
     
     if (isCorrect) {
       gameStatus = 'won';
-      // Calculate score using new system (accuracy is the percentage off)
-      scoreEarned = calculateScore(accuracy);
+      // Calculate score using new system (convert accuracy to percentOff)
+      const percentOff = 100 - accuracy;
+      scoreEarned = calculateScore(percentOff);
       newStreak = state.currentStreak + 1;
       soundManager.play('correct');
       
