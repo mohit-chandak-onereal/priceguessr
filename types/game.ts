@@ -35,6 +35,7 @@ export interface Guess {
   timestamp: string;
   accuracy: number; // Percentage off from actual price
   isWithinRange: boolean; // Within 5%
+  isMissedTurn?: boolean; // True when timer runs out without guess
 }
 
 export interface GameSession {

@@ -44,6 +44,7 @@ interface GameState {
   // Actions
   startNewGame: (categoryId?: string) => Promise<void>;
   makeGuess: () => void;
+  recordMissedTurn: () => void;
   setCurrentGuess: (value: string) => void;
   revealNextHint: () => void;
   resetGame: () => void;
@@ -51,18 +52,17 @@ interface GameState {
   setPlayerName: (name: string) => void;
 }
 
-// Score calculation helper
-const calculateScore = (accuracy: number, attempts: number, timeBonus: number = 0): number => {
-  // Base score based on accuracy (max 1000 points)
-  const accuracyScore = Math.round((100 - accuracy) * 10);
+// Score calculation helper - New scoring system
+const calculateScore = (percentOff: number): number => {
+  // Only score if within winning threshold (5%)
+  if (percentOff > 5) return 0;
   
-  // Attempt bonus (fewer attempts = more points)
-  const attemptBonus = Math.max(0, (7 - attempts) * 100);
+  // Linear scale from 200-1000 points within 0-5% range
+  // 0% off = 1000 points
+  // 5% off = 200 points
+  const score = 1000 - ((percentOff / 5) * 800);
   
-  // Time bonus (0-150 points based on how quickly they guessed)
-  const timeBonusScore = Math.round(timeBonus * 10);
-  
-  return accuracyScore + attemptBonus + timeBonusScore;
+  return Math.round(score);
 };
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -167,8 +167,8 @@ export const useGameStore = create<GameState>((set, get) => ({
     
     if (isCorrect) {
       gameStatus = 'won';
-      // Calculate score (you can pass timeBonus from timer later)
-      scoreEarned = calculateScore(accuracy, attempts);
+      // Calculate score using new system (accuracy is the percentage off)
+      scoreEarned = calculateScore(accuracy);
       newStreak = state.currentStreak + 1;
       soundManager.play('correct');
       
@@ -264,6 +264,60 @@ export const useGameStore = create<GameState>((set, get) => ({
   // Update current guess input
   setCurrentGuess: (value: string) => {
     set({ currentGuess: value, error: null });
+  },
+  
+  // Handle missed turn (when timer runs out)
+  recordMissedTurn: () => {
+    const state = get();
+    if (state.gameStatus !== 'playing' || !state.currentItem) return;
+    
+    // Create a missed turn guess
+    const missedGuess: Guess = {
+      value: 0,
+      timestamp: new Date().toISOString(),
+      accuracy: 100, // 100% off
+      isWithinRange: false,
+      isMissedTurn: true,
+    };
+    
+    const newGuesses = [...state.guesses, missedGuess];
+    const attempts = newGuesses.length;
+    const attemptsRemaining = GAME_CONFIG.MAX_ATTEMPTS - attempts;
+    
+    // Check if game is over
+    let gameStatus: GameState['gameStatus'] = 'playing';
+    if (attempts >= GAME_CONFIG.MAX_ATTEMPTS) {
+      gameStatus = 'lost';
+      soundManager.play('gameOver');
+    }
+    
+    set({
+      guesses: newGuesses,
+      attemptsRemaining,
+      gameStatus,
+      currentGuess: '',
+      error: null,
+    });
+    
+    // Reveal next hint if game continues
+    if (gameStatus === 'playing') {
+      get().revealNextHint();
+    }
+    
+    // Record statistics if game ended
+    if (gameStatus === 'lost') {
+      const timeTaken = state.gameStartTime ? Math.floor((Date.now() - state.gameStartTime) / 1000) : 0;
+      const categoryId = state.currentItem.category_id;
+      
+      useStatsStore.getState().recordGameResult(
+        categoryId,
+        false,
+        0,
+        attempts,
+        0,
+        timeTaken
+      );
+    }
   },
   
   // Reveal the next hint

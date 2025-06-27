@@ -35,6 +35,8 @@ export function GameBoard({ categoryId }: GameBoardProps) {
   const category = mockCategories.find(c => c.id === categoryId);
 
   useEffect(() => {
+    // Reset modal state when category changes
+    setShowGameOver(false);
     startNewGame(categoryId);
   }, [categoryId, startNewGame]);
 
@@ -105,11 +107,13 @@ export function GameBoard({ categoryId }: GameBoardProps) {
             <span className="text-lg sm:text-xl">{category?.icon}</span>
             <span className="text-sm sm:text-base font-bold text-yellow-bright">{category?.name.toUpperCase()}</span>
           </div>
-          <div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-game-show text-white">
-              {currentItem.name} <span className="text-yellow-bright">by {currentItem.brand}</span>
-            </h2>
-          </div>
+          {currentItem.metadata.type && (
+            <div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-game-show text-white">
+                {currentItem.metadata.type}
+              </h2>
+            </div>
+          )}
         </div>
       </div>
 

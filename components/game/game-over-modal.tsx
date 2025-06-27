@@ -146,16 +146,36 @@ export function GameOverModal({
             )}
           </div>
 
-          {/* Actual Price Reveal */}
-          <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright">
-            <p className="text-base sm:text-lg text-muted mb-2">The actual retail price was:</p>
-            {showPrice ? (
-              <AnimatedPrice targetPrice={currentItem.price} />
-            ) : (
-              <div className="text-5xl font-bold text-game-show text-white">
-                ???
-              </div>
-            )}
+          {/* Item Reveal with Image */}
+          <div className="mb-6 sm:mb-8 space-y-4">
+            {/* Item Name and Brand */}
+            <div className="text-center">
+              <h3 className="text-2xl sm:text-3xl font-bold text-yellow-bright">
+                {currentItem.name}
+              </h3>
+              <p className="text-lg text-muted">by {currentItem.brand}</p>
+            </div>
+            
+            {/* Item Image */}
+            <div className="mx-auto max-w-sm">
+              <img 
+                src={currentItem.images[0]} 
+                alt={currentItem.name}
+                className="w-full h-48 object-contain rounded-lg bg-stage-dark/50"
+              />
+            </div>
+            
+            {/* Price Reveal */}
+            <div className="p-4 sm:p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright">
+              <p className="text-base sm:text-lg text-muted mb-2">The actual retail price was:</p>
+              {showPrice ? (
+                <AnimatedPrice targetPrice={currentItem.price} />
+              ) : (
+                <div className="text-5xl font-bold text-game-show text-white">
+                  ???
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Actions */}

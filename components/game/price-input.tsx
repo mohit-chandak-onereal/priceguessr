@@ -54,8 +54,8 @@ export function PriceInput() {
       value = parts[0] + '.' + parts.slice(1).join('');
     }
     
-    // Limit to reasonable price length (millions)
-    if (parts[0].length > 7) {
+    // Limit to reasonable price length (billions - for art pieces worth $850M+)
+    if (parts[0].length > 12) {
       return;
     }
     

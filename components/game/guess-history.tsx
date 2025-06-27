@@ -95,15 +95,19 @@ export function GuessHistory() {
                   {index + 1}
                 </div>
 
-                {/* Price */}
+                {/* Price or Missed Turn */}
                 <div className="text-xl font-mono font-bold text-white">
-                  ${guess.value.toLocaleString()}
+                  {guess.isMissedTurn ? 'Missed Turn' : `$${guess.value.toLocaleString()}`}
                 </div>
               </div>
 
               {/* Feedback */}
               <div className="text-right">
-                {guess.isWithinRange ? (
+                {guess.isMissedTurn ? (
+                  <div className="flex items-center gap-2">
+                    <span className="text-muted font-bold">⏱️ Time Out</span>
+                  </div>
+                ) : guess.isWithinRange ? (
                   <div className="flex items-center gap-2">
                     <span className="text-green-bright font-bold">WINNER!</span>
                     <span className="text-2xl">🎉</span>
