@@ -51,8 +51,8 @@ export function GameOverModal({
       />
 
       {/* Modal */}
-      <div className="relative max-w-lg w-full animate-in zoom-in-95 duration-300">
-        <div className="panel-game-show p-8 text-center">
+      <div className="relative max-w-lg w-full animate-in zoom-in-95 duration-300 mx-4">
+        <div className="panel-game-show p-6 sm:p-8 text-center max-h-[90vh] overflow-y-auto">
           {/* Stars decoration */}
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-2">
             {[1, 2, 3].map((i) => (
@@ -70,14 +70,14 @@ export function GameOverModal({
           <div className="mb-6">
             {isWin ? (
               <>
-                <h2 className="text-5xl font-bold text-game-show text-green-bright mb-4">
+                <h2 className="text-3xl sm:text-5xl font-bold text-game-show text-green-bright mb-3 sm:mb-4">
                   WINNER!
                 </h2>
-                <div className="text-6xl mb-4">🎉</div>
-                <p className="text-xl text-yellow-bright mb-2">
+                <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">🎉</div>
+                <p className="text-lg sm:text-xl text-yellow-bright mb-2">
                   Congratulations! You guessed it!
                 </p>
-                <p className="text-lg text-muted">
+                <p className="text-base sm:text-lg text-muted">
                   Accuracy: {accuracy.toFixed(2)}% • Attempts: {guesses.length}/6
                 </p>
                 
@@ -105,14 +105,14 @@ export function GameOverModal({
               </>
             ) : (
               <>
-                <h2 className="text-5xl font-bold text-game-show text-red-bright mb-4">
+                <h2 className="text-3xl sm:text-5xl font-bold text-game-show text-red-bright mb-3 sm:mb-4">
                   GAME OVER
                 </h2>
-                <p className="text-xl text-yellow-bright mb-2">
+                <p className="text-lg sm:text-xl text-yellow-bright mb-2">
                   Better luck next time!
                 </p>
                 {currentStreak > 0 && (
-                  <p className="text-lg text-muted">
+                  <p className="text-base sm:text-lg text-muted">
                     Streak Lost: {currentStreak} 😢
                   </p>
                 )}
@@ -121,8 +121,8 @@ export function GameOverModal({
           </div>
 
           {/* Actual Price Reveal */}
-          <div className="mb-8 p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright">
-            <p className="text-lg text-muted mb-2">The actual retail price was:</p>
+          <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright">
+            <p className="text-base sm:text-lg text-muted mb-2">The actual retail price was:</p>
             {showPrice ? (
               <AnimatedPrice targetPrice={currentItem.price} />
             ) : (

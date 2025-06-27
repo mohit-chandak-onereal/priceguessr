@@ -9,13 +9,13 @@ import Link from 'next/link';
 export default function StatsPage() {
   return (
     <MainLayout>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-game-show text-white mb-4">
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-game-show text-white mb-3 sm:mb-4">
             <span className="star-decoration">YOUR STATISTICS</span>
           </h1>
-          <p className="text-xl text-yellow-bright">
+          <p className="text-base sm:text-xl text-yellow-bright px-4">
             Track your progress and achievements!
           </p>
         </div>

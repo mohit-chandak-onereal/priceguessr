@@ -6,12 +6,12 @@ export function ScoreDisplay() {
   const { currentScore, highScore, currentStreak, bestStreak } = useGameStore();
 
   return (
-    <div className="panel-game-show p-4">
-      <div className="grid grid-cols-2 gap-4 text-center">
+    <div className="panel-game-show p-3 sm:p-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
         {/* Current Score */}
         <div>
           <div className="text-xs text-muted uppercase mb-1">Score</div>
-          <div className="text-2xl font-bold text-yellow-bright font-mono">
+          <div className="text-xl sm:text-2xl font-bold text-yellow-bright font-mono">
             {currentScore.toLocaleString()}
           </div>
         </div>
@@ -19,7 +19,7 @@ export function ScoreDisplay() {
         {/* High Score */}
         <div>
           <div className="text-xs text-muted uppercase mb-1">High Score</div>
-          <div className="text-2xl font-bold text-green-bright font-mono">
+          <div className="text-xl sm:text-2xl font-bold text-green-bright font-mono">
             {highScore.toLocaleString()}
           </div>
         </div>
@@ -27,7 +27,7 @@ export function ScoreDisplay() {
         {/* Current Streak */}
         <div>
           <div className="text-xs text-muted uppercase mb-1">Streak</div>
-          <div className="text-xl font-bold text-orange-bright flex items-center justify-center gap-1">
+          <div className="text-lg sm:text-xl font-bold text-orange-bright flex items-center justify-center gap-1">
             <span>{currentStreak}</span>
             {currentStreak > 0 && <span className="text-sm">🔥</span>}
           </div>
@@ -36,7 +36,7 @@ export function ScoreDisplay() {
         {/* Best Streak */}
         <div>
           <div className="text-xs text-muted uppercase mb-1">Best</div>
-          <div className="text-xl font-bold text-purple-bright flex items-center justify-center gap-1">
+          <div className="text-lg sm:text-xl font-bold text-purple-bright flex items-center justify-center gap-1">
             <span>{bestStreak}</span>
             {bestStreak >= 5 && <span className="text-sm">⭐</span>}
           </div>

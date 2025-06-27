@@ -97,27 +97,27 @@ export function GameBoard({ categoryId }: GameBoardProps) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto px-4">
       {/* Category Header */}
-      <div className="text-center mb-6">
-        <div className="inline-flex items-center gap-2 px-6 py-3 bg-stage-dark rounded-full border-2 border-yellow-bright">
-          <span className="text-2xl">{category?.icon}</span>
-          <span className="text-xl font-bold text-yellow-bright">{category?.name.toUpperCase()}</span>
+      <div className="text-center mb-4 sm:mb-6">
+        <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-stage-dark rounded-full border-2 border-yellow-bright">
+          <span className="text-xl sm:text-2xl">{category?.icon}</span>
+          <span className="text-base sm:text-xl font-bold text-yellow-bright">{category?.name.toUpperCase()}</span>
         </div>
       </div>
 
       {/* Main Game Layout */}
-      <div className={`grid grid-cols-1 lg:grid-cols-5 gap-8 ${
+      <div className={`grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 ${
         shakeEffect ? (attemptsRemaining === 0 ? 'shake-hard' : 'shake') : ''
       }`}>
         {/* Left Side - Image and Guess Section */}
-        <div className="lg:col-span-3 space-y-6">
+        <div className="lg:col-span-3 space-y-4 sm:space-y-6">
           {/* Item Name */}
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-game-show text-white mb-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-game-show text-white mb-1 sm:mb-2">
               {currentItem.name}
             </h2>
-            <p className="text-lg text-yellow-bright">by {currentItem.brand}</p>
+            <p className="text-base sm:text-lg text-yellow-bright">by {currentItem.brand}</p>
           </div>
 
           {/* Item Image */}
@@ -129,13 +129,13 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           </div>
 
           {/* Timer */}
-          <div className="panel-game-show p-4">
+          <div className="panel-game-show p-3 sm:p-4">
             <GameTimer />
           </div>
 
           {/* Price Input Section */}
           {gameStatus === 'playing' && (
-            <div className="panel-game-show p-6">
+            <div className="panel-game-show p-4 sm:p-6">
               <PriceInput />
             </div>
           )}
@@ -161,18 +161,18 @@ export function GameBoard({ categoryId }: GameBoardProps) {
         </div>
 
         {/* Right Side - Score, Hints and History */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
           {/* Score Display */}
           <ScoreDisplay />
 
           {/* Hints Section */}
-          <div className="panel-game-show p-6">
+          <div className="panel-game-show p-4 sm:p-6">
             <HintDisplay />
           </div>
 
           {/* Guess History */}
           {guesses.length > 0 && (
-            <div className="panel-game-show p-6">
+            <div className="panel-game-show p-4 sm:p-6 max-h-[300px] overflow-y-auto">
               <GuessHistory />
             </div>
           )}

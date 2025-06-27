@@ -55,6 +55,8 @@ export function PriceInput() {
           <span className="text-yellow-bright mr-2">$</span>
           <input
             type="text"
+            inputMode="decimal"
+            pattern="[0-9]*\.?[0-9]*"
             value={currentGuess}
             onChange={handleInputChange}
             onFocus={() => setIsFocused(true)}

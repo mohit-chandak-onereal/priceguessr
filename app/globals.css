@@ -305,6 +305,9 @@
     transition: all 0.1s ease;
     position: relative;
     overflow: hidden;
+    min-height: 44px; /* iOS touch target minimum */
+    touch-action: manipulation; /* Prevent double-tap zoom */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
   }
   
   /* Ripple effect */
@@ -478,6 +481,57 @@
     50% {
       box-shadow: 0 0 40px rgba(239, 68, 68, 0.8), 
                   inset 0 0 20px rgba(239, 68, 68, 0.3);
+    }
+  }
+  
+  /* Mobile-specific optimizations */
+  @media (max-width: 640px) {
+    /* Ensure proper spacing on mobile */
+    .panel-game-show {
+      box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Optimize animations for mobile performance */
+    .animate-pulse {
+      animation-duration: 3s;
+    }
+    
+    .marquee-lights::before {
+      animation-duration: 3s;
+    }
+    
+    /* Touch-friendly spacing */
+    button, a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Prevent horizontal scroll */
+    body {
+      overflow-x: hidden;
+    }
+    
+    /* Optimize text shadows for mobile */
+    .text-game-show {
+      text-shadow: 
+        2px 2px 0px rgba(0, 0, 0, 0.5),
+        3px 3px 0px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  /* Landscape orientation fixes */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .panel-game-show {
+      padding: 0.5rem;
+    }
+    
+    .text-game-show {
+      font-size: 90%;
     }
   }
 }

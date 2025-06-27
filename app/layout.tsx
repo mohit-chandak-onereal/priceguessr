@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   description: "Test your market knowledge! Guess prices of real items within 5% using progressive hints. Like Wordle meets The Price is Right!",
   keywords: ["price guessing", "game", "wordle", "market knowledge", "quiz"],
   authors: [{ name: "PriceGuessr Team" }],
+  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+  themeColor: "#0d47a1",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "PriceGuessr",
+  },
   openGraph: {
     title: "PriceGuessr - The Ultimate Price Guessing Game",
     description: "Test your market knowledge! Guess prices of real items within 5% using progressive hints.",

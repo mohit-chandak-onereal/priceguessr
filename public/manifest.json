@@ -1,0 +1,22 @@
+{
+  "name": "PriceGuessr - The Ultimate Price Guessing Game",
+  "short_name": "PriceGuessr",
+  "description": "Test your market knowledge! Guess prices of real items within 5% using progressive hints.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d47a1",
+  "theme_color": "#0d47a1",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -5,46 +5,46 @@ import { mockCategories } from '@/lib/mock-data';
 
 export function CategorySelection() {
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto px-4">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-5xl md:text-7xl font-bold text-game-show text-white mb-6">
+      <div className="text-center mb-8 sm:mb-12">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-game-show text-white mb-3 sm:mb-6">
           <span className="star-decoration">SELECT YOUR SHOWCASE</span>
         </h1>
-        <p className="text-xl md:text-2xl text-yellow-bright">
+        <p className="text-base sm:text-xl md:text-2xl text-yellow-bright px-4">
           Choose a category and test your pricing prowess!
         </p>
       </div>
 
       {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {mockCategories.map((category) => (
           <Link
             key={category.id}
             href={`/play?category=${category.id}`}
             className="group relative"
           >
-            <div className="panel-game-show p-8 h-full hover:transform hover:scale-105 transition-all spotlight">
+            <div className="panel-game-show p-6 sm:p-8 h-full hover:transform hover:scale-105 transition-all spotlight min-h-[180px]">
               {/* Spotlight effect */}
-              <div className="absolute -top-2 -right-2 w-20 h-20 bg-yellow-bright rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
+              <div className="absolute -top-2 -right-2 w-16 sm:w-20 h-16 sm:h-20 bg-yellow-bright rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity" />
               
               {/* Content */}
               <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="text-6xl mb-4">{category.icon}</div>
-                <h2 className="text-2xl font-bold text-game-show text-yellow-bright mb-2">
+                <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">{category.icon}</div>
+                <h2 className="text-xl sm:text-2xl font-bold text-game-show text-yellow-bright mb-2">
                   {category.name.toUpperCase()}
                 </h2>
                 
                 {/* Item count badge */}
-                <div className="mt-4 px-4 py-2 bg-stage-dark rounded-full border-2 border-yellow-bright">
-                  <span className="text-sm font-bold text-yellow-bright">
+                <div className="mt-3 sm:mt-4 px-3 sm:px-4 py-2 bg-stage-dark rounded-full border-2 border-yellow-bright">
+                  <span className="text-xs sm:text-sm font-bold text-yellow-bright">
                     FEATURED ITEMS
                   </span>
                 </div>
               </div>
               
               {/* Hover state star */}
-              <div className="absolute top-4 right-4 text-2xl text-yellow-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 text-xl sm:text-2xl text-yellow-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
                 ★
               </div>
             </div>
