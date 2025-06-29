@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useGameStore } from '@/lib/store/game-store';
-import { GAME_CONFIG } from '@/types/game';
 
 export function HintDisplay() {
   const { currentItem, guesses, hintsRevealed } = useGameStore();

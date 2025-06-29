@@ -62,7 +62,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Process the data to get unique players (best score per player)
-    const uniquePlayers = new Map<string, any>();
+    const uniquePlayers = new Map<string, typeof data[0]>();
     
     if (data && data.length > 0) {
       // Group by username and keep only the best score (highest accuracy, lowest attempts)

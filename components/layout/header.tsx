@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { SoundToggle } from '@/components/ui/sound-toggle';
 import { useAuth } from '@/contexts/auth-context';
@@ -13,10 +12,7 @@ export function Header() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
-  const isGamePage = pathname?.startsWith('/play');
-  const isHomePage = pathname === '/';
 
   const handleAuthClick = (mode: 'login' | 'register') => {
     setAuthMode(mode);

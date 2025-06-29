@@ -4,9 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useGameStore } from '@/lib/store/game-store';
-import { AnimatedPrice } from './animated-price';
 import { useLeaderboard } from '@/hooks/use-leaderboard';
-import { useCategories } from '@/hooks/use-categories';
 
 interface GameOverModalProps {
   isOpen: boolean;
@@ -25,7 +23,6 @@ export function GameOverModal({
   const [showPrice, setShowPrice] = useState(false);
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
   const { submitScore } = useLeaderboard();
-  const { categories } = useCategories();
   
   const finalGuess = guesses[guesses.length - 1];
 
