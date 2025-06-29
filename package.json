@@ -10,7 +10,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "types:generate": "echo 'Supabase types generated in types/database.ts'"
+    "types:generate": "echo 'Supabase types generated in types/database.ts'",
+    "db:seed": "tsx scripts/seed-database.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -40,11 +41,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "jest": "^30.0.3",
     "jest-environment-jsdom": "^30.0.2",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }

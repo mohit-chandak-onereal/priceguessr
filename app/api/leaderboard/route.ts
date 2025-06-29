@@ -1,62 +1,66 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
-// For now, we'll use a mock implementation until Supabase is set up
-// This will store data in memory (resets on server restart)
-
-interface LeaderboardEntry {
-  id: string;
-  player_name: string;
-  score: number;
-  accuracy: number;
-  attempts: number;
-  category_name: string;
-  item_name: string;
-  created_at: string;
-}
-
-let mockLeaderboard: LeaderboardEntry[] = [
+// Create Supabase client with service role for server-side operations
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
   {
-    id: '1',
-    player_name: 'PriceNinja',
-    score: 9850,
-    accuracy: 99.2,
-    attempts: 1,
-    category_name: 'Watches',
-    item_name: 'Rolex Submariner',
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    player_name: 'GuessGuru',
-    score: 8720,
-    accuracy: 96.5,
-    attempts: 2,
-    category_name: 'Cars',
-    item_name: '911 Turbo S',
-    created_at: new Date().toISOString(),
-  },
-];
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+);
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const category = searchParams.get('category');
     const limit = parseInt(searchParams.get('limit') || '100');
-    // const timeframe = searchParams.get('timeframe'); // TODO: implement timeframe filtering
+    const timeframe = searchParams.get('timeframe') || 'all';
 
-    // Filter by category if provided
-    let results = [...mockLeaderboard];
-    if (category) {
-      results = results.filter(entry => entry.category_name === category);
+    // Build query
+    let query = supabase
+      .from('leaderboard_entries')
+      .select('*')
+      .order('accuracy', { ascending: false })
+      .order('attempts', { ascending: true })
+      .order('created_at', { ascending: false })
+      .limit(limit);
+
+    // Apply timeframe filter
+    if (timeframe !== 'all') {
+      const now = new Date();
+      let startDate: Date;
+      
+      switch (timeframe) {
+        case 'today':
+          startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          break;
+        case 'week':
+          startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+          break;
+        case 'month':
+          startDate = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
+          break;
+        default:
+          startDate = new Date(0); // All time
+      }
+      
+      query = query.gte('created_at', startDate.toISOString());
     }
 
-    // Sort by score descending
-    results.sort((a, b) => b.score - a.score);
+    const { data, error } = await query;
 
-    // Limit results
-    results = results.slice(0, limit);
+    if (error) {
+      console.error('Leaderboard fetch error:', error);
+      return NextResponse.json(
+        { error: 'Failed to fetch leaderboard' },
+        { status: 500 }
+      );
+    }
 
-    return NextResponse.json({ data: results }, { status: 200 });
+    return NextResponse.json({ data: data || [] }, { status: 200 });
   } catch (error) {
     console.error('Leaderboard fetch error:', error);
     return NextResponse.json(
@@ -71,35 +75,60 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate required fields
-    const { player_name, score, accuracy, attempts, category_name, item_name } = body;
+    const { 
+      username, 
+      game_session_id,
+      accuracy, 
+      attempts, 
+      item_name,
+      item_price 
+    } = body;
     
-    if (!player_name || score === undefined || !category_name || !item_name) {
+    if (!username || accuracy === undefined || !attempts || !item_name || item_price === undefined) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       );
     }
 
-    // Create new leaderboard entry
-    const newEntry = {
-      id: Date.now().toString(),
-      player_name,
-      score,
-      accuracy,
-      attempts,
-      category_name,
-      item_name,
-      created_at: new Date().toISOString(),
-    };
+    // Validate accuracy and attempts
+    if (accuracy < 0 || accuracy > 100) {
+      return NextResponse.json(
+        { error: 'Invalid accuracy value' },
+        { status: 400 }
+      );
+    }
 
-    // Add to mock leaderboard
-    mockLeaderboard.push(newEntry);
+    if (attempts < 1 || attempts > 6) {
+      return NextResponse.json(
+        { error: 'Invalid attempts value' },
+        { status: 400 }
+      );
+    }
 
-    // Keep only top 1000 entries
-    mockLeaderboard.sort((a, b) => b.score - a.score);
-    mockLeaderboard = mockLeaderboard.slice(0, 1000);
+    // Create leaderboard entry
+    const { data, error } = await supabase
+      .from('leaderboard_entries')
+      .insert({
+        username,
+        game_session_id,
+        accuracy,
+        attempts,
+        item_name,
+        item_price,
+      })
+      .select()
+      .single();
 
-    return NextResponse.json({ data: newEntry }, { status: 201 });
+    if (error) {
+      console.error('Leaderboard submission error:', error);
+      return NextResponse.json(
+        { error: 'Failed to submit score' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ data }, { status: 201 });
   } catch (error) {
     console.error('Leaderboard submission error:', error);
     return NextResponse.json(

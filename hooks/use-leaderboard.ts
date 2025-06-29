@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 
 export interface LeaderboardEntry {
   id: string;
-  player_name: string;
-  score: number;
+  username: string;
+  user_id?: string;
+  game_session_id?: string;
   accuracy: number;
   attempts: number;
-  category_name: string;
   item_name: string;
+  item_price: number;
   created_at: string;
 }
 
@@ -50,7 +51,7 @@ export function useLeaderboard(options: UseLeaderboardOptions = {}) {
     fetchLeaderboard();
   }, [options.category, options.limit, options.timeframe]);
 
-  const submitScore = async (entry: Omit<LeaderboardEntry, 'id' | 'created_at'>) => {
+  const submitScore = async (entry: Omit<LeaderboardEntry, 'id' | 'created_at' | 'user_id'>) => {
     try {
       const response = await fetch('/api/leaderboard', {
         method: 'POST',

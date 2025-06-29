@@ -1,16 +1,12 @@
 import { Item, HintData, HintLevel } from '@/types/game';
-import { getRandomMockItem } from '@/lib/mock-data';
+import { getRandomItem as getRandomItemFromDB } from '@/lib/database';
 
 /**
  * Get a random item for the game
- * Uses mock data for now, will use database later
+ * Now uses Supabase database
  */
 export async function getRandomItem(categoryId?: string): Promise<Item | null> {
-  // For now, use mock data
-  return getRandomMockItem(categoryId);
-  
-  // TODO: Replace with database call
-  // return await getRandomItemFromDB(categoryId);
+  return await getRandomItemFromDB(categoryId);
 }
 
 /**
