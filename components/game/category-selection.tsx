@@ -62,27 +62,41 @@ export function CategorySelection() {
           }}
           className="group relative"
         >
-          <div className="panel-game-show p-5 sm:p-7 h-full hover:transform hover:scale-105 transition-all spotlight min-h-[162px] bg-gradient-to-br from-purple-bright/20 to-pink-bright/20 border-3 border-purple-bright">
+          <div className="relative p-5 sm:p-7 h-full hover:transform hover:scale-105 transition-all min-h-[162px] overflow-hidden">
+            {/* Special gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-red-bright via-orange-bright to-yellow-bright opacity-20"></div>
+            <div className="absolute inset-0 bg-stage-dark/80"></div>
+            
+            {/* Animated border effect */}
+            <div className="absolute inset-0 border-3 border-transparent rounded-lg" style={{
+              background: 'linear-gradient(45deg, #ef4444, #fb923c, #fbbf24, #fb923c, #ef4444)',
+              backgroundSize: '400% 400%',
+              animation: 'gradient-shift 3s ease infinite',
+              padding: '3px',
+            }}>
+              <div className="w-full h-full bg-stage-dark rounded-lg"></div>
+            </div>
+            
             {/* Spotlight effect */}
-            <div className="absolute -top-2 -right-2 w-14 sm:w-18 h-14 sm:h-18 bg-purple-bright rounded-full opacity-30 blur-xl group-hover:opacity-50 transition-opacity" />
+            <div className="absolute -top-2 -right-2 w-14 sm:w-18 h-14 sm:h-18 bg-orange-bright rounded-full opacity-30 blur-xl group-hover:opacity-50 transition-opacity" />
             
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center text-center">
               <div className="text-4xl sm:text-5xl mb-2 sm:mb-3 animate-bounce">🎲</div>
-              <h2 className="text-lg sm:text-xl font-bold text-game-show text-purple-bright mb-2">
+              <h2 className="text-lg sm:text-xl font-bold text-game-show text-orange-bright mb-2">
                 FEELING WILD?
               </h2>
               
               {/* Special badge */}
-              <div className="mt-2 sm:mt-3 px-3 sm:px-3 py-1.5 bg-purple-bright/20 rounded-full border-2 border-purple-bright">
-                <span className="text-xs sm:text-xs font-bold text-purple-bright">
+              <div className="mt-2 sm:mt-3 px-3 sm:px-3 py-1.5 bg-gradient-to-r from-red-bright/30 to-yellow-bright/30 rounded-full border-2 border-orange-bright">
+                <span className="text-xs sm:text-xs font-bold text-orange-bright">
                   RANDOM CATEGORY
                 </span>
               </div>
             </div>
             
             {/* Hover state star */}
-            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 text-lg sm:text-xl text-purple-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
+            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 text-lg sm:text-xl text-orange-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
               ★
             </div>
           </div>
