@@ -9,7 +9,19 @@ export function CategorySelection() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-2xl text-yellow-bright animate-pulse">Loading categories...</div>
+        <div className="text-center">
+          <div className="text-6xl mb-4 animate-bounce">
+            🎰
+          </div>
+          <div className="text-2xl text-yellow-bright">
+            <span className="inline-block">Loading categories</span>
+            <span className="inline-flex ml-1">
+              <span className="animate-pulse">.</span>
+              <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>.</span>
+              <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>.</span>
+            </span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -17,7 +29,14 @@ export function CategorySelection() {
   if (error) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-xl text-red-500">Error loading categories: {error}</div>
+        <div className="text-center">
+          <div className="text-6xl mb-4 animate-bounce">
+            ❗
+          </div>
+          <div className="text-xl text-red-bright animate-pulse">
+            Error loading categories: {error}
+          </div>
+        </div>
       </div>
     );
   }
@@ -29,7 +48,7 @@ export function CategorySelection() {
           <span className="star-decoration">SELECT YOUR SHOWCASE</span>
         </h1>
         <p className="text-base sm:text-xl md:text-2xl text-yellow-bright px-4">
-          Choose a category and test your pricing prowess!
+          <span className="inline-block animate-pulse">Choose a category and test your pricing prowess!</span>
         </p>
       </div>
 
@@ -69,8 +88,23 @@ export function CategorySelection() {
         ))}
       </div>
 
+      {/* Feeling Wild Button */}
+      <div className="text-center mt-8">
+        <button
+          onClick={() => {
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            window.location.href = `/play?category=${randomCategory.id}`;
+          }}
+          className="btn-game-show text-white text-lg sm:text-xl px-8 py-4 inline-flex items-center gap-3 animate-pulse"
+        >
+          <span className="text-2xl">🎲</span>
+          <span>FEELING WILD?</span>
+        </button>
+        <p className="text-sm text-muted mt-2">Pick a random category!</p>
+      </div>
+
       {/* Bottom CTA */}
-      <div className="text-center mt-12">
+      <div className="text-center mt-8">
         <Link
           href="/"
           className="inline-block text-muted hover:text-yellow-bright transition-colors"

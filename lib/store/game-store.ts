@@ -52,22 +52,16 @@ interface GameState {
   setPlayerName: (name: string) => void;
 }
 
-// Score calculation helper - New scoring system
+// Score calculation helper - 1000 points minus 120 per attempt
 const calculateScore = (percentOff: number, attemptNumber: number): number => {
   // Only score if within winning threshold (5%)
   if (percentOff > 5) return 0;
   
-  // Start with linear scale from 200-1000 points within 0-5% range
-  // 0% off = 1000 points
-  // 5% off = 200 points
-  const baseScore = 1000 - ((percentOff / 5) * 800);
+  // Base score: 1000 points minus 120 for each attempt
+  const baseScore = 1000 - (120 * attemptNumber);
   
-  // Subtract 100 points for each previous wrong attempt
-  const penalty = (attemptNumber - 1) * 100;
-  const finalScore = baseScore - penalty;
-  
-  // Ensure minimum score of 200
-  return Math.max(200, Math.round(finalScore));
+  // Ensure minimum score of 100 (can't go negative)
+  return Math.max(100, baseScore);
 };
 
 export const useGameStore = create<GameState>((set, get) => ({

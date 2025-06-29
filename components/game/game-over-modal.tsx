@@ -86,8 +86,8 @@ export function GameOverModal({
       />
 
       {/* Modal */}
-      <div className="relative max-w-lg w-full animate-in zoom-in-95 duration-300 mx-4">
-        <div className="panel-game-show p-6 sm:p-8 text-center max-h-[90vh] overflow-y-auto">
+      <div className="relative max-w-md w-full animate-in zoom-in-95 duration-300 mx-4">
+        <div className="panel-game-show p-4 sm:p-6 text-center max-h-[90vh] overflow-y-auto">
           {/* Stars decoration */}
           <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-2">
             {[1, 2, 3].map((i) => (
@@ -101,53 +101,49 @@ export function GameOverModal({
             ))}
           </div>
 
-          {/* Result */}
-          <div className="mb-6">
+          {/* Result - More Compact */}
+          <div className="mb-4">
             {isWin ? (
               <>
-                <h2 className="text-3xl sm:text-5xl font-bold text-game-show text-green-bright mb-3 sm:mb-4">
-                  WINNER!
-                </h2>
-                <div className="text-4xl sm:text-6xl mb-3 sm:mb-4">🎉</div>
-                <p className="text-lg sm:text-xl text-yellow-bright mb-2">
-                  Congratulations! You guessed it!
-                </p>
-                <p className="text-base sm:text-lg text-muted">
-                  Accuracy: {accuracy.toFixed(2)}% • Attempts: {guesses.length}/6
-                </p>
-                
-                {/* Score Display */}
-                <div className="mt-4 p-4 bg-stage-dark/50 rounded-lg">
-                  <p className="text-sm text-muted mb-1">SCORE EARNED</p>
-                  <p className="text-3xl font-bold text-yellow-bright">
-                    +{sessionScore.toLocaleString()} pts
-                  </p>
-                  {currentScore >= highScore && (
-                    <p className="text-sm text-green-bright font-bold mt-1 animate-pulse">
-                      NEW HIGH SCORE!
-                    </p>
-                  )}
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-game-show text-green-bright">
+                    WINNER!
+                  </h2>
+                  <span className="text-3xl">🎉</span>
+                </div>
+                <div className="flex items-center justify-center gap-4 text-sm sm:text-base text-muted mb-3">
+                  <span>Accuracy: <span className="text-yellow-bright font-bold">{accuracy.toFixed(1)}%</span></span>
+                  <span>•</span>
+                  <span>Attempts: <span className="text-yellow-bright font-bold">{guesses.length}/6</span></span>
                 </div>
                 
-                {/* Streak Display */}
-                {currentStreak > 1 && (
-                  <div className="mt-2">
-                    <p className="text-lg text-orange-bright font-bold">
-                      🔥 {currentStreak} Game Streak!
-                    </p>
-                  </div>
-                )}
+                {/* Score Display - Inline */}
+                <div className="flex items-center justify-center gap-2 bg-stage-dark/50 rounded-lg px-4 py-2">
+                  <span className="text-base sm:text-lg font-bold text-yellow-bright">
+                    +{sessionScore.toLocaleString()} pts
+                  </span>
+                  {currentScore >= highScore && (
+                    <span className="text-xs text-green-bright font-bold animate-pulse">
+                      NEW HIGH SCORE!
+                    </span>
+                  )}
+                  {currentStreak > 1 && (
+                    <span className="text-xs text-orange-bright font-bold">
+                      🔥 {currentStreak} STREAK
+                    </span>
+                  )}
+                </div>
               </>
             ) : (
               <>
-                <h2 className="text-3xl sm:text-5xl font-bold text-game-show text-red-bright mb-3 sm:mb-4">
+                <h2 className="text-2xl sm:text-3xl font-bold text-game-show text-red-bright mb-2">
                   GAME OVER
                 </h2>
-                <p className="text-lg sm:text-xl text-yellow-bright mb-2">
+                <p className="text-base sm:text-lg text-yellow-bright">
                   Better luck next time!
                 </p>
                 {currentStreak > 0 && (
-                  <p className="text-base sm:text-lg text-muted">
+                  <p className="text-sm text-muted">
                     Streak Lost: {currentStreak} 😢
                   </p>
                 )}
@@ -155,37 +151,37 @@ export function GameOverModal({
             )}
           </div>
 
-          {/* Item Reveal with Image */}
-          <div className="mb-6 sm:mb-8 space-y-4">
-            {/* Item Name and Brand */}
-            <div className="text-center">
-              <h3 className="text-2xl sm:text-3xl font-bold text-yellow-bright">
-                {currentItem.name}
-              </h3>
-              <p className="text-lg text-muted">by {currentItem.brand}</p>
-            </div>
-            
-            {/* Item Image */}
-            <div className="mx-auto max-w-sm">
-              <div className="relative w-full h-48 rounded-lg bg-stage-dark/50 overflow-hidden">
+          {/* Item Reveal - Compact */}
+          <div className="mb-4 space-y-3">
+            {/* Item Info Row */}
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex-1 text-left">
+                <h3 className="text-base sm:text-lg font-bold text-yellow-bright line-clamp-1">
+                  {currentItem.name}
+                </h3>
+                <p className="text-sm text-muted">by {currentItem.brand}</p>
+              </div>
+              
+              {/* Small Item Image */}
+              <div className="relative w-20 h-20 rounded-lg bg-stage-dark/50 overflow-hidden flex-shrink-0">
                 <Image 
                   src={currentItem.images[0]} 
                   alt={currentItem.name}
                   fill
-                  className="object-contain"
+                  className="object-contain p-1"
                 />
               </div>
             </div>
             
-            {/* Price Reveal */}
-            <div className="p-4 sm:p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright overflow-hidden">
-              <p className="text-base sm:text-lg text-muted mb-2">The actual retail price was:</p>
+            {/* Price Reveal - Compact */}
+            <div className="p-3 bg-stage-dark rounded-lg border-2 border-yellow-bright overflow-hidden">
+              <p className="text-sm text-muted mb-1">Actual price:</p>
               {showPrice ? (
                 <div className="overflow-x-auto">
                   <AnimatedPrice targetPrice={currentItem.price} />
                 </div>
               ) : (
-                <div className="text-3xl sm:text-5xl font-bold text-game-show text-white">
+                <div className="text-2xl sm:text-3xl font-bold text-game-show text-white">
                   ???
                 </div>
               )}

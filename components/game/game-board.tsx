@@ -3,12 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGameStore } from '@/lib/store/game-store';
-import { PriceInput } from './price-input';
 import { HintDisplay } from './hint-display';
 import { GuessHistory } from './guess-history';
 import { GameOverModal } from './game-over-modal';
 import { ItemImage } from './item-image';
-import { GameTimer } from './game-timer';
+import { GameControl } from './game-control';
 import { ScoreDisplay } from './score-display';
 import { useCategories } from '@/hooks/use-categories';
 
@@ -87,8 +86,18 @@ export function GameBoard({ categoryId }: GameBoardProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-3xl text-yellow-bright animate-pulse">
-          Setting up your showcase...
+        <div className="text-center">
+          <div className="text-6xl mb-4 animate-bounce">
+            🎲
+          </div>
+          <div className="text-3xl text-yellow-bright">
+            <span className="inline-block">Setting up your showcase</span>
+            <span className="inline-flex ml-1">
+              <span className="animate-pulse">.</span>
+              <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>.</span>
+              <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>.</span>
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -96,14 +105,21 @@ export function GameBoard({ categoryId }: GameBoardProps) {
 
   if (error) {
     return (
-      <div className="text-center">
-        <div className="text-2xl text-error mb-4">Oops! {error}</div>
-        <button
-          onClick={() => startNewGame(categoryId)}
-          className="btn-game-show text-white"
-        >
-          Try Again
-        </button>
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center">
+          <div className="text-6xl mb-4 animate-bounce">
+            😵
+          </div>
+          <div className="text-2xl text-red-bright mb-6">
+            <span className="inline-block animate-pulse">Oops! {error}</span>
+          </div>
+          <button
+            onClick={() => startNewGame(categoryId)}
+            className="btn-game-show text-white animate-pulse"
+          >
+            Try Again
+          </button>
+        </div>
       </div>
     );
   }
@@ -146,17 +162,8 @@ export function GameBoard({ categoryId }: GameBoardProps) {
             />
           </div>
 
-          {/* Timer */}
-          <div className="panel-game-show p-3 sm:p-4">
-            <GameTimer />
-          </div>
-
-          {/* Price Input Section */}
-          {gameStatus === 'playing' && (
-            <div className="panel-game-show p-4 sm:p-6">
-              <PriceInput />
-            </div>
-          )}
+          {/* Game Control - Timer and Input Combined */}
+          <GameControl />
 
           {/* Attempts Remaining */}
           <div className="text-center">
@@ -207,10 +214,10 @@ export function GameBoard({ categoryId }: GameBoardProps) {
       
       {/* Play Again Button when game is over but modal is closed */}
       {gameStatus !== 'playing' && !showGameOver && (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40">
+        <div className="text-center mt-8">
           <button
             onClick={handlePlayAgain}
-            className="btn-game-show text-white px-8 py-4 text-lg shadow-2xl"
+            className="btn-game-show text-white px-8 py-4 text-lg animate-pulse"
           >
             Play Again!
           </button>

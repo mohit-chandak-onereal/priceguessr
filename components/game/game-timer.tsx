@@ -4,12 +4,16 @@ import { useEffect, useState } from 'react';
 import { useGameStore } from '@/lib/store/game-store';
 import { soundManager } from '@/utils/sound-manager';
 
-export function GameTimer() {
+interface GameTimerProps {
+  enabled?: boolean;
+}
+
+export function GameTimer({ enabled = true }: GameTimerProps) {
   const [timeLeft, setTimeLeft] = useState(15);
-  const { recordMissedTurn, gameStatus } = useGameStore();
+  const { recordMissedTurn, gameStatus, attemptsRemaining } = useGameStore();
   
   useEffect(() => {
-    if (gameStatus !== 'playing') {
+    if (gameStatus !== 'playing' || !enabled) {
       setTimeLeft(15);
       return;
     }
@@ -30,14 +34,14 @@ export function GameTimer() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [gameStatus]);
+  }, [gameStatus, enabled]);
 
   // Handle timeout in a separate effect
   useEffect(() => {
-    if (timeLeft === 0 && gameStatus === 'playing') {
+    if (timeLeft === 0 && gameStatus === 'playing' && enabled && attemptsRemaining > 0) {
       recordMissedTurn();
     }
-  }, [timeLeft, gameStatus, recordMissedTurn]);
+  }, [timeLeft, gameStatus, enabled, attemptsRemaining, recordMissedTurn]);
 
   // Reset timer when a guess is made
   const guessCount = useGameStore((state) => state.guesses.length);

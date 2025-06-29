@@ -68,7 +68,17 @@ export default function LeaderboardPage() {
         <div className="panel-game-show overflow-hidden">
           {isLoading ? (
             <div className="p-8 text-center">
-              <div className="text-2xl text-yellow-bright animate-pulse">Loading scores...</div>
+              <div className="text-6xl mb-4 animate-bounce">
+                🏆
+              </div>
+              <div className="text-2xl text-yellow-bright">
+                <span className="inline-block">Loading scores</span>
+                <span className="inline-flex ml-1">
+                  <span className="animate-pulse">.</span>
+                  <span className="animate-pulse" style={{ animationDelay: '0.2s' }}>.</span>
+                  <span className="animate-pulse" style={{ animationDelay: '0.4s' }}>.</span>
+                </span>
+              </div>
             </div>
           ) : error ? (
             <div className="p-8 text-center">

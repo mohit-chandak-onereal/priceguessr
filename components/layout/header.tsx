@@ -16,6 +16,7 @@ export function Header() {
   const pathname = usePathname();
 
   const isGamePage = pathname?.startsWith('/play');
+  const isHomePage = pathname === '/';
 
   const handleAuthClick = (mode: 'login' | 'register') => {
     setAuthMode(mode);
@@ -44,8 +45,8 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Navigation Links - Only show on non-game pages */}
-          {!isGamePage && (
+          {/* Navigation Links - Only show on non-game and non-home pages */}
+          {!isGamePage && !isHomePage && (
             <div className="hidden md:flex items-center space-x-6">
               <Link 
                 href="/play" 
@@ -114,12 +115,12 @@ export function Header() {
               Play Now!
             </Link>
 
-            {/* Mobile Menu Button - Always show on mobile, show on desktop for game pages */}
+            {/* Mobile Menu Button - Always show on mobile, show on desktop for game pages and home page */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
                 "p-2 rounded-lg",
-                isGamePage ? "block" : "md:hidden",
+                (isGamePage || isHomePage) ? "block" : "md:hidden",
                 "hover:bg-surface-hover",
                 "focus:outline-none focus:ring-2 focus:ring-primary/50"
               )}
@@ -140,12 +141,13 @@ export function Header() {
       </div>
     </header>
     
-    {/* Mobile Menu Dropdown */}
+    {/* Mobile Menu Dropdown - Show on desktop for game/home pages */}
     {mobileMenuOpen && (
-      <div className="fixed inset-0 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)}>
+      <div className={cn("fixed inset-0 z-40", (!isGamePage && !isHomePage) && "md:hidden")} onClick={() => setMobileMenuOpen(false)}>
         <div className="fixed inset-0 bg-black/50" />
         <div 
-          className="fixed right-0 top-16 w-64 bg-stage-dark border-l-2 border-yellow-bright h-full shadow-2xl"
+          className="fixed right-0 top-16 w-64 bg-stage-dark border-l-2 border-yellow-bright shadow-2xl"
+          style={{ height: 'calc(100vh - 4rem)' }}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="p-4 space-y-4">
