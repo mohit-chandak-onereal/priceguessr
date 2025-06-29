@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { generateMockPlayers } from '@/utils/mock-players';
 
 // Create Supabase client with service role for server-side operations
 const supabase = createClient(
@@ -60,7 +61,76 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ data: data || [] }, { status: 200 });
+    // Process the data to get unique players (best score per player)
+    const uniquePlayers = new Map<string, any>();
+    
+    if (data && data.length > 0) {
+      // Group by username and keep only the best score (highest accuracy, lowest attempts)
+      data.forEach(entry => {
+        const existing = uniquePlayers.get(entry.username);
+        
+        if (!existing || 
+            entry.accuracy > existing.accuracy || 
+            (entry.accuracy === existing.accuracy && entry.attempts < existing.attempts)) {
+          uniquePlayers.set(entry.username, entry);
+        }
+      });
+    }
+
+    // Convert map to array and sort
+    let leaderboardData = Array.from(uniquePlayers.values());
+    
+    // Sort by accuracy (descending) then attempts (ascending)
+    leaderboardData.sort((a, b) => {
+      if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+      return a.attempts - b.attempts;
+    });
+
+    // Get the lowest real player accuracy (if any)
+    const lowestRealAccuracy = leaderboardData.length > 0 
+      ? Math.min(...leaderboardData.map(p => p.accuracy))
+      : 0;
+
+    // Generate mock players if needed
+    if (leaderboardData.length === 0) {
+      // No real players - generate exactly 7 mock players
+      const mockPlayers = generateMockPlayers(7, 95);
+      leaderboardData = mockPlayers.map((mock, index) => ({
+        id: `mock-${index}`,
+        username: mock.username,
+        accuracy: mock.accuracy,
+        attempts: mock.attempts,
+        item_name: mock.item_name,
+        item_price: mock.item_price,
+        created_at: new Date().toISOString(),
+        is_mock: true
+      }));
+    } else if (leaderboardData.length < 18) {
+      // Add mock players to fill up to 18 total
+      const mockCount = 18 - leaderboardData.length;
+      const mockPlayers = generateMockPlayers(mockCount, Math.max(50, lowestRealAccuracy - 5));
+      
+      const mockEntries = mockPlayers.map((mock, index) => ({
+        id: `mock-${index}`,
+        username: mock.username,
+        accuracy: mock.accuracy,
+        attempts: mock.attempts,
+        item_name: mock.item_name,
+        item_price: mock.item_price,
+        created_at: new Date().toISOString(),
+        is_mock: true
+      }));
+      
+      leaderboardData = [...leaderboardData, ...mockEntries];
+      
+      // Re-sort after adding mock players
+      leaderboardData.sort((a, b) => {
+        if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+        return a.attempts - b.attempts;
+      });
+    }
+
+    return NextResponse.json({ data: leaderboardData }, { status: 200 });
   } catch (error) {
     console.error('Leaderboard fetch error:', error);
     return NextResponse.json(

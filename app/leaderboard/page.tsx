@@ -118,7 +118,12 @@ export default function LeaderboardPage() {
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <div className="font-bold text-white">{entry.username}</div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-white">{entry.username}</span>
+                          {entry.is_mock && (
+                            <span className="text-xs text-muted/60 italic">(Bot)</span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-4 py-3 text-muted">{entry.item_name}</td>
                       <td className="px-4 py-3 text-center">

@@ -12,6 +12,7 @@ export interface LeaderboardEntry {
   item_name: string;
   item_price: number;
   created_at: string;
+  is_mock?: boolean;
 }
 
 interface UseLeaderboardOptions {
