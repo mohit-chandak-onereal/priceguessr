@@ -36,6 +36,14 @@ export function validateGuess(input: string): ValidationResult {
     };
   }
   
+  // Check for scientific notation
+  if (input.toLowerCase().includes('e')) {
+    return {
+      valid: false,
+      error: 'Please enter a standard number format',
+    };
+  }
+  
   // Check for negative or zero
   if (parsed <= 0) {
     return {

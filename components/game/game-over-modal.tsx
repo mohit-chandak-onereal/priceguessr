@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useGameStore } from '@/lib/store/game-store';
 import { useLeaderboard } from '@/hooks/use-leaderboard';
+import { shareResults, shareOnTwitter, copyToClipboard } from '@/utils/social-share';
 
 interface GameOverModalProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ export function GameOverModal({
   const { gameStatus, currentItem, guesses, sessionScore, currentScore, highScore, currentStreak, playerName } = useGameStore();
   const [showPrice, setShowPrice] = useState(false);
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { submitScore } = useLeaderboard();
   
   const finalGuess = guesses[guesses.length - 1];
@@ -163,6 +165,7 @@ export function GameOverModal({
                   alt={currentItem.name}
                   fill
                   className="object-contain p-2"
+                  sizes="(max-width: 640px) 192px, 224px"
                 />
               </div>
             </div>
@@ -189,6 +192,50 @@ export function GameOverModal({
               )}
             </div>
           </div>
+
+          {/* Share Section */}
+          {isWin && (
+            <div className="mb-4 border-t border-border pt-4">
+              <p className="text-sm text-muted mb-3">Share your victory!</p>
+              <div className="flex gap-2 justify-center">
+                <button
+                  onClick={async () => {
+                    const shared = await shareResults({
+                      score: sessionScore,
+                      accuracy: accuracy,
+                      attempts: guesses.length,
+                      itemName: currentItem.name,
+                      streak: currentStreak,
+                    });
+                    if (!shared) {
+                      const copied = await copyToClipboard(
+                        `🎰 PriceGuessr\n\n${Array(guesses.length).fill('🟨').join('')}${Array(6 - guesses.length).fill('⬜').join('')}\n\n✅ Won with ${accuracy.toFixed(1)}% accuracy!\n📊 Score: ${sessionScore.toLocaleString()} points${currentStreak > 1 ? `\n🔥 Streak: ${currentStreak} wins` : ''}\n\nPlay at: ${window.location.origin}`
+                      );
+                      if (copied) {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      }
+                    }
+                  }}
+                  className="px-4 py-2 bg-green-bright hover:bg-green-bright/80 text-white rounded-lg font-bold transition-all text-sm"
+                >
+                  {copied ? 'COPIED!' : 'SHARE'}
+                </button>
+                <button
+                  onClick={() => shareOnTwitter({
+                    score: sessionScore,
+                    accuracy: accuracy,
+                    attempts: guesses.length,
+                    itemName: currentItem.name,
+                    streak: currentStreak,
+                  })}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-all text-sm"
+                >
+                  TWEET
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Actions - Smaller buttons */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
