@@ -72,7 +72,7 @@ export function PriceInput() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative overflow-visible">
       {/* Attempts counter in top corner */}
       <div
         className={`
@@ -90,17 +90,17 @@ export function PriceInput() {
         {guesses.length}/6
       </div>
 
-      <form onSubmit={handleSubmit} className="relative panel-game-show p-4">
-        <div className="flex items-center gap-4">
+      <form onSubmit={handleSubmit} className="relative panel-game-show p-4 overflow-visible">
+        <div className="flex items-center gap-2 sm:gap-4">
           {/* Label */}
-          <h3 className="text-lg font-bold text-game-show text-yellow-bright whitespace-nowrap">
+          <h3 className="text-base sm:text-lg font-bold text-game-show text-yellow-bright whitespace-nowrap">
             GUESS
           </h3>
 
           {/* Price Input */}
           <div className={`
-            price-display text-xl md:text-2xl flex-1 px-4 py-2
-            transition-all duration-200 flex items-center
+            price-display text-lg sm:text-xl md:text-2xl flex-1 px-3 sm:px-4 py-2
+            transition-all duration-200 flex items-center min-w-0
             ${isFocused ? 'border-yellow-bright shadow-lg shadow-yellow-bright/50' : ''}
             ${error ? 'border-red-bright shadow-lg shadow-red-bright/50' : ''}
             ${shake ? 'shake-input' : ''}
@@ -124,7 +124,7 @@ export function PriceInput() {
           <button
             type="submit"
             disabled={!currentGuess.trim()}
-            className="btn-game-show text-white px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+            className="btn-game-show text-white px-3 sm:px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm sm:text-base"
           >
             SUBMIT
           </button>

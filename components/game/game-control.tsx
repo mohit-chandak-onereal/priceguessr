@@ -134,10 +134,10 @@ export function GameControl() {
           animate={{ rotateY: 0, scale: 1 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           style={{ transformStyle: 'preserve-3d', minHeight: '280px' }}
-          className="panel-game-show p-6 sm:p-8 relative"
+          className="panel-game-show p-6 sm:p-8 relative overflow-visible"
         >
           {gameStarted && <SparkleEffect />}
-          <div className="space-y-4">
+          <div className="space-y-4 overflow-visible">
             <GameTimer />
             <PriceInput />
           </div>
