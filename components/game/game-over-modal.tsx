@@ -37,22 +37,15 @@ export function GameOverModal({
       
       // Submit score to leaderboard if won
       if (gameStatus === 'won' && !scoreSubmitted && playerName && currentItem) {
-        const category = categories.find(c => 
-          c.id === currentItem.category_id
-        );
-        
-        if (category) {
-          submitScore({
-            player_name: playerName,
-            score: sessionScore,
-            accuracy: finalGuess?.accuracy || 0,
-            attempts: guesses.length,
-            category_name: category.name,
-            item_name: currentItem.name,
-          }).then(() => {
-            setScoreSubmitted(true);
-          }).catch(console.error);
-        }
+        submitScore({
+          username: playerName,
+          accuracy: finalGuess?.accuracy || 0,
+          attempts: guesses.length,
+          item_name: currentItem.name,
+          item_price: currentItem.price,
+        }).then(() => {
+          setScoreSubmitted(true);
+        }).catch(console.error);
       }
     } else {
       document.body.style.overflow = 'unset';
@@ -63,7 +56,7 @@ export function GameOverModal({
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore, finalGuess?.accuracy, categories]);
+  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore, finalGuess?.accuracy]);
 
   // Separate ESC key handler
   useEffect(() => {

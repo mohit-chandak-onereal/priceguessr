@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import { MainLayout } from '@/components/layout/main-layout';
 import { useLeaderboard } from '@/hooks/use-leaderboard';
-import { mockCategories } from '@/lib/mock-data';
+import { useCategories } from '@/hooks/use-categories';
 import Link from 'next/link';
 
 export default function LeaderboardPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [timeframe, setTimeframe] = useState<'today' | 'week' | 'month' | 'all'>('all');
+  const { categories } = useCategories();
   
   const { entries, isLoading, error } = useLeaderboard({
     category: selectedCategory || undefined,
@@ -38,7 +39,7 @@ export default function LeaderboardPage() {
             className="px-4 py-2 bg-stage-dark border-2 border-yellow-bright rounded-lg text-white"
           >
             <option value="">All Categories</option>
-            {mockCategories.map((cat) => (
+            {categories.map((cat) => (
               <option key={cat.id} value={cat.name}>
                 {cat.name}
               </option>
@@ -87,7 +88,7 @@ export default function LeaderboardPage() {
                     <th className="px-4 py-3 text-left">Item</th>
                     <th className="px-4 py-3 text-center">Accuracy</th>
                     <th className="px-4 py-3 text-center">Attempts</th>
-                    <th className="px-4 py-3 text-right">Score</th>
+                    <th className="px-4 py-3 text-right">Price</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -107,8 +108,7 @@ export default function LeaderboardPage() {
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <div className="font-bold text-white">{entry.player_name}</div>
-                        <div className="text-xs text-muted">{entry.category_name}</div>
+                        <div className="font-bold text-white">{entry.username}</div>
                       </td>
                       <td className="px-4 py-3 text-muted">{entry.item_name}</td>
                       <td className="px-4 py-3 text-center">
@@ -119,7 +119,7 @@ export default function LeaderboardPage() {
                       <td className="px-4 py-3 text-center text-white">{entry.attempts}/6</td>
                       <td className="px-4 py-3 text-right">
                         <span className="text-xl font-bold text-yellow-bright">
-                          {entry.score.toLocaleString()}
+                          ${entry.item_price.toLocaleString()}
                         </span>
                       </td>
                     </tr>
