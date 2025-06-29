@@ -272,6 +272,7 @@
   .star-decoration {
     position: relative;
     display: inline-block;
+    padding: 0 1.8em; /* Add padding to make space for stars */
   }
   
   .star-decoration::before,
@@ -279,17 +280,19 @@
     content: '★';
     position: absolute;
     color: #fbbf24;
-    font-size: 1.5em;
+    font-size: 1.2em;
+    top: 50%;
+    transform: translateY(-50%);
     animation: flash 1s ease-in-out infinite;
   }
   
   .star-decoration::before {
-    left: -1.5em;
+    left: 0;
     animation-delay: 0s;
   }
   
   .star-decoration::after {
-    right: -1.5em;
+    right: 0;
     animation-delay: 0.5s;
   }
   
