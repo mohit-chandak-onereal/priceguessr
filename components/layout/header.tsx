@@ -45,38 +45,6 @@ export function Header() {
             </span>
           </Link>
 
-          {/* Navigation Links - Only show on non-game and non-home pages */}
-          {!isGamePage && !isHomePage && (
-            <div className="hidden md:flex items-center space-x-6">
-              <Link 
-                href="/play" 
-                className="text-muted hover:text-foreground transition-colors"
-              >
-                Play
-              </Link>
-              <Link 
-                href="/stats" 
-                className="text-muted hover:text-foreground transition-colors"
-              >
-                Stats
-              </Link>
-              <Link 
-                href="/leaderboard" 
-                className="text-muted hover:text-foreground transition-colors"
-              >
-                Leaderboard
-              </Link>
-              <button 
-                onClick={() => {
-                  const modal = document.getElementById('how-to-play-modal');
-                  if (modal) modal.classList.remove('hidden');
-                }}
-                className="text-muted hover:text-foreground transition-colors cursor-pointer"
-              >
-                How to Play
-              </button>
-            </div>
-          )}
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
@@ -115,12 +83,12 @@ export function Header() {
               Play Now!
             </Link>
 
-            {/* Mobile Menu Button - Always show on mobile, show on desktop for game pages and home page */}
+            {/* Mobile Menu Button - Always visible */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={cn(
                 "p-2 rounded-lg",
-                (isGamePage || isHomePage) ? "block" : "md:hidden",
+                "block",
                 "hover:bg-surface-hover",
                 "focus:outline-none focus:ring-2 focus:ring-primary/50"
               )}
@@ -141,9 +109,9 @@ export function Header() {
       </div>
     </header>
     
-    {/* Mobile Menu Dropdown - Show on desktop for game/home pages */}
+    {/* Mobile Menu Dropdown - Always visible when open */}
     {mobileMenuOpen && (
-      <div className={cn("fixed inset-0 z-40", (!isGamePage && !isHomePage) && "md:hidden")} onClick={() => setMobileMenuOpen(false)}>
+      <div className="fixed inset-0 z-40" onClick={() => setMobileMenuOpen(false)}>
         <div className="fixed inset-0 bg-black/50" />
         <div 
           className="fixed right-0 top-16 w-64 bg-stage-dark border-l-2 border-yellow-bright shadow-2xl"

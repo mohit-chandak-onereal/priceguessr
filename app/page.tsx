@@ -14,9 +14,9 @@ export default function Home() {
           <div className="text-center max-w-5xl mx-auto">
             {/* Main Title */}
             <div className="mb-6 sm:mb-8 relative">
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-game-show text-white mb-2 sm:mb-4">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-game-show text-white mb-2 sm:mb-4">
                 <span className="block">COME ON DOWN!</span>
-                <span className="block text-xl sm:text-3xl md:text-5xl mt-1 sm:mt-2 text-yellow-bright">You&apos;re the next contestant on</span>
+                <span className="block text-base sm:text-xl md:text-3xl mt-1 sm:mt-2 text-yellow-bright">You&apos;re the next contestant on</span>
               </h1>
               <div className="mt-2 sm:mt-4">
                 <span className="text-retro-70s text-retro-70s-large">PRICEGUESSR</span>
