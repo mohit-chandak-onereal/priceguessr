@@ -10,7 +10,7 @@ import { GameOverModal } from './game-over-modal';
 import { ItemImage } from './item-image';
 import { GameTimer } from './game-timer';
 import { ScoreDisplay } from './score-display';
-import { mockCategories } from '@/lib/mock-data';
+import { useCategories } from '@/hooks/use-categories';
 
 interface GameBoardProps {
   categoryId: string;
@@ -33,7 +33,8 @@ export function GameBoard({ categoryId }: GameBoardProps) {
     resetGame,
   } = useGameStore();
 
-  const category = mockCategories.find(c => c.id === categoryId);
+  const { categories } = useCategories();
+  const category = categories.find(c => c.id === categoryId);
 
   useEffect(() => {
     // Reset game state and modal when category changes

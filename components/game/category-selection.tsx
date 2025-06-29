@@ -1,9 +1,26 @@
 'use client';
 
 import Link from 'next/link';
-import { mockCategories } from '@/lib/mock-data';
+import { useCategories } from '@/hooks/use-categories';
 
 export function CategorySelection() {
+  const { categories, isLoading, error } = useCategories();
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-2xl text-yellow-bright animate-pulse">Loading categories...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-xl text-red-500">Error loading categories: {error}</div>
+      </div>
+    );
+  }
   return (
     <div className="max-w-6xl mx-auto px-4">
       {/* Header */}
@@ -18,7 +35,7 @@ export function CategorySelection() {
 
       {/* Categories Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-        {mockCategories.map((category) => (
+        {categories.map((category) => (
           <Link
             key={category.id}
             href={`/play?category=${category.id}`}
