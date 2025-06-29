@@ -54,6 +54,40 @@ export function CategorySelection() {
 
       {/* Categories Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+        {/* Feeling Wild - Special Category */}
+        <button
+          onClick={() => {
+            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+            window.location.href = `/play?category=${randomCategory.id}`;
+          }}
+          className="group relative"
+        >
+          <div className="panel-game-show p-5 sm:p-7 h-full hover:transform hover:scale-105 transition-all spotlight min-h-[162px] bg-gradient-to-br from-purple-bright/20 to-pink-bright/20 border-3 border-purple-bright">
+            {/* Spotlight effect */}
+            <div className="absolute -top-2 -right-2 w-14 sm:w-18 h-14 sm:h-18 bg-purple-bright rounded-full opacity-30 blur-xl group-hover:opacity-50 transition-opacity" />
+            
+            {/* Content */}
+            <div className="relative z-10 flex flex-col items-center text-center">
+              <div className="text-4xl sm:text-5xl mb-2 sm:mb-3 animate-bounce">🎲</div>
+              <h2 className="text-lg sm:text-xl font-bold text-game-show text-purple-bright mb-2">
+                FEELING WILD?
+              </h2>
+              
+              {/* Special badge */}
+              <div className="mt-2 sm:mt-3 px-3 sm:px-3 py-1.5 bg-purple-bright/20 rounded-full border-2 border-purple-bright">
+                <span className="text-xs sm:text-xs font-bold text-purple-bright">
+                  RANDOM CATEGORY
+                </span>
+              </div>
+            </div>
+            
+            {/* Hover state star */}
+            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 text-lg sm:text-xl text-purple-bright opacity-0 group-hover:opacity-100 transition-opacity animate-spin-slow">
+              ★
+            </div>
+          </div>
+        </button>
+
         {categories.map((category) => (
           <Link
             key={category.id}
@@ -88,23 +122,8 @@ export function CategorySelection() {
         ))}
       </div>
 
-      {/* Feeling Wild Button */}
-      <div className="text-center mt-8">
-        <button
-          onClick={() => {
-            const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-            window.location.href = `/play?category=${randomCategory.id}`;
-          }}
-          className="btn-game-show text-white text-lg sm:text-xl px-8 py-4 inline-flex items-center gap-3 animate-pulse"
-        >
-          <span className="text-2xl">🎲</span>
-          <span>FEELING WILD?</span>
-        </button>
-        <p className="text-sm text-muted mt-2">Pick a random category!</p>
-      </div>
-
       {/* Bottom CTA */}
-      <div className="text-center mt-8">
+      <div className="text-center mt-12">
         <Link
           href="/"
           className="inline-block text-muted hover:text-yellow-bright transition-colors"

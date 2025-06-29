@@ -6,8 +6,14 @@ export default function Home() {
     <MainLayout>
       {/* Hero Section */}
       <section className="relative overflow-hidden py-8 sm:py-12 md:py-20">
-        {/* Marquee Lights Border */}
-        <div className="absolute inset-0 marquee-lights opacity-30" />
+        {/* Animated Background Sparkles */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 text-4xl text-yellow-bright/20 animate-pulse">★</div>
+          <div className="absolute top-20 right-20 text-3xl text-yellow-bright/30 animate-pulse" style={{ animationDelay: '0.5s' }}>★</div>
+          <div className="absolute bottom-20 left-1/4 text-5xl text-yellow-bright/20 animate-pulse" style={{ animationDelay: '1s' }}>★</div>
+          <div className="absolute bottom-10 right-1/3 text-4xl text-yellow-bright/25 animate-pulse" style={{ animationDelay: '1.5s' }}>★</div>
+          <div className="absolute top-1/3 left-1/2 text-3xl text-yellow-bright/20 animate-pulse" style={{ animationDelay: '2s' }}>★</div>
+        </div>
         
         {/* Content */}
         <div className="container mx-auto px-4 relative z-10">
