@@ -26,6 +26,12 @@ class SoundManager {
         const audio = new Audio(path);
         audio.preload = 'auto';
         audio.volume = 0.5;
+        
+        // Add error handler for missing files
+        audio.onerror = () => {
+          console.log(`Sound file not found: ${path}`);
+        };
+        
         this.sounds.set(key, audio);
       }
     });
@@ -40,8 +46,9 @@ class SoundManager {
       // Clone the audio to allow overlapping sounds
       const soundClone = sound.cloneNode() as HTMLAudioElement;
       soundClone.volume = sound.volume;
-      soundClone.play().catch(() => {
-        // Ignore errors (e.g., autoplay policy)
+      soundClone.play().catch((error) => {
+        // Log error for debugging but don't break the game
+        console.log(`Sound "${soundName}" could not be played:`, error.message);
       });
     }
   }

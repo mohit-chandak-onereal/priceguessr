@@ -41,7 +41,7 @@ export function Header() {
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-bright rounded-full animate-pulse"></div>
             </div>
             <span className="text-2xl font-bold text-game-show text-white">
-              <span className="star-decoration">PriceGuessr</span>
+              PriceGuessr
             </span>
           </Link>
 

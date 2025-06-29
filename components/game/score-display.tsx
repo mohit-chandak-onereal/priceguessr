@@ -7,19 +7,19 @@ export function ScoreDisplay() {
 
   return (
     <div className="panel-game-show p-3 sm:p-4">
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3 text-center">
         {/* Current Score */}
         <div>
           <div className="text-xs text-muted uppercase mb-1">Score</div>
-          <div className="text-xl sm:text-2xl font-bold text-yellow-bright font-mono">
+          <div className="text-lg sm:text-xl font-bold text-yellow-bright font-mono">
             {currentScore.toLocaleString()}
           </div>
         </div>
 
         {/* High Score */}
         <div>
-          <div className="text-xs text-muted uppercase mb-1">High Score</div>
-          <div className="text-xl sm:text-2xl font-bold text-green-bright font-mono">
+          <div className="text-xs text-muted uppercase mb-1">High</div>
+          <div className="text-lg sm:text-xl font-bold text-green-bright font-mono">
             {highScore.toLocaleString()}
           </div>
         </div>
@@ -29,7 +29,7 @@ export function ScoreDisplay() {
           <div className="text-xs text-muted uppercase mb-1">Streak</div>
           <div className="text-lg sm:text-xl font-bold text-orange-bright flex items-center justify-center gap-1">
             <span>{currentStreak}</span>
-            {currentStreak > 0 && <span className="text-sm">🔥</span>}
+            {currentStreak > 0 && <span className="text-xs">🔥</span>}
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export function ScoreDisplay() {
           <div className="text-xs text-muted uppercase mb-1">Best</div>
           <div className="text-lg sm:text-xl font-bold text-purple-bright flex items-center justify-center gap-1">
             <span>{bestStreak}</span>
-            {bestStreak >= 5 && <span className="text-sm">⭐</span>}
+            {bestStreak >= 5 && <span className="text-xs">⭐</span>}
           </div>
         </div>
       </div>
