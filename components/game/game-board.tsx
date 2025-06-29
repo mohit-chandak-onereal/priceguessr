@@ -202,8 +202,10 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           <div className="col-span-2 self-end">
             <GameControl />
           </div>
-          <div className="panel-game-show p-6 self-end">
-            <HintDisplay />
+          <div className="self-end">
+            <div className="panel-game-show p-6" style={{ minHeight: '280px' }}>
+              <HintDisplay />
+            </div>
           </div>
         </div>
       </div>
