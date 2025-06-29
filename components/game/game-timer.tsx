@@ -17,8 +17,6 @@ export function GameTimer() {
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          // Time's up - record as missed turn
-          recordMissedTurn();
           return 15; // Reset for next round
         }
         
@@ -32,7 +30,14 @@ export function GameTimer() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [gameStatus, recordMissedTurn]);
+  }, [gameStatus]);
+
+  // Handle timeout in a separate effect
+  useEffect(() => {
+    if (timeLeft === 0 && gameStatus === 'playing') {
+      recordMissedTurn();
+    }
+  }, [timeLeft, gameStatus, recordMissedTurn]);
 
   // Reset timer when a guess is made
   const guessCount = useGameStore((state) => state.guesses.length);
