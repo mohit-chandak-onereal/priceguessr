@@ -42,9 +42,10 @@ export function AnimatedPrice({ targetPrice, duration = 1500, onComplete }: Anim
 
   return (
     <div className={`
-      text-5xl md:text-6xl font-bold text-game-show
+      text-3xl sm:text-4xl md:text-5xl font-bold text-game-show
       ${isComplete ? 'animate-pulse' : ''}
       transition-all duration-300
+      break-words
     `}>
       <span className="text-yellow-bright">$</span>
       <span className={isComplete ? 'text-green-bright' : 'text-white'}>

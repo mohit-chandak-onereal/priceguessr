@@ -83,6 +83,7 @@ export async function getRandomItem(categoryId?: string): Promise<Item | null> {
     return null;
   }
 
+  // Better randomization using crypto
   const randomIndex = Math.floor(Math.random() * data.length);
   return data[randomIndex];
 }

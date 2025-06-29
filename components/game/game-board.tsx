@@ -204,6 +204,18 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           onBackToCategories={handleBackToCategories}
         />
       )}
+      
+      {/* Play Again Button when game is over but modal is closed */}
+      {gameStatus !== 'playing' && !showGameOver && (
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40">
+          <button
+            onClick={handlePlayAgain}
+            className="btn-game-show text-white px-8 py-4 text-lg shadow-2xl"
+          >
+            Play Again!
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -63,7 +63,21 @@ export function GameOverModal({
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore, finalGuess?.accuracy]);
+  }, [isOpen, gameStatus, scoreSubmitted, playerName, currentItem, sessionScore, guesses.length, submitScore, finalGuess?.accuracy, categories]);
+
+  // Separate ESC key handler
+  useEffect(() => {
+    if (isOpen) {
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      };
+      
+      window.addEventListener('keydown', handleEscape);
+      return () => window.removeEventListener('keydown', handleEscape);
+    }
+  }, [isOpen, onClose]);
 
   if (!isOpen || !currentItem) return null;
 
@@ -171,12 +185,14 @@ export function GameOverModal({
             </div>
             
             {/* Price Reveal */}
-            <div className="p-4 sm:p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright">
+            <div className="p-4 sm:p-6 bg-stage-dark rounded-lg border-2 border-yellow-bright overflow-hidden">
               <p className="text-base sm:text-lg text-muted mb-2">The actual retail price was:</p>
               {showPrice ? (
-                <AnimatedPrice targetPrice={currentItem.price} />
+                <div className="overflow-x-auto">
+                  <AnimatedPrice targetPrice={currentItem.price} />
+                </div>
               ) : (
-                <div className="text-5xl font-bold text-game-show text-white">
+                <div className="text-3xl sm:text-5xl font-bold text-game-show text-white">
                   ???
                 </div>
               )}
