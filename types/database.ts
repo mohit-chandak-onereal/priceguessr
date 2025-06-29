@@ -43,6 +43,12 @@ export interface Database {
           images: string[]
           metadata: Json
           ai_hints: string[]
+          basic_info: Json
+          hint_1: string | null
+          hint_2: string | null
+          hint_3: string | null
+          hint_4: string | null
+          hint_5: string | null
           created_at: string
         }
         Insert: {
@@ -55,6 +61,12 @@ export interface Database {
           images: string[]
           metadata: Json
           ai_hints: string[]
+          basic_info?: Json
+          hint_1?: string | null
+          hint_2?: string | null
+          hint_3?: string | null
+          hint_4?: string | null
+          hint_5?: string | null
           created_at?: string
         }
         Update: {
@@ -67,6 +79,12 @@ export interface Database {
           images?: string[]
           metadata?: Json
           ai_hints?: string[]
+          basic_info?: Json
+          hint_1?: string | null
+          hint_2?: string | null
+          hint_3?: string | null
+          hint_4?: string | null
+          hint_5?: string | null
           created_at?: string
         }
       }

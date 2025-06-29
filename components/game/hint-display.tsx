@@ -8,72 +8,71 @@ export function HintDisplay() {
 
   if (!currentItem) return null;
 
-  // Generate hints from description
-  const descriptionHints = currentItem.description ? 
-    currentItem.description.split('.').filter(s => s.trim().length > 0).slice(0, 3) : 
-    ['No additional information available'];
-
-  const hints = [
-    // Hint 1: Basic metadata
-    {
+  // Build hints array dynamically based on available data
+  const hints = [];
+  
+  // Always show basic info as first hint
+  if (currentItem.basic_info && Object.keys(currentItem.basic_info).length > 0) {
+    hints.push({
       level: 1,
       title: 'BASIC INFO',
       content: (
         <div className="space-y-1">
-          {currentItem.metadata.year && (
-            <p>Year: {currentItem.metadata.year}</p>
-          )}
-          {currentItem.metadata.material && (
-            <p>Material: {currentItem.metadata.material}</p>
-          )}
-          {currentItem.metadata.location && (
-            <p>Location: {currentItem.metadata.location}</p>
-          )}
-          {currentItem.metadata.servings && (
-            <p>Servings: {currentItem.metadata.servings}</p>
-          )}
+          {Object.entries(currentItem.basic_info).map(([key, value]) => (
+            <p key={key}>
+              {key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}: {value}
+            </p>
+          ))}
         </div>
       ),
-    },
-    // Hint 2: First description hint
-    {
-      level: 2,
+    });
+  }
+  
+  // Add individual hints if they exist
+  if (currentItem.hint_1) {
+    hints.push({
+      level: hints.length + 1,
       title: 'CLUE #1',
-      content: <p className="italic">&quot;{descriptionHints[0]}&quot;</p>,
-    },
-    // Hint 3: More metadata
-    {
-      level: 3,
-      title: 'SPECIFICATIONS',
-      content: (
-        <div className="space-y-1">
-          {currentItem.metadata.size && (
-            <p>Size: {currentItem.metadata.size}</p>
-          )}
-          {currentItem.metadata.bedrooms && (
-            <p>Bedrooms: {currentItem.metadata.bedrooms}</p>
-          )}
-          {currentItem.metadata.horsepower && (
-            <p>Horsepower: {currentItem.metadata.horsepower}</p>
-          )}
-          {currentItem.metadata.dimensions && (
-            <p>Dimensions: {currentItem.metadata.dimensions}</p>
-          )}
-          {currentItem.metadata.color && (
-            <p>Color: {currentItem.metadata.color}</p>
-          )}
-        </div>
-      ),
-    },
-    // Hint 4: Second description hint
-    {
-      level: 4,
+      content: <p className="italic">&quot;{currentItem.hint_1}&quot;</p>,
+    });
+  }
+  
+  if (currentItem.hint_2) {
+    hints.push({
+      level: hints.length + 1,
       title: 'CLUE #2',
-      content: <p className="italic">&quot;{descriptionHints[1] || 'Additional information not available'}&quot;</p>,
-    },
-    // Hint 5: Currency hint
-    {
-      level: 5,
+      content: <p className="italic">&quot;{currentItem.hint_2}&quot;</p>,
+    });
+  }
+  
+  if (currentItem.hint_3) {
+    hints.push({
+      level: hints.length + 1,
+      title: 'CLUE #3',
+      content: <p className="italic">&quot;{currentItem.hint_3}&quot;</p>,
+    });
+  }
+  
+  if (currentItem.hint_4) {
+    hints.push({
+      level: hints.length + 1,
+      title: 'CLUE #4',
+      content: <p className="italic">&quot;{currentItem.hint_4}&quot;</p>,
+    });
+  }
+  
+  if (currentItem.hint_5) {
+    hints.push({
+      level: hints.length + 1,
+      title: 'FINAL CLUE',
+      content: <p className="italic">&quot;{currentItem.hint_5}&quot;</p>,
+    });
+  }
+  
+  // If we don't have enough hints, add a price range hint
+  if (hints.length < 6) {
+    hints.push({
+      level: hints.length + 1,
       title: 'PRICE RANGE',
       content: (
         <p>
@@ -88,14 +87,8 @@ export function HintDisplay() {
           !
         </p>
       ),
-    },
-    // Hint 6: Final description hint
-    {
-      level: 6,
-      title: 'FINAL CLUE',
-      content: <p className="italic">&quot;{descriptionHints[2] || descriptionHints[0]}&quot;</p>,
-    },
-  ];
+    });
+  }
 
   return (
     <div className="space-y-3">
