@@ -193,7 +193,7 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           {/* Right Column Top - Score and Guess History */}
           <div className="flex flex-col gap-6 min-h-0">
             <ScoreDisplay />
-            <div className="panel-game-show p-6 overflow-hidden flex-grow min-h-0">
+            <div className="panel-game-show p-6 overflow-hidden flex-grow min-h-0" style={{ maxHeight: '400px' }}>
               <GuessHistory />
             </div>
           </div>
