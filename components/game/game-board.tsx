@@ -147,13 +147,10 @@ export function GameBoard({ categoryId }: GameBoardProps) {
         </div>
       </div>
 
-      {/* Main Game Layout */}
-      <div className={`grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 ${
-        shakeEffect ? (attemptsRemaining === 0 ? 'shake-hard' : 'shake') : ''
-      }`}>
-        {/* Left Side - Image and Guess Section */}
-        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-
+      {/* Main Game Layout - Mobile stacked, Desktop grid */}
+      <div className={`${shakeEffect ? (attemptsRemaining === 0 ? 'shake-hard' : 'shake') : ''}`}>
+        {/* Mobile Layout - Stacked */}
+        <div className="lg:hidden space-y-4">
           {/* Item Image */}
           <div className="aspect-[4/3] w-full">
             <ItemImage 
@@ -162,29 +159,51 @@ export function GameBoard({ categoryId }: GameBoardProps) {
             />
           </div>
 
-          {/* Game Control - Timer and Input Combined */}
+          {/* Score Display */}
+          <ScoreDisplay />
+
+          {/* Game Control */}
           <div className="mt-4">
             <GameControl />
           </div>
 
-          {/* Hints Section - Below game controls on mobile, same width */}
-          <div className="panel-game-show p-4 sm:p-6 lg:hidden">
+          {/* Hints Section */}
+          <div className="panel-game-show p-4 sm:p-6">
             <HintDisplay />
+          </div>
+
+          {/* Guess History */}
+          <div className="panel-game-show p-4 sm:p-6">
+            <GuessHistory />
           </div>
         </div>
 
-        {/* Right Side - Score, History and Hints */}
-        <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6" style={{ height: 'calc(100vh - 16rem)' }}>
-          {/* Score Display */}
-          <ScoreDisplay />
+        {/* Desktop Layout - Grid with aligned bottom */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6" style={{ gridTemplateRows: 'auto 1fr auto' }}>
+          {/* Top Row - Image and Score */}
+          <div className="col-span-2">
+            <div className="aspect-[4/3] w-full">
+              <ItemImage 
+                imageUrl={currentItem.images[0]} 
+                itemName={currentItem.name} 
+              />
+            </div>
+          </div>
+          <div>
+            <ScoreDisplay />
+          </div>
 
-          {/* Guess History - Fixed height with scroll */}
-          <div className="panel-game-show p-4 sm:p-6 flex-grow overflow-hidden">
+          {/* Middle Row - Empty space and Guess History */}
+          <div className="col-span-2"></div>
+          <div className="panel-game-show p-6 overflow-hidden">
             <GuessHistory />
           </div>
 
-          {/* Hints Section - Desktop only, fixed at bottom */}
-          <div className="panel-game-show p-4 sm:p-6 hidden lg:block flex-shrink-0">
+          {/* Bottom Row - Game Control and Hints (aligned) */}
+          <div className="col-span-2 self-end">
+            <GameControl />
+          </div>
+          <div className="panel-game-show p-6 self-end">
             <HintDisplay />
           </div>
         </div>
