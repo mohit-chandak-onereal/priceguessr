@@ -45,7 +45,10 @@ export default function Home() {
             </div>
             
             <p className="text-sm text-muted mt-6">
-              *Virtual prizes only. No actual retail value.
+              *Pritesh will give you t-shirts
+            </p>
+            <p className="text-xs text-muted/50 mt-1">
+              **Maybe not
             </p>
           </div>
         </div>
