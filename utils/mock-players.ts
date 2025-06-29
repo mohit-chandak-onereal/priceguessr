@@ -28,15 +28,20 @@ const items = [
 
 export function generateMockPlayers(count: number, maxAccuracy: number = 95): MockPlayer[] {
   const mockPlayers: MockPlayer[] = [];
-  const nameIndex = { Mohit: 0, Joe: 0, Bryce: 0 };
+  const usedNames = new Set<string>();
 
   for (let i = 0; i < count; i++) {
-    // Cycle through the three names
-    const baseName = fixedNames[i % 3];
-    nameIndex[baseName]++;
+    // Randomly select one of the three names
+    const baseName = fixedNames[Math.floor(Math.random() * fixedNames.length)];
     
-    // Add number suffix if this name is used more than once
-    const username = nameIndex[baseName] > 1 ? `${baseName}${nameIndex[baseName]}` : baseName;
+    // Generate a unique username with random suffix
+    let username: string;
+    do {
+      const randomSuffix = Math.floor(Math.random() * 9000) + 1000; // 4-digit number
+      username = `${baseName}_${randomSuffix}`;
+    } while (usedNames.has(username));
+    
+    usedNames.add(username);
 
     // Generate game data
     const item = items[Math.floor(Math.random() * items.length)];
