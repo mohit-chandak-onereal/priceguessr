@@ -174,15 +174,13 @@ export function GameBoard({ categoryId }: GameBoardProps) {
         </div>
 
         {/* Right Side - Score, History and Hints */}
-        <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6 h-full">
+        <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6" style={{ height: 'calc(100vh - 16rem)' }}>
           {/* Score Display */}
           <ScoreDisplay />
 
-          {/* Guess History - Fills remaining space */}
-          <div className="panel-game-show p-4 sm:p-6 flex-grow min-h-0">
-            <div className="h-full overflow-hidden">
-              <GuessHistory />
-            </div>
+          {/* Guess History - Fixed height with scroll */}
+          <div className="panel-game-show p-4 sm:p-6 flex-grow overflow-hidden">
+            <GuessHistory />
           </div>
 
           {/* Hints Section - Desktop only, fixed at bottom */}

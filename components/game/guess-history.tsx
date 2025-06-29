@@ -54,7 +54,7 @@ export function GuessHistory() {
         YOUR GUESSES
       </h3>
 
-      <div className="space-y-2 overflow-y-auto flex-grow">
+      <div className="space-y-2 overflow-y-auto flex-grow pr-2" style={{ maxHeight: 'calc(100% - 3rem)' }}>
         {/* Always show 6 slots */}
         {Array.from({ length: 6 }, (_, index) => {
           const guess = guesses[index];
