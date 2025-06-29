@@ -1,6 +1,6 @@
 'use client';
 
-import { Achievement, getAchievementProgress } from '@/lib/achievements';
+import { Achievement, AchievementStats, getAchievementProgress } from '@/lib/achievements';
 import { motion } from 'framer-motion';
 
 interface AchievementCardProps {
@@ -61,7 +61,7 @@ export function AchievementCard({ achievement, unlocked, progress }: Achievement
 interface AchievementsDisplayProps {
   achievements: Achievement[];
   unlockedIds: Set<string>;
-  stats: any; // AchievementStats
+  stats: AchievementStats;
   showAll?: boolean;
 }
 

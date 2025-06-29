@@ -24,7 +24,7 @@ export default function Error({
           OOPS! TECHNICAL DIFFICULTIES
         </h2>
         <p className="text-muted mb-6">
-          We're experiencing some technical issues. Please stand by...
+          We&apos;re experiencing some technical issues. Please stand by...
         </p>
         <div className="flex gap-4 justify-center">
           <button

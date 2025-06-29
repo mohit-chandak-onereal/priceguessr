@@ -11,7 +11,7 @@ export function generateShareText(data: ShareData): string {
   
   // Generate emoji grid based on attempts
   const maxAttempts = 6;
-  const emojis = Array.from({ length: attempts }, (_, i) => {
+  const emojis: string[] = Array.from({ length: attempts }, (_, i) => {
     if (i === attempts - 1 && accuracy >= 95) return '🎯'; // Last attempt was winning
     return '🟨'; // Regular attempt
   });

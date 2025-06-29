@@ -153,7 +153,7 @@ export const achievements: Achievement[] = [
     name: 'Comeback Kid',
     description: 'Win on your 6th and final attempt',
     icon: '💪',
-    condition: (stats) => false, // This needs to be tracked separately
+    condition: () => false, // This needs to be tracked separately
   },
   {
     id: 'variety-player',
