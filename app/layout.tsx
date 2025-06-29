@@ -7,6 +7,7 @@ import { UsernameModal } from "@/components/ui/username-modal";
 import { HowToPlayModal } from "@/components/ui/how-to-play-modal";
 import { SoundInitializer } from "@/components/providers/sound-initializer";
 import { ErrorBoundary } from "@/components/providers/error-boundary";
+import { ServiceWorkerProvider } from "@/components/providers/service-worker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({
         <ErrorBoundary>
           <ThemeProvider>
             <AuthProvider>
+              <ServiceWorkerProvider />
               <SoundInitializer />
               <UsernameModal />
               <HowToPlayModal />
