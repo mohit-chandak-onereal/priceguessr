@@ -1,6 +1,26 @@
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
 
+// Mock window.matchMedia
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
+// Mock HTMLMediaElement
+window.HTMLMediaElement.prototype.play = jest.fn(() => Promise.resolve());
+window.HTMLMediaElement.prototype.pause = jest.fn();
+window.HTMLMediaElement.prototype.load = jest.fn();
+
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
   useRouter() {
@@ -18,6 +38,10 @@ jest.mock('next/navigation', () => ({
     return ''
   },
 }))
+
+// Mock Supabase
+jest.mock('@supabase/ssr');
+jest.mock('@supabase/supabase-js');
 
 // Mock environment variables
 process.env.NEXT_PUBLIC_SUPABASE_URL = 'https://test.supabase.co'

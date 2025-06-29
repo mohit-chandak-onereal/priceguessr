@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Header } from '@/components/layout/header';
+import { AuthProvider } from '@/contexts/auth-context';
 
 // Mock next-themes
 jest.mock('next-themes', () => ({
@@ -12,57 +13,42 @@ jest.mock('next-themes', () => ({
 
 describe('Header', () => {
   const renderHeader = () => {
-    return render(<Header />);
+    return render(
+      <AuthProvider>
+        <Header />
+      </AuthProvider>
+    );
   };
 
   it('should render logo and brand name', () => {
     renderHeader();
     
-    expect(screen.getByText('P')).toBeInTheDocument();
+    expect(screen.getByText('$')).toBeInTheDocument();
     expect(screen.getByText('PriceGuessr')).toBeInTheDocument();
   });
 
   it('should render navigation links on desktop', () => {
     renderHeader();
     
-    expect(screen.getByText('Play')).toBeInTheDocument();
-    expect(screen.getByText('Leaderboard')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
+    expect(screen.getByText('Play Now!')).toBeInTheDocument();
+    expect(screen.getByText('Sign In')).toBeInTheDocument();
   });
 
   it('should have correct link hrefs', () => {
     renderHeader();
     
-    const playLink = screen.getByRole('link', { name: 'Play' });
-    const leaderboardLink = screen.getByRole('link', { name: 'Leaderboard' });
-    const aboutLink = screen.getByRole('link', { name: 'About' });
+    const playLink = screen.getByRole('link', { name: 'Play Now!' });
+    const logoLink = screen.getByRole('link', { name: /PriceGuessr/i });
     
     expect(playLink).toHaveAttribute('href', '/play');
-    expect(leaderboardLink).toHaveAttribute('href', '/leaderboard');
-    expect(aboutLink).toHaveAttribute('href', '/about');
+    expect(logoLink).toHaveAttribute('href', '/');
   });
 
-  it('should render theme toggle button', () => {
+  it('should render sound toggle button', () => {
     renderHeader();
     
-    const themeToggle = screen.getByLabelText('Toggle theme');
-    expect(themeToggle).toBeInTheDocument();
-  });
-
-  it('should toggle theme when button is clicked', () => {
-    const { useTheme } = require('next-themes');
-    const mockSetTheme = jest.fn();
-    useTheme.mockReturnValue({
-      theme: 'dark',
-      setTheme: mockSetTheme,
-    });
-
-    renderHeader();
-    
-    const themeToggle = screen.getByLabelText('Toggle theme');
-    fireEvent.click(themeToggle);
-    
-    expect(mockSetTheme).toHaveBeenCalledWith('light');
+    const soundToggle = screen.getByLabelText(/sounds/i);
+    expect(soundToggle).toBeInTheDocument();
   });
 
   it('should render mobile menu button on mobile', () => {

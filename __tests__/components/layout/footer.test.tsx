@@ -13,7 +13,6 @@ describe('Footer', () => {
     render(<Footer />);
     
     expect(screen.getByRole('link', { name: 'Quick Game' })).toHaveAttribute('href', '/play');
-    expect(screen.getByRole('link', { name: 'Daily Challenge' })).toHaveAttribute('href', '/play/daily');
     expect(screen.getByRole('link', { name: 'Categories' })).toHaveAttribute('href', '/categories');
   });
 

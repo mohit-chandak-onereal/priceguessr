@@ -2,13 +2,14 @@ import { render, screen } from '@testing-library/react';
 import { MainLayout } from '@/components/layout/main-layout';
 import { ThemeProvider } from '@/contexts/theme-provider';
 
-// Mock the Header and Footer components
+// Mock the Header component
 jest.mock('@/components/layout/header', () => ({
   Header: () => <header data-testid="header">Header</header>,
 }));
 
-jest.mock('@/components/layout/footer', () => ({
-  Footer: () => <footer data-testid="footer">Footer</footer>,
+// Mock the ToastContainer component
+jest.mock('@/components/ui/toast', () => ({
+  ToastContainer: () => null,
 }));
 
 // Mock next-themes
@@ -21,7 +22,7 @@ jest.mock('next-themes', () => ({
 }));
 
 describe('MainLayout', () => {
-  it('should render header, children, and footer', () => {
+  it('should render header and children', () => {
     render(
       <ThemeProvider>
         <MainLayout>
@@ -32,7 +33,6 @@ describe('MainLayout', () => {
     
     expect(screen.getByTestId('header')).toBeInTheDocument();
     expect(screen.getByTestId('content')).toBeInTheDocument();
-    expect(screen.getByTestId('footer')).toBeInTheDocument();
   });
 
   it('should have correct layout structure', () => {
