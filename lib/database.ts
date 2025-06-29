@@ -3,7 +3,6 @@ import {
   Category, 
   Item, 
   GameSession, 
-  DailyChallenge, 
   LeaderboardEntry,
   Guess 
 } from '@/types/game';
@@ -170,46 +169,6 @@ export async function addGuessToSession(
 
   if (error) {
     console.error('Error updating session with guess:', error);
-    return null;
-  }
-
-  return data;
-}
-
-// Daily challenge functions
-export async function getTodaysChallenge(): Promise<DailyChallenge | null> {
-  const today = new Date().toISOString().split('T')[0];
-  
-  const { data, error } = await supabase
-    .from('daily_challenges')
-    .select('*')
-    .eq('date', today)
-    .single();
-
-  if (error) {
-    console.error('Error fetching daily challenge:', error);
-    return null;
-  }
-
-  return data;
-}
-
-export async function createDailyChallenge(
-  itemId: string
-): Promise<DailyChallenge | null> {
-  const today = new Date().toISOString().split('T')[0];
-  
-  const { data, error } = await supabase
-    .from('daily_challenges')
-    .insert({
-      date: today,
-      item_id: itemId,
-    })
-    .select()
-    .single();
-
-  if (error) {
-    console.error('Error creating daily challenge:', error);
     return null;
   }
 

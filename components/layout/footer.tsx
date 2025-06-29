@@ -25,11 +25,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/play/daily" className="text-sm hover:text-primary transition-colors">
-                  Daily Challenge
-                </Link>
-              </li>
-              <li>
                 <Link href="/categories" className="text-sm hover:text-primary transition-colors">
                   Categories
                 </Link>

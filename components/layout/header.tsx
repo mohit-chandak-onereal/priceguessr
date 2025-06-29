@@ -1,12 +1,24 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { SoundToggle } from '@/components/ui/sound-toggle';
+import { useAuth } from '@/contexts/auth-context';
+import { AuthModal } from '@/components/ui/auth-modal';
 
 export function Header() {
+  const { user, logout } = useAuth();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+
+  const handleAuthClick = (mode: 'login' | 'register') => {
+    setAuthMode(mode);
+    setShowAuthModal(true);
+  };
 
   return (
+    <>
     <header className="sticky top-0 z-50 w-full glass">
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16">
@@ -62,6 +74,36 @@ export function Header() {
             {/* Sound Toggle */}
             <SoundToggle />
             
+            {/* User info / Auth buttons */}
+            {user ? (
+              <div className="hidden md:flex items-center space-x-3">
+                <span className="text-white/80">
+                  Welcome, <span className="font-medium text-yellow-400">{user.display_name}</span>
+                </span>
+                <button
+                  onClick={logout}
+                  className="text-white/60 hover:text-white transition-colors text-sm"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="hidden md:flex items-center space-x-3">
+                <button
+                  onClick={() => handleAuthClick('login')}
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => handleAuthClick('register')}
+                  className="btn-game-show text-white text-sm px-4 py-1"
+                >
+                  Sign Up
+                </button>
+              </div>
+            )}
+            
             {/* Play Now Button */}
             <Link 
               href="/play" 
@@ -87,5 +129,13 @@ export function Header() {
         </nav>
       </div>
     </header>
+    
+    {/* Auth Modal */}
+    <AuthModal
+      isOpen={showAuthModal}
+      onClose={() => setShowAuthModal(false)}
+      mode={authMode}
+    />
+    </>
   );
 }

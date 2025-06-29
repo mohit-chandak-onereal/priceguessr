@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-provider";
+import { AuthProvider } from "@/contexts/auth-context";
 import { UsernameModal } from "@/components/ui/username-modal";
 import { HowToPlayModal } from "@/components/ui/how-to-play-modal";
 
@@ -42,9 +43,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <ThemeProvider>
-          <UsernameModal />
-          <HowToPlayModal />
-          {children}
+          <AuthProvider>
+            <UsernameModal />
+            <HowToPlayModal />
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

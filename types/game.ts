@@ -50,12 +50,6 @@ export interface GameSession {
   created_at: string;
 }
 
-export interface DailyChallenge {
-  date: string;
-  item_id: string;
-  created_at: string;
-}
-
 export interface LeaderboardEntry {
   id: string;
   user_id: string;
