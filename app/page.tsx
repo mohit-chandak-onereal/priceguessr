@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-8 sm:py-12 md:py-20">
+      <section className="relative overflow-hidden flex items-center" style={{ minHeight: 'calc(100vh - 120px)' }}>
         {/* Animated Background Sparkles */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 text-4xl text-yellow-bright/20 animate-pulse">★</div>
@@ -13,6 +13,13 @@ export default function Home() {
           <div className="absolute bottom-20 left-1/4 text-5xl text-yellow-bright/20 animate-pulse" style={{ animationDelay: '1s' }}>★</div>
           <div className="absolute bottom-10 right-1/3 text-4xl text-yellow-bright/25 animate-pulse" style={{ animationDelay: '1.5s' }}>★</div>
           <div className="absolute top-1/3 left-1/2 text-3xl text-yellow-bright/20 animate-pulse" style={{ animationDelay: '2s' }}>★</div>
+          <div className="absolute top-1/4 right-1/4 text-2xl text-yellow-bright/15 animate-pulse" style={{ animationDelay: '0.3s' }}>★</div>
+          <div className="absolute bottom-1/3 left-20 text-3xl text-yellow-bright/25 animate-pulse" style={{ animationDelay: '1.2s' }}>★</div>
+          <div className="absolute top-1/2 right-10 text-4xl text-yellow-bright/15 animate-pulse" style={{ animationDelay: '1.8s' }}>★</div>
+          <div className="absolute bottom-1/4 right-1/2 text-2xl text-yellow-bright/20 animate-pulse" style={{ animationDelay: '0.8s' }}>★</div>
+          <div className="absolute top-16 left-1/3 text-3xl text-yellow-bright/15 animate-pulse" style={{ animationDelay: '2.3s' }}>★</div>
+          <div className="absolute bottom-16 left-1/2 text-2xl text-yellow-bright/25 animate-pulse" style={{ animationDelay: '1.6s' }}>★</div>
+          <div className="absolute top-1/2 left-16 text-3xl text-yellow-bright/20 animate-pulse" style={{ animationDelay: '0.6s' }}>★</div>
         </div>
         
         {/* Content */}
@@ -56,31 +63,6 @@ export default function Home() {
             <p className="text-xs text-muted/50 mt-1">
               **Maybe not
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section with Gradient */}
-      <section className="py-16 sm:py-20 md:py-24 relative">
-        {/* Subtle Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-stage-blue via-stage-blue/95 to-stage-dark/90" />
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-16 text-yellow-bright">
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-game-show">10K+</div>
-              <div className="text-sm uppercase tracking-wider">Players</div>
-            </div>
-            <div className="text-2xl animate-pulse hidden sm:block">★</div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-game-show">50K+</div>
-              <div className="text-sm uppercase tracking-wider">Games</div>
-            </div>
-            <div className="text-2xl animate-pulse hidden sm:block">★</div>
-            <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold text-game-show">100</div>
-              <div className="text-sm uppercase tracking-wider">Real Items</div>
-            </div>
           </div>
         </div>
       </section>

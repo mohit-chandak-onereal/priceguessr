@@ -7,7 +7,7 @@ export function PriceInput() {
   const [isFocused, setIsFocused] = useState(false);
   const [shake, setShake] = useState(false);
   const [displayValue, setDisplayValue] = useState('');
-  const { currentGuess, setCurrentGuess, makeGuess, error } = useGameStore();
+  const { currentGuess, setCurrentGuess, makeGuess, error, attemptsRemaining, guesses } = useGameStore();
   
   // Sync display value with current guess on mount and when guess changes
   useEffect(() => {
@@ -72,56 +72,71 @@ export function PriceInput() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="text-center mb-3">
-        <h3 className="text-xl font-bold text-game-show text-yellow-bright">
-          ENTER YOUR GUESS
-        </h3>
+    <div className="relative">
+      {/* Attempts counter in top corner */}
+      <div
+        className={`
+          absolute -top-3 -right-3 w-12 h-12 rounded-full flex items-center justify-center
+          text-sm font-bold border-2 z-20
+          ${
+            attemptsRemaining > 3
+              ? 'bg-green-bright text-white border-green-bright'
+              : attemptsRemaining > 1
+              ? 'bg-yellow-bright text-stage-dark border-yellow-bright'
+              : 'bg-red-bright text-white border-red-bright animate-pulse'
+          }
+        `}
+      >
+        {guesses.length}/6
       </div>
 
-      <div className="relative">
-        {/* Price Display Container */}
-        <div className={`
-          price-display text-2xl md:text-3xl text-center p-4
-          transition-all duration-200
-          ${isFocused ? 'border-yellow-bright shadow-lg shadow-yellow-bright/50' : ''}
-          ${error ? 'border-red-bright shadow-lg shadow-red-bright/50' : ''}
-          ${shake ? 'shake-input' : ''}
-        `}>
-          <span className="text-yellow-bright mr-2">$</span>
-          <input
-            type="text"
-            inputMode="decimal"
-            pattern="[0-9,]*\.?[0-9]*"
-            value={displayValue}
-            onChange={handleInputChange}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            placeholder="0"
-            className="bg-transparent outline-none text-green-bright font-mono inline-block w-auto min-w-[150px] max-w-[300px]"
-            style={{ width: `${Math.max(150, Math.min(300, displayValue.length * 18))}px` }}
-            autoFocus
-          />
+      <form onSubmit={handleSubmit} className="relative panel-game-show p-4">
+        <div className="flex items-center gap-4">
+          {/* Label */}
+          <h3 className="text-lg font-bold text-game-show text-yellow-bright whitespace-nowrap">
+            GUESS
+          </h3>
+
+          {/* Price Input */}
+          <div className={`
+            price-display text-xl md:text-2xl flex-1 px-4 py-2
+            transition-all duration-200 flex items-center
+            ${isFocused ? 'border-yellow-bright shadow-lg shadow-yellow-bright/50' : ''}
+            ${error ? 'border-red-bright shadow-lg shadow-red-bright/50' : ''}
+            ${shake ? 'shake-input' : ''}
+          `}>
+            <span className="text-yellow-bright mr-2">$</span>
+            <input
+              type="text"
+              inputMode="decimal"
+              pattern="[0-9,]*\.?[0-9]*"
+              value={displayValue}
+              onChange={handleInputChange}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              placeholder="0"
+              className="bg-transparent outline-none text-green-bright font-mono flex-1"
+              autoFocus
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={!currentGuess.trim()}
+            className="btn-game-show text-white px-6 py-2 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          >
+            SUBMIT
+          </button>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="absolute -bottom-6 left-0 right-0 text-center">
+          <div className="text-center mt-2">
             <span className="text-xs text-red-bright">{error}</span>
           </div>
         )}
-      </div>
-
-      {/* Submit Button */}
-      <div className="text-center mt-8">
-        <button
-          type="submit"
-          disabled={!currentGuess.trim()}
-          className="btn-game-show text-white text-lg px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed w-full"
-        >
-          SUBMIT GUESS
-        </button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }

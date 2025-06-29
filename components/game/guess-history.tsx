@@ -49,12 +49,12 @@ export function GuessHistory() {
   const actualPrice = currentItem.price;
 
   return (
-    <div className="space-y-3">
-      <h3 className="text-lg font-bold text-center text-yellow-bright text-game-show">
+    <div className="flex flex-col h-full">
+      <h3 className="text-lg font-bold text-center text-yellow-bright text-game-show mb-3 flex-shrink-0">
         YOUR GUESSES
       </h3>
 
-      <div className="space-y-2">
+      <div className="space-y-2 overflow-y-auto flex-grow">
         {/* Always show 6 slots */}
         {Array.from({ length: 6 }, (_, index) => {
           const guess = guesses[index];

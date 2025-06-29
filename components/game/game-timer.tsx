@@ -64,10 +64,16 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
   };
 
   return (
-    <div className={`w-full ${timeLeft <= 3 ? 'timer-warning' : ''}`}>
+    <div className="w-full">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-bold text-yellow-bright">TIME REMAINING</span>
-        <span className={`text-2xl font-bold font-mono ${timeLeft <= 5 ? 'text-red-bright animate-pulse' : 'text-white'}`}>
+        <span 
+          className={`text-2xl font-bold font-mono ${timeLeft <= 5 ? 'text-red-bright' : 'text-white'}`}
+          style={timeLeft <= 5 ? {
+            animation: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            textShadow: `0 0 20px ${getColor()}, 0 0 40px ${getColor()}`
+          } : {}}
+        >
           0:{timeLeft.toString().padStart(2, '0')}
         </span>
       </div>
@@ -87,14 +93,8 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
           style={{
             width: `${progress}%`,
             backgroundColor: getColor(),
-            boxShadow: `0 0 20px ${getColor()}`,
           }}
-        >
-          {/* Animated glow effect */}
-          <div className="absolute inset-0 animate-pulse opacity-50" style={{
-            background: `linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)`
-          }} />
-        </div>
+        />
         
         {/* Timer icon */}
         <div className="absolute top-1/2 left-4 -translate-y-1/2 text-white/70">

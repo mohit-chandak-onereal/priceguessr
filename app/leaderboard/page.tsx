@@ -99,7 +99,6 @@ export default function LeaderboardPage() {
                     <th className="px-4 py-3 text-center">Score</th>
                     <th className="px-4 py-3 text-center">Accuracy</th>
                     <th className="px-4 py-3 text-center">Attempts</th>
-                    <th className="px-4 py-3 text-right">Price</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -138,11 +137,6 @@ export default function LeaderboardPage() {
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center text-white">{entry.attempts}/6</td>
-                      <td className="px-4 py-3 text-right">
-                        <span className="text-xl font-bold text-yellow-bright">
-                          ${entry.item_price.toLocaleString()}
-                        </span>
-                      </td>
                     </tr>
                   ))}
                 </tbody>

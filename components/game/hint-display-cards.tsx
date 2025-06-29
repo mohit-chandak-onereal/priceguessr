@@ -88,9 +88,14 @@ export function HintDisplay() {
 
   return (
     <div className="space-y-3">
-      <h3 className="text-lg font-bold text-center text-yellow-bright text-game-show">
-        HINTS & CLUES
-      </h3>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-lg font-bold text-yellow-bright text-game-show">
+          HINTS & CLUES
+        </h3>
+        <span className="text-sm font-bold text-muted">
+          {hintsRevealed}/{hints.length}
+        </span>
+      </div>
 
       {/* Navigation Dots */}
       <div className="flex justify-center gap-1.5 mb-3">
@@ -204,13 +209,6 @@ export function HintDisplay() {
         </div>
       </div>
 
-      {/* Progress Info */}
-      <div className="text-center text-xs text-muted">
-        {hintsRevealed} of {hints.length} hints unlocked
-        {guesses.length < GAME_CONFIG.MAX_ATTEMPTS && hintsRevealed < hints.length && (
-          <span className="block mt-1">Make a guess to unlock more!</span>
-        )}
-      </div>
     </div>
   );
 }

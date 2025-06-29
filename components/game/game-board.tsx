@@ -163,25 +163,8 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           </div>
 
           {/* Game Control - Timer and Input Combined */}
-          <GameControl />
-
-          {/* Attempts Remaining */}
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2">
-              <span className="text-sm text-muted">Attempts:</span>
-              <div className="flex gap-1">
-                {Array.from({ length: 6 }, (_, i) => (
-                  <div
-                    key={i}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      i < attemptsRemaining
-                        ? 'bg-green-bright'
-                        : 'bg-red-bright'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
+          <div className="mt-4">
+            <GameControl />
           </div>
 
           {/* Hints Section - Below game controls on mobile, same width */}
@@ -191,17 +174,19 @@ export function GameBoard({ categoryId }: GameBoardProps) {
         </div>
 
         {/* Right Side - Score, History and Hints */}
-        <div className="lg:col-span-1 space-y-4 sm:space-y-6">
+        <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6 h-full">
           {/* Score Display */}
           <ScoreDisplay />
 
-          {/* Guess History - Always visible and at top for reference */}
-          <div className="panel-game-show p-4 sm:p-6 min-h-[200px] max-h-[300px] overflow-y-auto">
-            <GuessHistory />
+          {/* Guess History - Fills remaining space */}
+          <div className="panel-game-show p-4 sm:p-6 flex-grow min-h-0">
+            <div className="h-full overflow-hidden">
+              <GuessHistory />
+            </div>
           </div>
 
-          {/* Hints Section - Desktop only */}
-          <div className="panel-game-show p-4 sm:p-6 hidden lg:block">
+          {/* Hints Section - Desktop only, fixed at bottom */}
+          <div className="panel-game-show p-4 sm:p-6 hidden lg:block flex-shrink-0">
             <HintDisplay />
           </div>
         </div>
