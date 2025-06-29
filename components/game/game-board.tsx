@@ -181,8 +181,8 @@ export function GameBoard({ categoryId }: GameBoardProps) {
         {/* Desktop Layout - Grid with aligned bottom */}
         <div className="hidden lg:grid lg:grid-cols-3 gap-6" style={{ gridTemplateRows: '1fr auto' }}>
           {/* Left Column - Image spanning full height */}
-          <div className="col-span-2 row-span-2">
-            <div className="aspect-[4/3] w-full">
+          <div className="col-span-2 row-span-2 h-full">
+            <div className="h-full">
               <ItemImage 
                 imageUrl={currentItem.images[0]} 
                 itemName={currentItem.name} 
