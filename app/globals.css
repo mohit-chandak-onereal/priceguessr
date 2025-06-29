@@ -58,6 +58,7 @@
   /* Font families */
   --font-family-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-family-display: 'Arial Black', 'Helvetica Neue', sans-serif;
+  --font-family-retro: 'Arial Black', 'Impact', sans-serif;
   
   /* Animations */
   --animate-spin-slow: spin 8s linear infinite;
@@ -195,6 +196,42 @@
       3px 3px 0px rgba(0, 0, 0, 0.5),
       4px 4px 0px rgba(0, 0, 0, 0.3),
       5px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Retro 70s Style Text - Inspired by Super 70s */
+  .text-retro-70s {
+    font-family: var(--font-family-retro);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: #fbbf24; /* Yellow bright */
+    position: relative;
+    display: inline-block;
+    text-shadow:
+      0 1px 0 #f59e0b,
+      0 2px 0 #ea580c,
+      0 3px 0 #dc2626,
+      0 4px 0 #b91c1c,
+      0 5px 0 #991b1b,
+      0 6px 0 #7f1d1d,
+      0 7px 0 #701a1a,
+      0 8px 15px rgba(0, 0, 0, 0.6);
+    transform: perspective(400px) rotateX(10deg);
+  }
+  
+  .text-retro-70s-large {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.85;
+  }
+  
+  .text-retro-70s-medium {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 0.9;
+  }
+  
+  .text-retro-70s-small {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1;
   }
   
   .text-outline {

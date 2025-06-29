@@ -40,7 +40,7 @@ export function Header() {
               </div>
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-bright rounded-full animate-pulse"></div>
             </div>
-            <span className="text-2xl font-bold text-game-show text-white">
+            <span className="text-retro-70s text-retro-70s-small">
               <span className="star-decoration">PriceGuessr</span>
             </span>
           </Link>

@@ -18,8 +18,8 @@ export default function Home() {
                 <span className="block">COME ON DOWN!</span>
                 <span className="block text-xl sm:text-3xl md:text-5xl mt-1 sm:mt-2 text-yellow-bright">You&apos;re the next contestant on</span>
               </h1>
-              <div className="text-4xl sm:text-6xl md:text-8xl font-bold mt-2 sm:mt-4">
-                <span className="gradient-text text-outline">PRICEGUESSR</span>
+              <div className="mt-2 sm:mt-4">
+                <span className="text-retro-70s text-retro-70s-large">PRICEGUESSR</span>
               </div>
             </div>
             

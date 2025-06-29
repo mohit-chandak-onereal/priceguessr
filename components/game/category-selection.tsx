@@ -44,8 +44,8 @@ export function CategorySelection() {
     <div className="max-w-6xl mx-auto px-4">
       {/* Header */}
       <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-game-show text-white mb-3 sm:mb-6">
-          <span className="star-decoration">SELECT YOUR SHOWCASE</span>
+        <h1 className="mb-3 sm:mb-6">
+          <span className="text-retro-70s text-retro-70s-medium star-decoration">SELECT YOUR SHOWCASE</span>
         </h1>
         <p className="text-base sm:text-xl md:text-2xl text-yellow-bright px-4">
           <span className="inline-block animate-pulse">Choose a category and test your pricing prowess!</span>

@@ -22,8 +22,8 @@ export default function LeaderboardPage() {
       <div className="container mx-auto px-4 py-6 sm:py-8">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-game-show text-white mb-3 sm:mb-4">
-            <span className="star-decoration">GLOBAL LEADERBOARD</span>
+          <h1 className="mb-3 sm:mb-4">
+            <span className="text-retro-70s text-retro-70s-medium star-decoration">GLOBAL LEADERBOARD</span>
           </h1>
           <p className="text-base sm:text-xl text-yellow-bright px-4">
             See how you rank against the world&apos;s best price guessers!
