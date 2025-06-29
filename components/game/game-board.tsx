@@ -179,9 +179,9 @@ export function GameBoard({ categoryId }: GameBoardProps) {
         </div>
 
         {/* Desktop Layout - Grid with aligned bottom */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6" style={{ gridTemplateRows: 'auto 1fr auto' }}>
-          {/* Top Row - Image and Score */}
-          <div className="col-span-2">
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6" style={{ gridTemplateRows: '1fr auto' }}>
+          {/* Left Column - Image spanning full height */}
+          <div className="col-span-2 row-span-2">
             <div className="aspect-[4/3] w-full">
               <ItemImage 
                 imageUrl={currentItem.images[0]} 
@@ -189,14 +189,13 @@ export function GameBoard({ categoryId }: GameBoardProps) {
               />
             </div>
           </div>
-          <div>
-            <ScoreDisplay />
-          </div>
 
-          {/* Middle Row - Empty space and Guess History */}
-          <div className="col-span-2"></div>
-          <div className="panel-game-show p-6 overflow-hidden">
-            <GuessHistory />
+          {/* Right Column Top - Score and Guess History */}
+          <div className="flex flex-col gap-6 min-h-0">
+            <ScoreDisplay />
+            <div className="panel-game-show p-6 overflow-hidden flex-grow min-h-0">
+              <GuessHistory />
+            </div>
           </div>
 
           {/* Bottom Row - Game Control and Hints (aligned) */}
