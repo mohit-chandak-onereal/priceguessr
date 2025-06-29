@@ -101,11 +101,21 @@ async function seedDatabase() {
 
     // Create a demo user for testing
     console.log('\nCreating demo user...');
+    
+    // Import crypto for password hashing
+    const crypto = await import('crypto');
+    const username = 'demo';
+    const password = 'demo123';
+    const salt = username.substring(0, 5).padEnd(5, 'x');
+    const passwordHash = crypto.default
+      .pbkdf2Sync(password, salt, 10000, 64, 'sha512')
+      .toString('hex');
+    
     const { error: userError } = await supabase
       .from('users')
       .insert({
         username: 'demo',
-        password_hash: '5d9b8c8f7e6d5c4b3a2918273645362718293847564738291029384756473829', // Password: "demo123"
+        password_hash: passwordHash,
         display_name: 'Demo User',
       });
 
