@@ -19,6 +19,8 @@ class SoundManager {
       gameOver: '/sounds/game-over.mp3',
       newHighScore: '/sounds/high-score.mp3',
       reveal: '/sounds/reveal.mp3',
+      click: '/sounds/click.mp3',
+      keypress: '/sounds/keypress.mp3',
     };
 
     Object.entries(soundFiles).forEach(([key, path]) => {
@@ -74,6 +76,40 @@ class SoundManager {
       sound.volume = clampedVolume;
     });
   }
+
+  // Initialize global sound handlers
+  initializeGlobalSounds() {
+    if (typeof window === 'undefined') return;
+
+    // Click sound handler
+    document.addEventListener('click', (e) => {
+      if (!this.enabled) return;
+      
+      const target = e.target as HTMLElement;
+      // Skip if clicking on input fields or text areas
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') return;
+      
+      // Play click sound for buttons and interactive elements
+      if (target.tagName === 'BUTTON' || 
+          target.tagName === 'A' || 
+          target.closest('button') || 
+          target.closest('a') ||
+          target.hasAttribute('role') && target.getAttribute('role') === 'button') {
+        this.play('click');
+      }
+    });
+
+    // Keyboard sound handler
+    document.addEventListener('keydown', (e) => {
+      if (!this.enabled) return;
+      
+      // Don't play sound for modifier keys
+      if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
+      
+      // Play keypress sound
+      this.play('keypress');
+    });
+  }
 }
 
 // Create singleton instance
@@ -82,4 +118,12 @@ export const soundManager = new SoundManager();
 // Preload sounds when the module is imported
 if (typeof window !== 'undefined') {
   soundManager.preloadSounds();
+  // Initialize global sound handlers when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      soundManager.initializeGlobalSounds();
+    });
+  } else {
+    soundManager.initializeGlobalSounds();
+  }
 }

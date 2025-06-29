@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useGameStore } from '@/lib/store/game-store';
-import { HintDisplay } from './hint-display';
+import { HintDisplay } from './hint-display-cards';
 import { GuessHistory } from './guess-history';
 import { GameOverModal } from './game-over-modal';
 import { ItemImage } from './item-image';
@@ -148,11 +148,11 @@ export function GameBoard({ categoryId }: GameBoardProps) {
       </div>
 
       {/* Main Game Layout */}
-      <div className={`grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 ${
+      <div className={`grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 ${
         shakeEffect ? (attemptsRemaining === 0 ? 'shake-hard' : 'shake') : ''
       }`}>
         {/* Left Side - Image and Guess Section */}
-        <div className="lg:col-span-3 space-y-4 sm:space-y-6">
+        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
 
           {/* Item Image */}
           <div className="aspect-[4/3] w-full">
@@ -183,20 +183,25 @@ export function GameBoard({ categoryId }: GameBoardProps) {
               </div>
             </div>
           </div>
+
+          {/* Hints Section - Below game controls on mobile, same width */}
+          <div className="panel-game-show p-4 sm:p-6 lg:hidden">
+            <HintDisplay />
+          </div>
         </div>
 
         {/* Right Side - Score, History and Hints */}
-        <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+        <div className="lg:col-span-1 space-y-4 sm:space-y-6">
           {/* Score Display */}
           <ScoreDisplay />
 
           {/* Guess History - Always visible and at top for reference */}
-          <div className="panel-game-show p-4 sm:p-6 min-h-[200px] max-h-[350px] overflow-y-auto">
+          <div className="panel-game-show p-4 sm:p-6 min-h-[200px] max-h-[300px] overflow-y-auto">
             <GuessHistory />
           </div>
 
-          {/* Hints Section - Moved below history */}
-          <div className="panel-game-show p-4 sm:p-6">
+          {/* Hints Section - Desktop only */}
+          <div className="panel-game-show p-4 sm:p-6 hidden lg:block">
             <HintDisplay />
           </div>
         </div>
@@ -210,18 +215,6 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           onPlayAgain={handlePlayAgain}
           onBackToCategories={handleBackToCategories}
         />
-      )}
-      
-      {/* Play Again Button when game is over but modal is closed */}
-      {gameStatus !== 'playing' && !showGameOver && (
-        <div className="text-center mt-8">
-          <button
-            onClick={handlePlayAgain}
-            className="btn-game-show text-white px-8 py-4 text-lg animate-pulse"
-          >
-            Play Again!
-          </button>
-        </div>
       )}
     </div>
   );

@@ -101,7 +101,7 @@ export function GameOverModal({
             ))}
           </div>
 
-          {/* Result - More Compact */}
+          {/* Result */}
           <div className="mb-4">
             {isWin ? (
               <>
@@ -111,17 +111,22 @@ export function GameOverModal({
                   </h2>
                   <span className="text-3xl">🎉</span>
                 </div>
-                <div className="flex items-center justify-center gap-4 text-sm sm:text-base text-muted mb-3">
-                  <span>Accuracy: <span className="text-yellow-bright font-bold">{accuracy.toFixed(1)}%</span></span>
-                  <span>•</span>
-                  <span>Attempts: <span className="text-yellow-bright font-bold">{guesses.length}/6</span></span>
+                
+                {/* All stats in one line with points background */}
+                <div className="flex items-center justify-center bg-gradient-to-r from-yellow-bright/20 to-orange-bright/20 rounded-lg px-4 py-3 border-2 border-yellow-bright">
+                  <div className="flex items-center gap-4 text-sm sm:text-base">
+                    <span>Accuracy: <span className="text-yellow-bright font-bold">{accuracy.toFixed(1)}%</span></span>
+                    <span className="text-muted">•</span>
+                    <span>Attempts: <span className="text-yellow-bright font-bold">{guesses.length}/6</span></span>
+                    <span className="text-muted">•</span>
+                    <span className="text-lg sm:text-xl font-bold text-yellow-bright">
+                      +{sessionScore.toLocaleString()} pts
+                    </span>
+                  </div>
                 </div>
                 
-                {/* Score Display - Inline */}
-                <div className="flex items-center justify-center gap-2 bg-stage-dark/50 rounded-lg px-4 py-2">
-                  <span className="text-base sm:text-lg font-bold text-yellow-bright">
-                    +{sessionScore.toLocaleString()} pts
-                  </span>
+                {/* Additional badges */}
+                <div className="flex items-center justify-center gap-2 mt-2">
                   {currentScore >= highScore && (
                     <span className="text-xs text-green-bright font-bold animate-pulse">
                       NEW HIGH SCORE!
@@ -151,54 +156,54 @@ export function GameOverModal({
             )}
           </div>
 
-          {/* Item Reveal - Compact */}
-          <div className="mb-4 space-y-3">
-            {/* Item Info Row */}
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex-1 text-left">
-                <h3 className="text-base sm:text-lg font-bold text-yellow-bright line-clamp-1">
-                  {currentItem.name}
-                </h3>
-                <p className="text-sm text-muted">by {currentItem.brand}</p>
-              </div>
-              
-              {/* Small Item Image */}
-              <div className="relative w-20 h-20 rounded-lg bg-stage-dark/50 overflow-hidden flex-shrink-0">
+          {/* Item Card - Vertical layout with image on top */}
+          <div className="mb-4 bg-stage-dark/50 rounded-lg p-4 border-2 border-border">
+            {/* Large Item Image Centered on Top */}
+            <div className="flex justify-center mb-4">
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-lg bg-black/30 overflow-hidden border-2 border-yellow-bright/50">
                 <Image 
                   src={currentItem.images[0]} 
                   alt={currentItem.name}
                   fill
-                  className="object-contain p-1"
+                  className="object-contain p-2"
                 />
               </div>
             </div>
             
-            {/* Price Reveal - Compact */}
-            <div className="p-3 bg-stage-dark rounded-lg border-2 border-yellow-bright overflow-hidden">
-              <p className="text-sm text-muted mb-1">Actual price:</p>
+            {/* Item Name and Brand in One Line */}
+            <div className="text-center mb-3">
+              <h3 className="text-lg sm:text-xl font-bold text-yellow-bright">
+                {currentItem.name} <span className="text-sm font-normal text-muted">by {currentItem.brand}</span>
+              </h3>
+            </div>
+            
+            {/* Price Reveal - Larger without label */}
+            <div className="bg-gradient-to-r from-yellow-bright/10 to-orange-bright/10 rounded-lg py-3 px-4 border border-yellow-bright/50">
               {showPrice ? (
-                <div className="overflow-x-auto">
-                  <AnimatedPrice targetPrice={currentItem.price} />
+                <div className="text-center">
+                  <span className="text-2xl sm:text-3xl font-bold text-game-show text-yellow-bright">
+                    ${currentItem.price.toLocaleString()}
+                  </span>
                 </div>
               ) : (
-                <div className="text-2xl sm:text-3xl font-bold text-game-show text-white">
+                <div className="text-2xl sm:text-3xl font-bold text-game-show text-white text-center">
                   ???
                 </div>
               )}
             </div>
           </div>
 
-          {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Actions - Smaller buttons */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={onPlayAgain}
-              className="btn-game-show text-white"
+              className="px-6 py-2.5 bg-gradient-to-r from-yellow-bright to-orange-bright text-stage-dark font-bold rounded-lg hover:shadow-glow transition-all text-sm"
             >
               PLAY AGAIN
             </button>
             <button
               onClick={onBackToCategories}
-              className="px-8 py-4 bg-stage-dark hover:bg-surface-hover text-white rounded-lg font-bold transition-all border-2 border-border hover:border-yellow-bright"
+              className="px-6 py-2.5 bg-stage-dark hover:bg-surface-hover text-white rounded-lg font-bold transition-all border-2 border-border hover:border-yellow-bright text-sm"
             >
               NEW CATEGORY
             </button>

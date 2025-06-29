@@ -54,24 +54,39 @@ export function GuessHistory() {
         YOUR GUESSES
       </h3>
 
-      {guesses.length === 0 ? (
-        <div className="text-center text-muted py-8">
-          <p className="text-lg">No guesses yet!</p>
-          <p className="text-sm mt-2">Enter your price guess below</p>
-        </div>
-      ) : (
-        <div className="space-y-2 max-h-64 overflow-y-auto">
-          {[...guesses].reverse().map((guess, reversedIndex) => {
-            const index = guesses.length - 1 - reversedIndex; // Get original index
+      <div className="space-y-2">
+        {/* Always show 6 slots */}
+        {Array.from({ length: 6 }, (_, index) => {
+          const guess = guesses[index];
+          
+          if (!guess) {
+            // Show placeholder for unused slots
+            return (
+              <div
+                key={index}
+                className="flex items-center justify-between p-3 rounded-lg border-2 border-border/30 bg-stage-dark/10 text-sm"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-stage-dark/50 text-muted border-2 border-border/50">
+                    {index + 1}
+                  </div>
+                  <div className="text-lg text-muted/50">
+                    Not Used
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          
           const difference = guess.value - actualPrice;
           const isHigher = difference > 0;
           const percentOff = Math.abs((difference / actualPrice) * 100);
 
           return (
             <div
-              key={reversedIndex}
+              key={index}
               className={`
-                flex items-center justify-between p-3 rounded-lg border-2 text-sm
+                flex items-center justify-between p-3 rounded-lg border-2 text-sm transition-all
                 ${
                   guess.isWithinRange
                     ? 'bg-green-bright/20 border-green-bright'
@@ -130,8 +145,7 @@ export function GuessHistory() {
             </div>
           );
         })}
-        </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/contexts/theme-provider";
 import { AuthProvider } from "@/contexts/auth-context";
 import { UsernameModal } from "@/components/ui/username-modal";
 import { HowToPlayModal } from "@/components/ui/how-to-play-modal";
+import { SoundInitializer } from "@/components/providers/sound-initializer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <AuthProvider>
+            <SoundInitializer />
             <UsernameModal />
             <HowToPlayModal />
             {children}

@@ -78,8 +78,13 @@ export async function getRandomItem(categoryId?: string): Promise<Item | null> {
 
   const { data, error } = await query;
 
-  if (error || !data || data.length === 0) {
+  if (error) {
     console.error('Error fetching random item:', error);
+    return null;
+  }
+  
+  if (!data || data.length === 0) {
+    console.error('No items found for the selected category');
     return null;
   }
 
