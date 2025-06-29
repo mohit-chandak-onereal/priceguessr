@@ -9,6 +9,7 @@ export interface LeaderboardEntry {
   game_session_id?: string;
   accuracy: number;
   attempts: number;
+  score?: number;
   item_name: string;
   item_price: number;
   created_at: string;

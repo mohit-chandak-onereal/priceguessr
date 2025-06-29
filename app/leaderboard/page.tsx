@@ -96,6 +96,7 @@ export default function LeaderboardPage() {
                     <th className="px-4 py-3 text-left">Rank</th>
                     <th className="px-4 py-3 text-left">Player</th>
                     <th className="px-4 py-3 text-left">Item</th>
+                    <th className="px-4 py-3 text-center">Score</th>
                     <th className="px-4 py-3 text-center">Accuracy</th>
                     <th className="px-4 py-3 text-center">Attempts</th>
                     <th className="px-4 py-3 text-right">Price</th>
@@ -126,6 +127,11 @@ export default function LeaderboardPage() {
                         </div>
                       </td>
                       <td className="px-4 py-3 text-muted">{entry.item_name}</td>
+                      <td className="px-4 py-3 text-center">
+                        <span className="text-yellow-bright font-bold text-lg">
+                          {entry.score || 1000 - (120 * entry.attempts)}
+                        </span>
+                      </td>
                       <td className="px-4 py-3 text-center">
                         <span className="text-green-bright font-bold">
                           {entry.accuracy.toFixed(1)}%

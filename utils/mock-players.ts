@@ -6,14 +6,7 @@ export interface MockPlayer {
   item_price: number;
 }
 
-const firstNames = [
-  'Alex', 'Sam', 'Jordan', 'Taylor', 'Morgan', 'Casey', 'Riley', 'Jamie',
-  'Avery', 'Quinn', 'Drew', 'Blake', 'Cameron', 'Dakota', 'Emery', 'Finley',
-  'Hayden', 'Jesse', 'Kai', 'Logan', 'Mason', 'Parker', 'Peyton', 'Reese',
-  'Rowan', 'Sage', 'Skyler', 'Spencer', 'Sydney', 'Tatum'
-];
-
-const lastInitials = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W'];
+const fixedNames = ['Mohit', 'Joe', 'Bryce'];
 
 const items = [
   { name: 'Instant Pot Duo', price: 89.99 },
@@ -35,25 +28,34 @@ const items = [
 
 export function generateMockPlayers(count: number, maxAccuracy: number = 95): MockPlayer[] {
   const mockPlayers: MockPlayer[] = [];
-  const usedNames = new Set<string>();
+  const nameIndex = { Mohit: 0, Joe: 0, Bryce: 0 };
 
   for (let i = 0; i < count; i++) {
-    let username: string;
+    // Cycle through the three names
+    const baseName = fixedNames[i % 3];
+    nameIndex[baseName]++;
     
-    // Generate unique username
-    do {
-      const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-      const lastInitial = lastInitials[Math.floor(Math.random() * lastInitials.length)];
-      const number = Math.floor(Math.random() * 99) + 1;
-      username = `${firstName}${lastInitial}${number}`;
-    } while (usedNames.has(username));
-    
-    usedNames.add(username);
+    // Add number suffix if this name is used more than once
+    const username = nameIndex[baseName] > 1 ? `${baseName}${nameIndex[baseName]}` : baseName;
 
-    // Generate game data with accuracy less than maxAccuracy
+    // Generate game data
     const item = items[Math.floor(Math.random() * items.length)];
-    const accuracy = Math.floor(Math.random() * (maxAccuracy - 70)) + 70; // 70% to maxAccuracy%
-    const attempts = Math.min(6, Math.floor((100 - accuracy) / 15) + 1); // Better accuracy = fewer attempts
+    
+    // Calculate score between 700-950 (based on game logic: 1000 - 120 per attempt)
+    // Score 950 = 1 attempt (1000 - 120*1 = 880, but we want 950 max)
+    // Score 700 = 3 attempts (1000 - 120*3 = 640, but we want 700 min)
+    // So we'll use attempts 1-3 and adjust accuracy to always be within 5%
+    
+    const score = Math.floor(Math.random() * (950 - 700 + 1)) + 700;
+    
+    // Work backwards from score to attempts
+    // Since score = 1000 - 120 * attempts, we can calculate:
+    // attempts = (1000 - score) / 120
+    let attempts = Math.round((1000 - score) / 120);
+    attempts = Math.max(1, Math.min(3, attempts)); // Ensure 1-3 attempts
+    
+    // Accuracy should be high (within 5%) since they won
+    const accuracy = Math.floor(Math.random() * 5) + 95; // 95-99%
 
     mockPlayers.push({
       username,
@@ -64,8 +66,11 @@ export function generateMockPlayers(count: number, maxAccuracy: number = 95): Mo
     });
   }
 
-  // Sort by accuracy (descending) then attempts (ascending)
+  // Sort by score (which correlates with accuracy and attempts)
   return mockPlayers.sort((a, b) => {
+    const scoreA = 1000 - (120 * a.attempts);
+    const scoreB = 1000 - (120 * b.attempts);
+    if (scoreB !== scoreA) return scoreB - scoreA;
     if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
     return a.attempts - b.attempts;
   });

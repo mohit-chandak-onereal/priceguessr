@@ -77,11 +77,15 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Convert map to array and sort
-    let leaderboardData = Array.from(uniquePlayers.values());
+    // Convert map to array and add score calculation
+    let leaderboardData = Array.from(uniquePlayers.values()).map(entry => ({
+      ...entry,
+      score: 1000 - (120 * entry.attempts) // Calculate score from attempts
+    }));
     
-    // Sort by accuracy (descending) then attempts (ascending)
+    // Sort by score (descending) then accuracy (descending) then attempts (ascending)
     leaderboardData.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
       if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
       return a.attempts - b.attempts;
     });
@@ -102,6 +106,7 @@ export async function GET(request: NextRequest) {
         attempts: mock.attempts,
         item_name: mock.item_name,
         item_price: mock.item_price,
+        score: 1000 - (120 * mock.attempts), // Calculate score from attempts
         created_at: new Date().toISOString(),
         is_mock: true
       }));
@@ -117,6 +122,7 @@ export async function GET(request: NextRequest) {
         attempts: mock.attempts,
         item_name: mock.item_name,
         item_price: mock.item_price,
+        score: 1000 - (120 * mock.attempts), // Calculate score from attempts
         created_at: new Date().toISOString(),
         is_mock: true
       }));
@@ -125,6 +131,7 @@ export async function GET(request: NextRequest) {
       
       // Re-sort after adding mock players
       leaderboardData.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
         if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
         return a.attempts - b.attempts;
       });
