@@ -98,6 +98,25 @@
   50% { opacity: 0.3; }
 }
 
+@keyframes star-animation {
+  0%, 100% { 
+    opacity: 1;
+    transform: translateY(-50%) rotate(0deg) scale(1);
+  }
+  25% {
+    opacity: 0.6;
+    transform: translateY(-50%) rotate(90deg) scale(1.2);
+  }
+  50% { 
+    opacity: 0.3;
+    transform: translateY(-50%) rotate(180deg) scale(1.4);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translateY(-50%) rotate(270deg) scale(1.2);
+  }
+}
+
 /* Base Styles */
 @layer base {
   :root {
@@ -283,7 +302,8 @@
     font-size: 1.2em;
     top: 50%;
     transform: translateY(-50%);
-    animation: flash 1s ease-in-out infinite;
+    animation: star-animation 2s ease-in-out infinite;
+    transform-origin: center;
   }
   
   .star-decoration::before {
@@ -293,7 +313,7 @@
   
   .star-decoration::after {
     right: 0;
-    animation-delay: 0.5s;
+    animation-delay: 1s;
   }
   
   /* Button Game Show Style */
