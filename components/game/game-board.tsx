@@ -155,7 +155,9 @@ export function GameBoard({ categoryId }: GameBoardProps) {
           <div className="aspect-[4/3] w-full">
             <ItemImage 
               imageUrl={currentItem.images[0]} 
-              itemName={currentItem.name} 
+              itemName={currentItem.name}
+              itemId={currentItem.id}
+              imageIndex={0}
             />
           </div>
 
@@ -185,7 +187,9 @@ export function GameBoard({ categoryId }: GameBoardProps) {
             <div className="h-full">
               <ItemImage 
                 imageUrl={currentItem.images[0]} 
-                itemName={currentItem.name} 
+                itemName={currentItem.name}
+                itemId={currentItem.id}
+                imageIndex={0}
               />
             </div>
           </div>

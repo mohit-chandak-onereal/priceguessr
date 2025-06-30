@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useGameStore } from '@/lib/store/game-store';
 import { useLeaderboard } from '@/hooks/use-leaderboard';
 import { shareResults, shareOnTwitter, copyToClipboard } from '@/utils/social-share';
+import { getItemImageUrl } from '@/utils/image-utils';
 
 interface GameOverModalProps {
   isOpen: boolean;
@@ -161,11 +162,12 @@ export function GameOverModal({
             <div className="flex justify-center mb-4">
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-lg bg-black/30 overflow-hidden border-2 border-yellow-bright/50">
                 <Image 
-                  src={currentItem.images[0]} 
+                  src={getItemImageUrl(currentItem.id, 0)} 
                   alt={currentItem.name}
                   fill
                   className="object-contain p-2"
                   sizes="(max-width: 640px) 192px, 224px"
+                  unoptimized
                 />
               </div>
             </div>

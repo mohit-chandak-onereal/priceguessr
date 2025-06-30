@@ -3,13 +3,16 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useGameStore } from '@/lib/store/game-store';
+import { getItemImageUrl } from '@/utils/image-utils';
 
 interface ItemImageProps {
   imageUrl: string;
   itemName: string;
+  itemId?: string;
+  imageIndex?: number;
 }
 
-export function ItemImage({ imageUrl, itemName }: ItemImageProps) {
+export function ItemImage({ imageUrl, itemName, itemId, imageIndex = 0 }: ItemImageProps) {
   const [imageError, setImageError] = useState(false);
   const { hintsRevealed, gameStatus } = useGameStore();
   
@@ -30,6 +33,9 @@ export function ItemImage({ imageUrl, itemName }: ItemImageProps) {
   
   const blurAmount = getBlurAmount();
   const isRevealed = blurAmount === 0;
+  
+  // Use our image API if itemId is provided, otherwise use the direct URL
+  const imageSrc = itemId ? getItemImageUrl(itemId, imageIndex) : imageUrl;
 
   // Fallback for broken images
   if (imageError) {
@@ -50,7 +56,7 @@ export function ItemImage({ imageUrl, itemName }: ItemImageProps) {
       {/* Main image with blur effect */}
       <div className="relative w-full h-full">
         <Image
-          src={imageUrl}
+          src={imageSrc}
           alt={itemName}
           fill
           className="object-cover transition-all duration-500"
@@ -60,6 +66,7 @@ export function ItemImage({ imageUrl, itemName }: ItemImageProps) {
           }}
           onError={() => setImageError(true)}
           priority
+          unoptimized={itemId ? true : false} // Don't optimize database images
         />
       </div>
       

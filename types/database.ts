@@ -88,6 +88,35 @@ export interface Database {
           created_at?: string
         }
       }
+      item_images: {
+        Row: {
+          id: string
+          item_id: string | null
+          image_data: string
+          mime_type: string | null
+          is_primary: boolean | null
+          display_order: number | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          item_id?: string | null
+          image_data: string
+          mime_type?: string | null
+          is_primary?: boolean | null
+          display_order?: number | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          item_id?: string | null
+          image_data?: string
+          mime_type?: string | null
+          is_primary?: boolean | null
+          display_order?: number | null
+          created_at?: string
+        }
+      }
       game_sessions: {
         Row: {
           id: string
