@@ -74,11 +74,14 @@ export async function GET(
       }
       
       // Finally, fallback to URL if available
-      if (item.images && item.images[imageIndex]) {
+      if (item.images && Array.isArray(item.images) && item.images[imageIndex]) {
         // Redirect to the external URL
         return NextResponse.redirect(item.images[imageIndex]);
       }
     }
+    
+    // Log what happened for debugging
+    console.log(`No image found for item ${itemId}: no item image, no category mock, no URL`);
     
     // Return 404 if no image found
     return NextResponse.json(
@@ -86,7 +89,7 @@ export async function GET(
       { status: 404 }
     );
   } catch (error) {
-    console.error('Error fetching image:', error);
+    console.error('Error fetching image for item:', itemId, error);
     return NextResponse.json(
       { error: 'Failed to fetch image' },
       { status: 500 }
