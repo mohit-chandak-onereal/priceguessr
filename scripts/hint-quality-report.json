@@ -1,0 +1,651 @@
+{
+  "summary": {
+    "totalItems": 87,
+    "poorQuality": 0,
+    "needsImprovement": 61,
+    "goodQuality": 26
+  },
+  "categoryAverages": [
+    {
+      "category": "Designer Fashion",
+      "averageScore": 7.1,
+      "itemCount": 10
+    },
+    {
+      "category": "Furniture",
+      "averageScore": 7.3,
+      "itemCount": 10
+    },
+    {
+      "category": "Grocery Items",
+      "averageScore": 7.2,
+      "itemCount": 10
+    },
+    {
+      "category": "Electronics",
+      "averageScore": 7.5,
+      "itemCount": 10
+    },
+    {
+      "category": "Art",
+      "averageScore": 7.5,
+      "itemCount": 2
+    },
+    {
+      "category": "Jewelry",
+      "averageScore": 6.8,
+      "itemCount": 10
+    },
+    {
+      "category": "Sports Equipment",
+      "averageScore": 7.3,
+      "itemCount": 10
+    },
+    {
+      "category": "Watches",
+      "averageScore": 7.3,
+      "itemCount": 10
+    },
+    {
+      "category": "Cars",
+      "averageScore": 7.3,
+      "itemCount": 10
+    },
+    {
+      "category": "Houses",
+      "averageScore": 7.2,
+      "itemCount": 5
+    }
+  ],
+  "itemsNeedingWork": [
+    {
+      "id": "3ac92bb7-791d-46ee-9f2d-92b5ecabd366",
+      "name": "Galleria Tote",
+      "category": "Designer Fashion",
+      "score": 6,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "a607b64f-1a97-4a4b-b44a-e6693852afc5",
+      "name": "Lady Dior",
+      "category": "Designer Fashion",
+      "score": 6,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "f8136d1c-077a-43da-9bcf-b5f4914fa8a0",
+      "name": "Greek Yogurt (32 oz)",
+      "category": "Grocery Items",
+      "score": 6,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "31eb78a5-9875-441f-9db1-91e155b706f9",
+      "name": "Whole Wheat Bread",
+      "category": "Grocery Items",
+      "score": 6,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "1a580bd0-3434-42fe-8052-133d5e226f80",
+      "name": "Possession Necklace",
+      "category": "Jewelry",
+      "score": 6,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "37299e7c-47cc-49c7-af57-d1fbe7ca594a",
+      "name": "Victoria Vine Bracelet",
+      "category": "Jewelry",
+      "score": 6,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "73a20327-30d4-4148-89f3-90a899368a32",
+      "name": "Birkin",
+      "category": "Designer Fashion",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "b00116ee-c18d-4c0f-a16d-0c5589b63d97",
+      "name": "City Bag",
+      "category": "Designer Fashion",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "b4a597e1-acbb-4774-919c-5b44997e4c05",
+      "name": "GG Marmont Matelassé Shoulder Bag",
+      "category": "Designer Fashion",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "848b4637-b00a-44e2-b045-edd547ed03b1",
+      "name": "Luggage Tote",
+      "category": "Designer Fashion",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "5bfa8690-ef62-46bd-afdd-5a917fb83442",
+      "name": "Sac de Jour",
+      "category": "Designer Fashion",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "9eff4358-64cc-4357-a0b5-a6f4053e83dc",
+      "name": "Barcelona Chair",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "8c806159-1dc4-4652-bfd5-c7a68d08cbed",
+      "name": "Eames Lounge Chair",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "e6d88262-d9fc-4a94-bedd-a252569ed397",
+      "name": "Egg Chair",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "d644f252-4540-460e-a325-d5ac4cf682a4",
+      "name": "LC2 Petit Comfort Chair",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "97332e09-f1aa-4331-96d2-6167e1ad0524",
+      "name": "Noguchi Coffee Table",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "d1345b80-def1-4923-9981-27332ac5f7a3",
+      "name": "Poäng Armchair",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 1: Contains generic phrases",
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "3857b9ec-0b36-4e6d-a5b3-371c3b9ccbb1",
+      "name": "Wassily Chair",
+      "category": "Furniture",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "ce993f3c-86ba-402f-bcef-7706aac68848",
+      "name": "Bananas",
+      "category": "Grocery Items",
+      "score": 7,
+      "issues": []
+    },
+    {
+      "id": "0bd9fb19-6310-4a8e-9aa5-37033ba542d5",
+      "name": "Broccoli",
+      "category": "Grocery Items",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "9789f779-5365-4e96-bf5d-85930f53b254",
+      "name": "Eggs (Dozen)",
+      "category": "Grocery Items",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "9be2c4e7-3218-417c-a55b-da1079fdae96",
+      "name": "Olive Oil (1 L)",
+      "category": "Grocery Items",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "82504010-5325-4393-a67c-083711d4ef44",
+      "name": "A7 IV",
+      "category": "Electronics",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "46d95e85-58ef-4f27-9ebd-5bb13dd773d2",
+      "name": "Echo (5th Gen)",
+      "category": "Electronics",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "1c567f22-c4fc-466f-8d59-763dd2f6c765",
+      "name": "Switch OLED",
+      "category": "Electronics",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "a02a1bef-ad5f-49bb-b961-b3f32ece23e1",
+      "name": "Watch Series 9",
+      "category": "Electronics",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "f8866d32-a75b-453b-8d0f-ebf6c3f52021",
+      "name": "XPS 13",
+      "category": "Electronics",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "02a87e0f-1021-4b14-9f4d-ed01b5875d03",
+      "name": "American Gothic",
+      "category": "Art",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "6cbec5bf-c681-4bc6-88ee-57e9ce1a967e",
+      "name": "Alhambra Necklace",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "38bde007-47bd-4c37-b949-7c403e4c7086",
+      "name": "Butterfly Brooch",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "7f1448c0-5fa1-47a7-943c-2311090f9be0",
+      "name": "Cluster Earrings",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "b5d5343e-d286-4a21-817a-3858fd755f14",
+      "name": "Happy Diamonds Ring",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "37fd37d2-84e7-472e-b37b-2a3dcb4ddf05",
+      "name": "Love Bracelet",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "8a15827e-7d69-466c-b78d-e2a6692fccd5",
+      "name": "Quatre Classique Ring",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "c1f7b63d-0fb9-41c9-a4ba-9700437ffda1",
+      "name": "Serpenti Watch‑Bracelet",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "bf62a32c-db56-4a4b-908d-868988cf467c",
+      "name": "Solitaire Diamond Ring",
+      "category": "Jewelry",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "7620e8be-78d6-4658-8928-0e5d3814488c",
+      "name": "Astrox 99 Badminton Racket",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "d1006682-956c-4836-8f5d-a31a1bbf5772",
+      "name": "Echo Barbell",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "03f1e780-f4f2-489d-8d12-ce19cefc8ad2",
+      "name": "Evolution Basketball",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "9f7b1fa3-461f-4538-9ebc-c531b8d6ac2e",
+      "name": "Mercurial Superfly FG",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "58506507-a347-4f11-9503-ce6cb5480254",
+      "name": "NBA Official Game Basketball",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "24b3bd59-3f34-4fde-b585-bf43597e6a6c",
+      "name": "Paradym Driver",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "f41c22ea-6927-479c-885a-99372f103944",
+      "name": "Predator Elite",
+      "category": "Sports Equipment",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "98f96ab0-c8fc-40db-901e-c186bfc13e19",
+      "name": "Nautilus 5711",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "a362f6fc-8928-4a30-8620-6ad5418a0e94",
+      "name": "Navitimer",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "fd2c65f9-eff2-4a65-bafe-3dde396ab4ec",
+      "name": "Prospex Diver",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "eb791ec5-bdfc-4cbb-955f-19edb22f2960",
+      "name": "Reverso",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "7144b574-4f9c-460b-830b-dfa30ea3b5bc",
+      "name": "Royal Oak",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "00d50448-1d48-400d-b526-265468cd0260",
+      "name": "Speedmaster Professional",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "b58168ec-96a8-4db1-ba1b-49fdfd94c3b0",
+      "name": "Tangente",
+      "category": "Watches",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "9393390c-0e61-461f-aaeb-58b624cbe580",
+      "name": "911 Carrera",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 2: Contains generic phrases",
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "19f70bb9-b8cd-4b50-a302-a16c36bc3d24",
+      "name": "LC 500",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "2488d3c6-8b37-47e9-b6e9-167b78306bed",
+      "name": "M3",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 1: Contains generic phrases",
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "926a9b5e-99b8-4c03-8015-0b927adaf1d8",
+      "name": "Model S",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "9f05fc7c-0cac-47bd-8c45-1c347b0e0de4",
+      "name": "Mustang GT",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "4e5615b2-44b6-4c78-ab1d-6e1af10ecc59",
+      "name": "Range Rover Sport",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "62a02ea5-b547-493a-9416-3ff731236d81",
+      "name": "S-Class",
+      "category": "Cars",
+      "score": 7,
+      "issues": [
+        "Hint 1: Contains generic phrases",
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "b7773cde-9285-4290-ad30-2bf7e8281a5d",
+      "name": "Casa Batlló",
+      "category": "Houses",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details",
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "84e2f4d7-6215-4490-9f2c-8edd32d618f4",
+      "name": "Villa Savoye",
+      "category": "Houses",
+      "score": 7,
+      "issues": [
+        "Hint 4: Lacks specific details, Should have more specific details for later hints"
+      ]
+    },
+    {
+      "id": "91945708-0437-4a47-8304-e3be30ac519b",
+      "name": "Villa Tugendhat",
+      "category": "Houses",
+      "score": 7,
+      "issues": [
+        "Hint 3: Lacks specific details"
+      ]
+    },
+    {
+      "id": "3a8e87f9-ad78-4486-a1ba-8798e621aee5",
+      "name": "Winchester Mystery House",
+      "category": "Houses",
+      "score": 7,
+      "issues": []
+    }
+  ]
+}
