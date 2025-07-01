@@ -9,9 +9,10 @@ const supabase = createClient(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const itemId = params.id;
     const searchParams = request.nextUrl.searchParams;
     const imageIndex = parseInt(searchParams.get('index') || '0');
