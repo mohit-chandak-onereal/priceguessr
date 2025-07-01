@@ -55,19 +55,40 @@ export function ItemImage({ imageUrl, itemName, itemId, imageIndex = 0 }: ItemIm
     <div className="relative w-full h-full rounded-lg overflow-hidden border-4 border-yellow-bright shadow-2xl">
       {/* Main image with blur effect */}
       <div className="relative w-full h-full">
-        <Image
-          src={imageSrc}
-          alt={itemName}
-          fill
-          className="object-cover transition-all duration-500"
-          style={{ 
-            filter: `blur(${blurAmount}px)`,
-            transform: isRevealed ? 'scale(1.05)' : 'scale(1)',
-          }}
-          onError={() => setImageError(true)}
-          priority
-          unoptimized={itemId ? true : false} // Don't optimize database images
-        />
+        {itemId ? (
+          // Use regular img tag for database images (API routes)
+          <img
+            src={imageSrc}
+            alt={itemName}
+            className="absolute inset-0 w-full h-full object-cover transition-all duration-500"
+            style={{ 
+              filter: `blur(${blurAmount}px)`,
+              transform: isRevealed ? 'scale(1.05)' : 'scale(1)',
+            }}
+            onError={(e) => {
+              console.error('Image load error:', e, 'Source:', imageSrc);
+              setImageError(true);
+            }}
+          />
+        ) : (
+          // Use Next Image for external URLs
+          <Image
+            src={imageSrc}
+            alt={itemName}
+            fill
+            className="object-cover transition-all duration-500"
+            style={{ 
+              filter: `blur(${blurAmount}px)`,
+              transform: isRevealed ? 'scale(1.05)' : 'scale(1)',
+            }}
+            onError={(e) => {
+              console.error('Image load error:', e, 'Source:', imageSrc);
+              setImageError(true);
+            }}
+            priority
+            unoptimized
+          />
+        )}
       </div>
       
       {/* Overlay effects */}
