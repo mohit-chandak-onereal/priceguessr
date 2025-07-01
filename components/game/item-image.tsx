@@ -57,6 +57,7 @@ export function ItemImage({ imageUrl, itemName, itemId, imageIndex = 0 }: ItemIm
       <div className="relative w-full h-full">
         {itemId ? (
           // Use regular img tag for database images (API routes)
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={imageSrc}
             alt={itemName}

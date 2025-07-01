@@ -11,9 +11,11 @@ export async function GET(
   request: NextRequest,
   context: { params: Promise<{ id: string }> }
 ) {
+  let itemId: string = '';
+  
   try {
     const params = await context.params;
-    const itemId = params.id;
+    itemId = params.id;
     const searchParams = request.nextUrl.searchParams;
     const imageIndex = parseInt(searchParams.get('index') || '0');
     
