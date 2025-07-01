@@ -6,9 +6,11 @@ CREATE TABLE IF NOT EXISTS public.item_images (
   mime_type VARCHAR(50) DEFAULT 'image/jpeg',
   is_primary BOOLEAN DEFAULT false,
   display_order INTEGER DEFAULT 0,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  CONSTRAINT unique_item_primary_image UNIQUE (item_id, is_primary) WHERE is_primary = true
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- Create partial unique index to ensure only one primary image per item
+CREATE UNIQUE INDEX unique_item_primary_image ON public.item_images(item_id) WHERE is_primary = true;
 
 -- Create index for faster lookups
 CREATE INDEX idx_item_images_item_id ON public.item_images(item_id);

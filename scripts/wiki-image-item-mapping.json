@@ -1,0 +1,547 @@
+{
+  "summary": {
+    "totalItems": 87,
+    "totalImages": 54,
+    "matchedItems": 43,
+    "unmatchedItems": 44,
+    "unmatchedImages": 11
+  },
+  "matches": [
+    {
+      "itemId": "6cbec5bf-c681-4bc6-88ee-57e9ce1a967e",
+      "itemName": "Alhambra Necklace",
+      "itemBrand": "Van Cleef & Arpels",
+      "imageName": "resized_Van_Cleef__Arpels_Alhambra_Necklace.JPG",
+      "confidence": "high"
+    },
+    {
+      "itemId": "02a87e0f-1021-4b14-9f4d-ed01b5875d03",
+      "itemName": "American Gothic",
+      "itemBrand": "Grant Wood",
+      "imageName": "resized_Grant_Wood.jpg",
+      "confidence": "medium"
+    },
+    {
+      "itemId": "4c99bc00-0d71-411a-a50c-64d578dc5e55",
+      "itemName": "Arco Floor Lamp",
+      "itemBrand": "Castiglioni Brothers",
+      "imageName": "resized_Castiglioni_Brothers_Arco_Floor_Lamp.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "ce993f3c-86ba-402f-bcef-7706aac68848",
+      "itemName": "Bananas",
+      "itemBrand": "Fresh Produce",
+      "imageName": "resized_Bananas.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "9eff4358-64cc-4357-a0b5-a6f4053e83dc",
+      "itemName": "Barcelona Chair",
+      "itemBrand": "Mies van der Rohe",
+      "imageName": "resized_Arne_Jacobsen_Egg_Chair.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "0bd9fb19-6310-4a8e-9aa5-37033ba542d5",
+      "itemName": "Broccoli",
+      "itemBrand": "Fresh Produce",
+      "imageName": "resized_Broccoli.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "02e3f0ca-82e8-4a73-b7d3-4b1bcd0de4a8",
+      "itemName": "Brown Rice",
+      "itemBrand": "Grain Valley",
+      "imageName": "resized_Brown_Rice.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "b7773cde-9285-4290-ad30-2bf7e8281a5d",
+      "itemName": "Casa Batlló",
+      "itemBrand": "Antoni Gaudí",
+      "imageName": "resized_Casa_Batll.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "57e5f8a7-d0c8-48fc-adf7-6b854b5eb2fd",
+      "itemName": "Championship Tennis Ball (3‑pack)",
+      "itemBrand": "Wilson",
+      "imageName": "resized_Titleist_Pro_V1_Golf_Ball.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "d4bbb8c2-4d71-47c6-aefe-95f99d14c2ee",
+      "itemName": "Chicken Breast",
+      "itemBrand": "Premium Poultry",
+      "imageName": "resized_Chicken_Breast.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "8e6f4618-3b84-4cd5-a9d6-8adb045a2664",
+      "itemName": "Classic Flap Bag",
+      "itemBrand": "Chanel",
+      "imageName": "resized_Chanel_Classic_Flap_Bag.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "7f1448c0-5fa1-47a7-943c-2311090f9be0",
+      "itemName": "Cluster Earrings",
+      "itemBrand": "Harry Winston",
+      "imageName": "resized_Harry_Winston_Cluster_Earrings.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "dda9d4e7-c659-4ac5-8ab1-f7e921c2e520",
+      "itemName": "Corvette C8",
+      "itemBrand": "Chevrolet",
+      "imageName": "resized_Chevrolet_Corvette_C8.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "8c806159-1dc4-4652-bfd5-c7a68d08cbed",
+      "itemName": "Eames Lounge Chair",
+      "itemBrand": "Charles & Ray Eames",
+      "imageName": "resized_Charles__Ray_Eames_Lounge_Chair.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "46d95e85-58ef-4f27-9ebd-5bb13dd773d2",
+      "itemName": "Echo (5th Gen)",
+      "itemBrand": "Amazon",
+      "imageName": "resized_Amazon_Echo_5th_Gen.png",
+      "confidence": "high"
+    },
+    {
+      "itemId": "e6d88262-d9fc-4a94-bedd-a252569ed397",
+      "itemName": "Egg Chair",
+      "itemBrand": "Arne Jacobsen",
+      "imageName": "resized_Hans_Wegner_Wishbone_Chair.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "9789f779-5365-4e96-bf5d-85930f53b254",
+      "itemName": "Eggs (Dozen)",
+      "itemBrand": "Farm Fresh",
+      "imageName": "resized_Eggs_Dozen.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "676fe51a-67b7-4610-99f4-9e5e0955b87a",
+      "itemName": "Fallingwater",
+      "itemBrand": "Frank Lloyd Wright",
+      "imageName": "resized_Fallingwater.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "0619e3cb-e188-4ed8-8fc6-d05533d31c5a",
+      "itemName": "Galaxy S23 Ultra",
+      "itemBrand": "Samsung",
+      "imageName": "resized_Samsung_Galaxy_S23_Ultra.png",
+      "confidence": "high"
+    },
+    {
+      "itemId": "3ac92bb7-791d-46ee-9f2d-92b5ecabd366",
+      "itemName": "Galleria Tote",
+      "itemBrand": "Prada",
+      "imageName": "resized_Prada_Galleria_Tote.JPG",
+      "confidence": "high"
+    },
+    {
+      "itemId": "b4a597e1-acbb-4774-919c-5b44997e4c05",
+      "itemName": "GG Marmont Matelassé Shoulder Bag",
+      "itemBrand": "Gucci",
+      "imageName": "resized_Gucci_GG_Marmont_Matelass_Shoulder_Bag.png",
+      "confidence": "high"
+    },
+    {
+      "itemId": "9b1e7340-8002-48cc-ae38-1a7760f2a887",
+      "itemName": "Girl with a Pearl Earring",
+      "itemBrand": "Johannes Vermeer",
+      "imageName": "resized_Johannes_Vermeer.jpg",
+      "confidence": "medium"
+    },
+    {
+      "itemId": "f8136d1c-077a-43da-9bcf-b5f4914fa8a0",
+      "itemName": "Greek Yogurt (32 oz)",
+      "itemBrand": "Dairy Delight",
+      "imageName": "resized_Greek_Yogurt_32_oz.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "b5d5343e-d286-4a21-817a-3858fd755f14",
+      "itemName": "Happy Diamonds Ring",
+      "itemBrand": "Chopard",
+      "imageName": "resized_Boucheron_Quatre_Classique_Ring.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "063406c0-3ac9-467e-b6e6-dbcb85816e4e",
+      "itemName": "iPhone 14 Pro",
+      "itemBrand": "Apple",
+      "imageName": "resized_Apple_Watch_Series_9.jpg",
+      "confidence": "medium"
+    },
+    {
+      "itemId": "2488d3c6-8b37-47e9-b6e9-167b78306bed",
+      "itemName": "M3",
+      "itemBrand": "BMW",
+      "imageName": "resized_BMW_M3.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "9f05fc7c-0cac-47bd-8c45-1c347b0e0de4",
+      "itemName": "Mustang GT",
+      "itemBrand": "Ford",
+      "imageName": "resized_Ford_Mustang_GT.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "a362f6fc-8928-4a30-8620-6ad5418a0e94",
+      "itemName": "Navitimer",
+      "itemBrand": "Breitling",
+      "imageName": "resized_Breitling_Navitimer.png",
+      "confidence": "high"
+    },
+    {
+      "itemId": "9be2c4e7-3218-417c-a55b-da1079fdae96",
+      "itemName": "Olive Oil (1 L)",
+      "itemBrand": "Mediterranean Gold",
+      "imageName": "resized_Olive_Oil_1_L.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "d1345b80-def1-4923-9981-27332ac5f7a3",
+      "itemName": "Poäng Armchair",
+      "itemBrand": "Ikea",
+      "imageName": "resized_Ikea_Pong_Armchair.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "3d498cd9-3eff-4784-8197-7671c7fa77af",
+      "itemName": "Portugieser",
+      "itemBrand": "IWC",
+      "imageName": "resized_IWC_Portugieser.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "fd2c65f9-eff2-4a65-bafe-3dde396ab4ec",
+      "itemName": "Prospex Diver",
+      "itemBrand": "Seiko",
+      "imageName": "resized_Seiko_Prospex_Diver.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "4e5615b2-44b6-4c78-ab1d-6e1af10ecc59",
+      "itemName": "Range Rover Sport",
+      "itemBrand": "Land Rover",
+      "imageName": "resized_Land_Rover_Range_Rover_Sport.jpg",
+      "confidence": "low"
+    },
+    {
+      "itemId": "7144b574-4f9c-460b-830b-dfa30ea3b5bc",
+      "itemName": "Royal Oak",
+      "itemBrand": "Audemars Piguet",
+      "imageName": "resized_Audemars_Piguet_Royal_Oak.png",
+      "confidence": "high"
+    },
+    {
+      "itemId": "62a02ea5-b547-493a-9416-3ff731236d81",
+      "itemName": "S-Class",
+      "itemBrand": "Mercedes-Benz",
+      "imageName": "resized_Mercedes-Benz_S-Class.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "00d50448-1d48-400d-b526-265468cd0260",
+      "itemName": "Speedmaster Professional",
+      "itemBrand": "Omega",
+      "imageName": "resized_Omega_Speedmaster_Professional.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "11338d90-60d1-4136-9a1d-e1016fcff6df",
+      "itemName": "Speedy 30",
+      "itemBrand": "Louis Vuitton",
+      "imageName": "resized_Louis_Vuitton_Speedy_30.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "60ea2aad-04f1-41bc-83e2-a2de53928a28",
+      "itemName": "Submariner",
+      "itemBrand": "Rolex",
+      "imageName": "resized_Rolex_Submariner.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "1c567f22-c4fc-466f-8d59-763dd2f6c765",
+      "itemName": "Switch OLED",
+      "itemBrand": "Nintendo",
+      "imageName": "resized_Nintendo_Switch_OLED.jpg",
+      "confidence": "high"
+    },
+    {
+      "itemId": "b58168ec-96a8-4db1-ba1b-49fdfd94c3b0",
+      "itemName": "Tangente",
+      "itemBrand": "Nomos",
+      "imageName": "resized_Nomos_Tangente.png",
+      "confidence": "high"
+    },
+    {
+      "itemId": "84e2f4d7-6215-4490-9f2c-8edd32d618f4",
+      "itemName": "Villa Savoye",
+      "itemBrand": "Le Corbusier",
+      "imageName": "resized_Villa_Savoye.jpg",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "91945708-0437-4a47-8304-e3be30ac519b",
+      "itemName": "Villa Tugendhat",
+      "itemBrand": "Ludwig Mies van der Rohe",
+      "imageName": "resized_Villa_Tugendhat.JPG",
+      "confidence": "exact"
+    },
+    {
+      "itemId": "3a8e87f9-ad78-4486-a1ba-8798e621aee5",
+      "itemName": "Winchester Mystery House",
+      "itemBrand": "Sarah Winchester",
+      "imageName": "resized_Winchester_Mystery_House.jpg",
+      "confidence": "exact"
+    }
+  ],
+  "unmatchedItems": [
+    {
+      "itemId": "9393390c-0e61-461f-aaeb-58b624cbe580",
+      "itemName": "911 Carrera",
+      "itemBrand": "Porsche"
+    },
+    {
+      "itemId": "82504010-5325-4393-a67c-083711d4ef44",
+      "itemName": "A7 IV",
+      "itemBrand": "Sony"
+    },
+    {
+      "itemId": "764dde0e-88b2-46b0-a0c2-9c456fb4aab8",
+      "itemName": "Almonds (1 lb)",
+      "itemBrand": "Nut Valley"
+    },
+    {
+      "itemId": "7620e8be-78d6-4658-8928-0e5d3814488c",
+      "itemName": "Astrox 99 Badminton Racket",
+      "itemBrand": "Yonex"
+    },
+    {
+      "itemId": "af9b4fe7-0ceb-4471-ac30-ea603010e5bc",
+      "itemName": "Baguette",
+      "itemBrand": "Fendi"
+    },
+    {
+      "itemId": "73a20327-30d4-4148-89f3-90a899368a32",
+      "itemName": "Birkin",
+      "itemBrand": "Hermès"
+    },
+    {
+      "itemId": "38bde007-47bd-4c37-b949-7c403e4c7086",
+      "itemName": "Butterfly Brooch",
+      "itemBrand": "Graff"
+    },
+    {
+      "itemId": "cc45a768-7f8c-4c60-833e-7fda2d64c8d1",
+      "itemName": "Carbon T7 Treadmill",
+      "itemBrand": "ProForm"
+    },
+    {
+      "itemId": "f68372e0-1e15-47a5-894f-ffae8f7dc842",
+      "itemName": "Carrera",
+      "itemBrand": "TAG Heuer"
+    },
+    {
+      "itemId": "b00116ee-c18d-4c0f-a16d-0c5589b63d97",
+      "itemName": "City Bag",
+      "itemBrand": "Balenciaga"
+    },
+    {
+      "itemId": "d1006682-956c-4836-8f5d-a31a1bbf5772",
+      "itemName": "Echo Barbell",
+      "itemBrand": "Rogue"
+    },
+    {
+      "itemId": "03f1e780-f4f2-489d-8d12-ce19cefc8ad2",
+      "itemName": "Evolution Basketball",
+      "itemBrand": "Wilson"
+    },
+    {
+      "itemId": "a5588cd0-7e5a-44c3-bb19-6467d1d4339b",
+      "itemName": "HERO12 Black",
+      "itemBrand": "GoPro"
+    },
+    {
+      "itemId": "a607b64f-1a97-4a4b-b44a-e6693852afc5",
+      "itemName": "Lady Dior",
+      "itemBrand": "Dior"
+    },
+    {
+      "itemId": "d644f252-4540-460e-a325-d5ac4cf682a4",
+      "itemName": "LC2 Petit Comfort Chair",
+      "itemBrand": "Le Corbusier"
+    },
+    {
+      "itemId": "19f70bb9-b8cd-4b50-a302-a16c36bc3d24",
+      "itemName": "LC 500",
+      "itemBrand": "Lexus"
+    },
+    {
+      "itemId": "37fd37d2-84e7-472e-b37b-2a3dcb4ddf05",
+      "itemName": "Love Bracelet",
+      "itemBrand": "Cartier"
+    },
+    {
+      "itemId": "848b4637-b00a-44e2-b045-edd547ed03b1",
+      "itemName": "Luggage Tote",
+      "itemBrand": "Céline"
+    },
+    {
+      "itemId": "e1cb76b8-6ea4-4912-a89e-de9dc0c8bdbe",
+      "itemName": "MacBook Pro 14\" M3",
+      "itemBrand": "Apple"
+    },
+    {
+      "itemId": "9f7b1fa3-461f-4538-9ebc-c531b8d6ac2e",
+      "itemName": "Mercurial Superfly FG",
+      "itemBrand": "Nike"
+    },
+    {
+      "itemId": "926a9b5e-99b8-4c03-8015-0b927adaf1d8",
+      "itemName": "Model S",
+      "itemBrand": "Tesla"
+    },
+    {
+      "itemId": "98f96ab0-c8fc-40db-901e-c186bfc13e19",
+      "itemName": "Nautilus 5711",
+      "itemBrand": "Patek Philippe"
+    },
+    {
+      "itemId": "58506507-a347-4f11-9503-ce6cb5480254",
+      "itemName": "NBA Official Game Basketball",
+      "itemBrand": "Spalding"
+    },
+    {
+      "itemId": "97332e09-f1aa-4331-96d2-6167e1ad0524",
+      "itemName": "Noguchi Coffee Table",
+      "itemBrand": "Isamu Noguchi"
+    },
+    {
+      "itemId": "24b3bd59-3f34-4fde-b585-bf43597e6a6c",
+      "itemName": "Paradym Driver",
+      "itemBrand": "Callaway"
+    },
+    {
+      "itemId": "1a580bd0-3434-42fe-8052-133d5e226f80",
+      "itemName": "Possession Necklace",
+      "itemBrand": "Piaget"
+    },
+    {
+      "itemId": "f41c22ea-6927-479c-885a-99372f103944",
+      "itemName": "Predator Elite",
+      "itemBrand": "Adidas"
+    },
+    {
+      "itemId": "35553394-978a-417c-9cec-57f018e4834d",
+      "itemName": "Pro V1 Golf Ball",
+      "itemBrand": "Titleist"
+    },
+    {
+      "itemId": "8a15827e-7d69-466c-b78d-e2a6692fccd5",
+      "itemName": "Quatre Classique Ring",
+      "itemBrand": "Boucheron"
+    },
+    {
+      "itemId": "eb791ec5-bdfc-4cbb-955f-19edb22f2960",
+      "itemName": "Reverso",
+      "itemBrand": "Jaeger‑LeCoultre"
+    },
+    {
+      "itemId": "3163e06b-dd9d-4d0d-9121-7c9bb3db89bc",
+      "itemName": "RS6 Avant",
+      "itemBrand": "Audi"
+    },
+    {
+      "itemId": "5bfa8690-ef62-46bd-afdd-5a917fb83442",
+      "itemName": "Sac de Jour",
+      "itemBrand": "Saint Laurent"
+    },
+    {
+      "itemId": "c1f7b63d-0fb9-41c9-a4ba-9700437ffda1",
+      "itemName": "Serpenti Watch‑Bracelet",
+      "itemBrand": "Bvlgari"
+    },
+    {
+      "itemId": "bf62a32c-db56-4a4b-908d-868988cf467c",
+      "itemName": "Solitaire Diamond Ring",
+      "itemBrand": "Tiffany & Co."
+    },
+    {
+      "itemId": "c34de4c2-7209-4cde-a52d-e5afd9b20bbf",
+      "itemName": "Supra",
+      "itemBrand": "Toyota"
+    },
+    {
+      "itemId": "8a14ad13-2c69-48ed-a280-49d429b5e5a4",
+      "itemName": "Tolix Marais A Chair",
+      "itemBrand": "Xavier Pauchard"
+    },
+    {
+      "itemId": "37299e7c-47cc-49c7-af57-d1fbe7ca594a",
+      "itemName": "Victoria Vine Bracelet",
+      "itemBrand": "Tiffany & Co."
+    },
+    {
+      "itemId": "3857b9ec-0b36-4e6d-a5b3-371c3b9ccbb1",
+      "itemName": "Wassily Chair",
+      "itemBrand": "Marcel Breuer"
+    },
+    {
+      "itemId": "a02a1bef-ad5f-49bb-b961-b3f32ece23e1",
+      "itemName": "Watch Series 9",
+      "itemBrand": "Apple"
+    },
+    {
+      "itemId": "8cf90054-233f-410d-ba3d-293ed47ce5f7",
+      "itemName": "WH‑1000XM5",
+      "itemBrand": "Sony"
+    },
+    {
+      "itemId": "4c34d358-778f-45ae-ab56-e17cd15eb68e",
+      "itemName": "Whole Milk",
+      "itemBrand": "Dairy Fresh"
+    },
+    {
+      "itemId": "31eb78a5-9875-441f-9db1-91e155b706f9",
+      "itemName": "Whole Wheat Bread",
+      "itemBrand": "Bakery Fresh"
+    },
+    {
+      "itemId": "aa85a039-84cb-4403-8441-78ec7308e14f",
+      "itemName": "Wishbone Chair",
+      "itemBrand": "Hans Wegner"
+    },
+    {
+      "itemId": "f8866d32-a75b-453b-8d0f-ebf6c3f52021",
+      "itemName": "XPS 13",
+      "itemBrand": "Dell"
+    }
+  ],
+  "unmatchedImages": [
+    "resized_Buckingham_Palace.jpg",
+    "resized_Gustav_Klimt.jpg",
+    "resized_Hearst_Castle.jpg",
+    "resized_Leonardo_da_Vinci.png",
+    "resized_Neuschwanstein_Castle.jpg",
+    "resized_Pablo_Picasso.jpg",
+    "resized_Palace_of_Versailles.jpg",
+    "resized_Rembrandt.jpg",
+    "resized_Salvador_Dal.jpg",
+    "resized_Sandro_Botticelli.jpg",
+    "resized_The_White_House.jpg"
+  ]
+}

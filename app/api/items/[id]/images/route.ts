@@ -43,16 +43,40 @@ export async function GET(
       }
     }
     
-    // If no image in database, get URL from items table and redirect
+    // Second, try to get category mock image
     const { data: item, error: itemError } = await supabase
       .from('items')
-      .select('images')
+      .select('category_id, images')
       .eq('id', itemId)
       .single();
     
-    if (!itemError && item && item.images && item.images[imageIndex]) {
-      // Redirect to the external URL
-      return NextResponse.redirect(item.images[imageIndex]);
+    if (!itemError && item && item.category_id) {
+      // Check for category mock image
+      const { data: categoryMock, error: mockError } = await supabase
+        .from('category_mock_images')
+        .select('image_data, mime_type')
+        .eq('category_id', item.category_id)
+        .single();
+      
+      if (!mockError && categoryMock && categoryMock.image_data) {
+        // Convert base64 to buffer
+        const imageBuffer = Buffer.from(categoryMock.image_data, 'base64');
+        
+        // Return mock image with proper headers
+        return new NextResponse(imageBuffer, {
+          status: 200,
+          headers: {
+            'Content-Type': categoryMock.mime_type || 'image/png',
+            'Cache-Control': 'public, max-age=86400', // 24 hours for mocks
+          },
+        });
+      }
+      
+      // Finally, fallback to URL if available
+      if (item.images && item.images[imageIndex]) {
+        // Redirect to the external URL
+        return NextResponse.redirect(item.images[imageIndex]);
+      }
     }
     
     // Return 404 if no image found
