@@ -21,6 +21,12 @@ class SoundManager {
       reveal: '/sounds/reveal.mp3',
       click: '/sounds/click.mp3',
       keypress: '/sounds/keypress.mp3',
+      // Temperature feedback sounds
+      iceCold: '/sounds/ice-cold.mp3',
+      cold: '/sounds/cold.mp3',
+      warm: '/sounds/warm.mp3',
+      hot: '/sounds/hot.mp3',
+      burning: '/sounds/burning.mp3',
     };
 
     Object.entries(soundFiles).forEach(([key, path]) => {
@@ -39,8 +45,8 @@ class SoundManager {
     });
   }
 
-  // Play a sound effect
-  play(soundName: string) {
+  // Play a sound effect with optional pitch and pan
+  play(soundName: string, options?: { pitch?: number; pan?: number }) {
     if (!this.enabled) return;
 
     const sound = this.sounds.get(soundName);
@@ -48,6 +54,33 @@ class SoundManager {
       // Clone the audio to allow overlapping sounds
       const soundClone = sound.cloneNode() as HTMLAudioElement;
       soundClone.volume = sound.volume;
+      
+      // Apply pitch if supported (using Web Audio API if available)
+      if (options?.pitch && typeof window !== 'undefined' && window.AudioContext) {
+        try {
+          const audioContext = new AudioContext();
+          const source = audioContext.createMediaElementSource(soundClone);
+          const gainNode = audioContext.createGain();
+          
+          // Apply stereo panning if provided
+          if (options.pan !== undefined) {
+            const pannerNode = audioContext.createStereoPanner();
+            pannerNode.pan.value = Math.max(-1, Math.min(1, options.pan));
+            source.connect(pannerNode);
+            pannerNode.connect(gainNode);
+          } else {
+            source.connect(gainNode);
+          }
+          
+          gainNode.connect(audioContext.destination);
+          
+          // Adjust playback rate for pitch effect
+          soundClone.playbackRate = options.pitch;
+        } catch (e) {
+          // Fallback to regular playback if Web Audio fails
+        }
+      }
+      
       soundClone.play().catch((error) => {
         // Log error for debugging but don't break the game
         console.log(`Sound "${soundName}" could not be played:`, error.message);
@@ -75,6 +108,25 @@ class SoundManager {
     this.sounds.forEach(sound => {
       sound.volume = clampedVolume;
     });
+  }
+  
+  // Play temperature-based feedback sound
+  playTemperatureFeedback(temperature: 'ice-cold' | 'cold' | 'warm' | 'hot' | 'burning', pitch?: number, pan?: number) {
+    const soundMap = {
+      'ice-cold': 'iceCold',
+      'cold': 'cold',
+      'warm': 'warm',
+      'hot': 'hot',
+      'burning': 'burning'
+    };
+    
+    const soundName = soundMap[temperature];
+    if (soundName) {
+      this.play(soundName, { pitch, pan });
+    } else {
+      // Fallback to wrong sound with pitch variation
+      this.play('wrong', { pitch: pitch || 1, pan });
+    }
   }
 
   // Initialize global sound handlers

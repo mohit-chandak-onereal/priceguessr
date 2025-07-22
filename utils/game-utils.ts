@@ -21,13 +21,31 @@ export function isWinningGuess(guess: number, actual: number): boolean {
 /**
  * Get feedback on how close the guess is
  */
-export function getGuessFeedback(guess: number, actual: number): 'hot' | 'warm' | 'cold' {
+export function getGuessFeedback(guess: number, actual: number): 'burning' | 'hot' | 'warm' | 'cold' | 'ice-cold' {
   const accuracy = calculateAccuracy(guess, actual);
   
   // Now accuracy is 0-100 where 100 is perfect
-  if (accuracy >= 90) return 'hot';  // 90%+ accuracy
-  if (accuracy >= 75) return 'warm'; // 75-90% accuracy
-  return 'cold'; // Less than 75% accuracy
+  if (accuracy >= 95) return 'burning';  // 95%+ accuracy (within 5%)
+  if (accuracy >= 85) return 'hot';      // 85-95% accuracy (within 15%)
+  if (accuracy >= 70) return 'warm';     // 70-85% accuracy (within 30%)
+  if (accuracy >= 50) return 'cold';     // 50-70% accuracy (within 50%)
+  return 'ice-cold'; // Less than 50% accuracy
+}
+
+/**
+ * Get sound pitch based on accuracy (closer = higher pitch)
+ */
+export function getAccuracyPitch(accuracy: number): number {
+  // Map accuracy (0-100) to pitch multiplier (0.5-2.0)
+  return 0.5 + (accuracy / 100) * 1.5;
+}
+
+/**
+ * Get stereo position based on direction (-1 to 1, -1 = left, 1 = right)
+ */
+export function getDirectionalPan(guess: number, actual: number): number {
+  if (isWinningGuess(guess, actual)) return 0; // Center
+  return guess < actual ? -0.5 : 0.5; // Left for too low, right for too high
 }
 
 /**

@@ -4,6 +4,9 @@ import {
   calculateAccuracy, 
   isWinningGuess, 
   generateSessionId,
+  getGuessFeedback,
+  getAccuracyPitch,
+  getDirectionalPan,
 } from '@/utils/game-utils';
 import { validateGuess } from '@/utils/validation';
 import { getRandomItem, getAvailableHints } from '@/lib/helpers/game-helpers';
@@ -141,11 +144,12 @@ export const useGameStore = create<GameState>((set, get) => ({
     const guessValue = validation.value!;
     const actualPrice = state.currentItem.price;
     
-    // Calculate accuracy
+    // Calculate accuracy and feedback
     const accuracy = calculateAccuracy(guessValue, actualPrice);
     const isCorrect = isWinningGuess(guessValue, actualPrice);
-    // const feedback = getGuessFeedback(guessValue, actualPrice);
-    // const direction = getDirectionalFeedback(guessValue, actualPrice);
+    const feedback = getGuessFeedback(guessValue, actualPrice);
+    const pitch = getAccuracyPitch(accuracy);
+    const pan = getDirectionalPan(guessValue, actualPrice);
     
     // Create guess object
     const newGuess: Guess = {
@@ -187,8 +191,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       newStreak = 0; // Reset streak on loss
       soundManager.play('gameOver');
     } else {
-      // Wrong guess but game continues
-      soundManager.play('wrong');
+      // Play temperature-based sound with pitch and directional audio
+      soundManager.playTemperatureFeedback(feedback, pitch, pan);
     }
     
     // Update high scores

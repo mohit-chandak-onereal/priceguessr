@@ -24,21 +24,43 @@ function getHintMessage(percentOff: number, index: number): string {
       "Nearly got it!",
       "Just a bit more!",
       "You're burning up!"
+    ],
+    veryClose: [
+      "Soo close!",
+      "Right there!",
+      "Just a hair off!",
+      "Practically perfect!"
     ]
   };
   
   let messageArray;
-  if (percentOff >= 40) {
+  if (percentOff >= 50) {
     messageArray = messages.farOff;
-  } else if (percentOff >= 25) {
+  } else if (percentOff >= 30) {
     messageArray = messages.stillOff;
-  } else if (percentOff >= 10) {
+  } else if (percentOff >= 15) {
     messageArray = messages.close;
   } else {
-    return "Soo close!";
+    messageArray = messages.veryClose;
   }
   
   return messageArray[index % messageArray.length];
+}
+
+function getTemperatureEmoji(percentOff: number): string {
+  if (percentOff >= 50) return '❄️'; // Snowflake - ice cold
+  if (percentOff >= 30) return '🌨️'; // Cold wind
+  if (percentOff >= 15) return '☀️'; // Sun - warm
+  if (percentOff >= 5) return '🔥'; // Fire - hot
+  return '🎆'; // Fireworks - very close
+}
+
+function getTemperatureColor(percentOff: number): string {
+  if (percentOff >= 50) return 'text-blue-400'; // Ice cold
+  if (percentOff >= 30) return 'text-blue-bright'; // Cold
+  if (percentOff >= 15) return 'text-yellow-bright'; // Warm
+  if (percentOff >= 5) return 'text-orange-500'; // Hot
+  return 'text-red-bright'; // Burning
 }
 
 export function GuessHistory() {
@@ -129,7 +151,11 @@ export function GuessHistory() {
                   </div>
                 ) : (
                   <div className="space-y-1">
+                    {/* Direction and message */}
                     <div className="flex items-center gap-2">
+                      <span className={getTemperatureColor(percentOff)}>
+                        {getTemperatureEmoji(percentOff)}
+                      </span>
                       <span
                         className={`
                           text-lg font-bold
@@ -137,6 +163,15 @@ export function GuessHistory() {
                         `}
                       >
                         {isHigher ? '↑' : '↓'} {getHintMessage(percentOff, index)}
+                      </span>
+                    </div>
+                    {/* Percentage feedback */}
+                    <div className="text-sm text-muted">
+                      <span className={`font-mono font-bold ${getTemperatureColor(percentOff)}`}>
+                        {percentOff.toFixed(1)}%
+                      </span>
+                      <span className="ml-1">
+                        too {isHigher ? 'high' : 'low'}
                       </span>
                     </div>
                   </div>
