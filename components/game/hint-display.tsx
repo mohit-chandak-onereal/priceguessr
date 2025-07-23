@@ -11,16 +11,16 @@ export function HintDisplay() {
   // Build hints array dynamically based on available data
   const hints = [];
   
-  // Always show basic info as first hint
-  if (currentItem.basic_info && Object.keys(currentItem.basic_info).length > 0) {
+  // Always show metadata as first hint
+  if (currentItem.metadata && Object.keys(currentItem.metadata).length > 0) {
     hints.push({
       level: 1,
       title: 'BASIC INFO',
       content: (
         <div className="space-y-1">
-          {Object.entries(currentItem.basic_info).map(([key, value]) => (
+          {Object.entries(currentItem.metadata).map(([key, value]) => (
             <p key={key}>
-              {key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}: {value}
+              {key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')}: {String(value)}
             </p>
           ))}
         </div>

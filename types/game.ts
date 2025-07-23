@@ -24,10 +24,9 @@ export interface Item {
   brand?: string;
   price: number;
   currency: string;
-  images: string[];
+  images: string[]; // URLs for now, will be replaced with item_images FK later
   metadata: ItemMetadata;
-  description: string;
-  basic_info?: Record<string, any>;
+  description?: string; // Made optional as it can be null in DB
   hint_1?: string;
   hint_2?: string;
   hint_3?: string;
@@ -59,18 +58,52 @@ export interface GameSession {
 export interface LeaderboardEntry {
   id: string;
   user_id: string;
-  date: string;
+  game_session_id: string;
+  category_id?: string;
   accuracy: number;
   attempts: number;
+  points: number;
   created_at: string;
 }
 
 export interface User {
   id: string;
-  email: string;
-  username?: string;
-  avatar_url?: string;
+  username: string;
+  display_name?: string;
   created_at: string;
+}
+
+export interface Achievement {
+  id: string;
+  code: string;
+  name: string;
+  description: string;
+  icon?: string;
+  condition_type: 'accuracy' | 'speed' | 'streak' | 'category' | 'item_value' | 'wins' | 'category_wins' | 'item_value_wins' | 'attempts';
+  condition_value: Record<string, any>;
+  points: number;
+}
+
+export interface UserAchievement {
+  id: string;
+  user_id: string;
+  achievement_id: string;
+  achievement?: Achievement;
+  unlocked_at: string;
+  game_session_id?: string;
+}
+
+export interface UserStats {
+  user_id: string;
+  total_games: number;
+  games_won: number;
+  total_points: number;
+  total_accuracy: number;
+  best_accuracy: number;
+  current_streak: number;
+  best_streak: number;
+  last_played_at?: string;
+  category_stats: Record<string, any>;
 }
 
 export interface GameStats {

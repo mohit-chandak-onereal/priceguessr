@@ -9,6 +9,32 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      users: {
+        Row: {
+          id: string
+          username: string
+          password_hash: string
+          display_name: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          username: string
+          password_hash: string
+          display_name?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          username?: string
+          password_hash?: string
+          display_name?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
       categories: {
         Row: {
           id: string
@@ -40,10 +66,9 @@ export interface Database {
           brand: string | null
           price: number
           currency: string
+          description: string | null
           images: string[]
           metadata: Json
-          ai_hints: string[]
-          basic_info: Json
           hint_1: string | null
           hint_2: string | null
           hint_3: string | null
@@ -58,10 +83,9 @@ export interface Database {
           brand?: string | null
           price: number
           currency?: string
+          description?: string | null
           images: string[]
-          metadata: Json
-          ai_hints: string[]
-          basic_info?: Json
+          metadata?: Json
           hint_1?: string | null
           hint_2?: string | null
           hint_3?: string | null
@@ -76,10 +100,9 @@ export interface Database {
           brand?: string | null
           price?: number
           currency?: string
+          description?: string | null
           images?: string[]
           metadata?: Json
-          ai_hints?: string[]
-          basic_info?: Json
           hint_1?: string | null
           hint_2?: string | null
           hint_3?: string | null
@@ -93,27 +116,18 @@ export interface Database {
           id: string
           item_id: string | null
           image_data: string
-          mime_type: string | null
-          is_primary: boolean | null
-          display_order: number | null
           created_at: string
         }
         Insert: {
           id?: string
           item_id?: string | null
           image_data: string
-          mime_type?: string | null
-          is_primary?: boolean | null
-          display_order?: number | null
           created_at?: string
         }
         Update: {
           id?: string
           item_id?: string | null
           image_data?: string
-          mime_type?: string | null
-          is_primary?: boolean | null
-          display_order?: number | null
           created_at?: string
         }
       }
@@ -152,47 +166,135 @@ export interface Database {
           created_at?: string
         }
       }
-      daily_challenges: {
-        Row: {
-          date: string
-          item_id: string | null
-          created_at: string
-        }
-        Insert: {
-          date: string
-          item_id?: string | null
-          created_at?: string
-        }
-        Update: {
-          date?: string
-          item_id?: string | null
-          created_at?: string
-        }
-      }
       leaderboard_entries: {
         Row: {
           id: string
           user_id: string | null
-          date: string
+          game_session_id: string | null
+          category_id: string | null
           accuracy: number
           attempts: number
+          points: number
           created_at: string
         }
         Insert: {
           id?: string
           user_id?: string | null
-          date: string
+          game_session_id?: string | null
+          category_id?: string | null
           accuracy: number
           attempts: number
+          points?: number
           created_at?: string
         }
         Update: {
           id?: string
           user_id?: string | null
-          date?: string
+          game_session_id?: string | null
+          category_id?: string | null
           accuracy?: number
           attempts?: number
+          points?: number
           created_at?: string
+        }
+      }
+      achievements: {
+        Row: {
+          id: string
+          code: string
+          name: string
+          description: string
+          icon: string | null
+          condition_type: string
+          condition_value: Json
+          points: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          code: string
+          name: string
+          description: string
+          icon?: string | null
+          condition_type: string
+          condition_value: Json
+          points?: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          code?: string
+          name?: string
+          description?: string
+          icon?: string | null
+          condition_type?: string
+          condition_value?: Json
+          points?: number
+          created_at?: string
+        }
+      }
+      user_achievements: {
+        Row: {
+          id: string
+          user_id: string | null
+          achievement_id: string | null
+          unlocked_at: string
+          game_session_id: string | null
+        }
+        Insert: {
+          id?: string
+          user_id?: string | null
+          achievement_id?: string | null
+          unlocked_at?: string
+          game_session_id?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string | null
+          achievement_id?: string | null
+          unlocked_at?: string
+          game_session_id?: string | null
+        }
+      }
+      user_stats: {
+        Row: {
+          user_id: string
+          total_games: number
+          games_won: number
+          total_points: number
+          total_accuracy: number
+          best_accuracy: number
+          current_streak: number
+          best_streak: number
+          last_played_at: string | null
+          category_stats: Json
+          updated_at: string
+        }
+        Insert: {
+          user_id: string
+          total_games?: number
+          games_won?: number
+          total_points?: number
+          total_accuracy?: number
+          best_accuracy?: number
+          current_streak?: number
+          best_streak?: number
+          last_played_at?: string | null
+          category_stats?: Json
+          updated_at?: string
+        }
+        Update: {
+          user_id?: string
+          total_games?: number
+          games_won?: number
+          total_points?: number
+          total_accuracy?: number
+          best_accuracy?: number
+          current_streak?: number
+          best_streak?: number
+          last_played_at?: string | null
+          category_stats?: Json
+          updated_at?: string
         }
       }
     }
@@ -200,7 +302,14 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      update_updated_at_column: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
+      update_user_stats_on_game_complete: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

@@ -19,19 +19,19 @@ export function HintDisplay() {
   // Build hints array dynamically based on available data
   const hints = [];
   
-  // Always show basic info as first hint
-  if (currentItem.basic_info && Object.keys(currentItem.basic_info).length > 0) {
+  // Always show metadata as first hint
+  if (currentItem.metadata && Object.keys(currentItem.metadata).length > 0) {
     hints.push({
       level: 1,
       title: 'BASIC INFO',
       content: (
         <div className="space-y-1">
-          {Object.entries(currentItem.basic_info).map(([key, value]) => (
+          {Object.entries(currentItem.metadata).map(([key, value]) => (
             <div key={key} className="flex justify-between gap-2">
               <span className="text-muted text-xs uppercase">
                 {key.replace(/_/g, ' ')}:
               </span>
-              <span className="text-white text-sm font-medium">{value}</span>
+              <span className="text-white text-sm font-medium">{String(value)}</span>
             </div>
           ))}
         </div>
