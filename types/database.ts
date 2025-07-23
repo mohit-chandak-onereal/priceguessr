@@ -68,6 +68,7 @@ export interface Database {
           currency: string
           description: string | null
           images: string[]
+          item_image_id: string | null
           metadata: Json
           hint_1: string | null
           hint_2: string | null
@@ -85,6 +86,7 @@ export interface Database {
           currency?: string
           description?: string | null
           images: string[]
+          item_image_id?: string | null
           metadata?: Json
           hint_1?: string | null
           hint_2?: string | null
@@ -102,6 +104,7 @@ export interface Database {
           currency?: string
           description?: string | null
           images?: string[]
+          item_image_id?: string | null
           metadata?: Json
           hint_1?: string | null
           hint_2?: string | null
@@ -114,19 +117,16 @@ export interface Database {
       item_images: {
         Row: {
           id: string
-          item_id: string | null
           image_data: string
           created_at: string
         }
         Insert: {
           id?: string
-          item_id?: string | null
           image_data: string
           created_at?: string
         }
         Update: {
           id?: string
-          item_id?: string | null
           image_data?: string
           created_at?: string
         }

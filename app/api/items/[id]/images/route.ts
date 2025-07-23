@@ -19,19 +19,30 @@ export async function GET(
     const searchParams = request.nextUrl.searchParams;
     const imageIndex = parseInt(searchParams.get('index') || '0');
     
-    // First, try to get image from item_images table
-    const { data: images, error } = await supabase
-      .from('item_images')
-      .select('image_data, mime_type')
-      .eq('item_id', itemId)
-      .order('is_primary', { ascending: false })
-      .order('display_order', { ascending: true });
+    // First, get the item with its image reference
+    const { data: item, error: itemError } = await supabase
+      .from('items')
+      .select('item_image_id, images, category_id')
+      .eq('id', itemId)
+      .single();
     
-    if (!error && images && images.length > 0) {
-      // Get the requested image or first one
-      const image = images[Math.min(imageIndex, images.length - 1)];
+    if (itemError || !item) {
+      console.error('Item not found:', itemId, itemError);
+      return NextResponse.json(
+        { error: 'Item not found' },
+        { status: 404 }
+      );
+    }
+    
+    // 1. If item has direct image reference, use it
+    if (item.item_image_id) {
+      const { data: image, error: imageError } = await supabase
+        .from('item_images')
+        .select('image_data')
+        .eq('id', item.item_image_id)
+        .single();
       
-      if (image.image_data) {
+      if (!imageError && image && image.image_data) {
         // Convert base64 to buffer
         const imageBuffer = Buffer.from(image.image_data, 'base64');
         
@@ -39,25 +50,24 @@ export async function GET(
         return new NextResponse(imageBuffer, {
           status: 200,
           headers: {
-            'Content-Type': image.mime_type || 'image/jpeg',
+            'Content-Type': 'image/jpeg',
             'Cache-Control': 'public, max-age=31536000, immutable',
           },
         });
       }
     }
     
-    // Second, try to get category mock image
-    const { data: item, error: itemError } = await supabase
-      .from('items')
-      .select('category_id, images')
-      .eq('id', itemId)
-      .single();
+    // 2. Fallback to URL if available
+    if (item.images && Array.isArray(item.images) && item.images[imageIndex]) {
+      // Redirect to the external URL
+      return NextResponse.redirect(item.images[imageIndex]);
+    }
     
-    if (!itemError && item && item.category_id) {
-      // Check for category mock image
+    // 3. Try category mock image
+    if (item.category_id) {
       const { data: categoryMock, error: mockError } = await supabase
         .from('category_mock_images')
-        .select('image_data, mime_type')
+        .select('image_data')
         .eq('category_id', item.category_id)
         .single();
       
@@ -69,21 +79,15 @@ export async function GET(
         return new NextResponse(imageBuffer, {
           status: 200,
           headers: {
-            'Content-Type': categoryMock.mime_type || 'image/png',
+            'Content-Type': 'image/png',
             'Cache-Control': 'public, max-age=86400', // 24 hours for mocks
           },
         });
       }
-      
-      // Finally, fallback to URL if available
-      if (item.images && Array.isArray(item.images) && item.images[imageIndex]) {
-        // Redirect to the external URL
-        return NextResponse.redirect(item.images[imageIndex]);
-      }
     }
     
     // Log what happened for debugging
-    console.log(`No image found for item ${itemId}: no item image, no category mock, no URL`);
+    console.log(`No image found for item ${itemId}: no item_image_id, no URL at index ${imageIndex}, no category mock`);
     
     // Return 404 if no image found
     return NextResponse.json(

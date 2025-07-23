@@ -24,7 +24,8 @@ export interface Item {
   brand?: string;
   price: number;
   currency: string;
-  images: string[]; // URLs for now, will be replaced with item_images FK later
+  images: string[]; // Fallback URLs from public domain
+  item_image_id?: string; // Direct reference to item_images table
   metadata: ItemMetadata;
   description?: string; // Made optional as it can be null in DB
   hint_1?: string;
