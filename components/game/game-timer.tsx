@@ -22,7 +22,7 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
     const interval = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
-          return 15; // Reset for next round
+          return 0; // Let the effect handle the timeout
         }
         
         // Play tick sound for last 5 seconds
@@ -47,21 +47,28 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
   // Handle timeout in a separate effect
   useEffect(() => {
     if (timeLeft === 0 && gameStatus === 'playing' && enabled && attemptsRemaining > 0) {
+      // Record the missed turn
       recordMissedTurn();
-      // Reset timer after recording missed turn
-      setTimeLeft(15);
-      setShowCountdown(false);
+      // Reset timer after a small delay to ensure state updates
+      setTimeout(() => {
+        setTimeLeft(15);
+        setShowCountdown(false);
+      }, 100);
     }
   }, [timeLeft, gameStatus, enabled, attemptsRemaining, recordMissedTurn]);
 
-  // Reset timer when a guess is made
+  // Reset timer when a new turn starts (excluding initial state)
   const guessCount = useGameStore((state) => state.guesses.length);
+  const [prevGuessCount, setPrevGuessCount] = useState(0);
+  
   useEffect(() => {
-    if (guessCount > 0) {
+    // Only reset if this is a real guess (not a timed out turn)
+    if (guessCount > prevGuessCount && timeLeft > 0) {
       setTimeLeft(15);
       setShowCountdown(false);
     }
-  }, [guessCount]);
+    setPrevGuessCount(guessCount);
+  }, [guessCount, prevGuessCount, timeLeft]);
 
   if (gameStatus !== 'playing') return null;
 

@@ -117,11 +117,11 @@ export function GuessHistory() {
               `}
             >
               {/* Guess Number */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 min-w-0 flex-1">
                 <div
                   className={`
                     w-8 h-8 rounded-full flex items-center justify-center
-                    text-sm font-bold
+                    text-sm font-bold flex-shrink-0
                     ${
                       guess.isWithinRange
                         ? 'bg-green-bright text-white'
@@ -133,15 +133,15 @@ export function GuessHistory() {
                 </div>
 
                 {/* Price or Missed Turn */}
-                <div className="font-mono font-bold text-white overflow-hidden flex-1 min-w-0">
-                  <span className={`block truncate ${guess.value > 999999 ? 'text-base' : guess.value > 99999 ? 'text-lg' : 'text-xl'}`}>
+                <div className="font-mono font-bold text-white min-w-0">
+                  <span className={`block truncate ${guess.value > 999999 ? 'text-sm' : guess.value > 99999 ? 'text-base' : 'text-lg'}`}>
                     {guess.isMissedTurn ? 'Timed Out!' : `$${guess.value.toLocaleString()}`}
                   </span>
                 </div>
               </div>
 
               {/* Feedback */}
-              <div className="text-right">
+              <div className="text-right flex-shrink-0 ml-2">
                 {guess.isMissedTurn ? (
                   <div className="flex items-center gap-2">
                     <span className="text-muted font-bold">⏱️ Timed Out</span>
@@ -154,13 +154,13 @@ export function GuessHistory() {
                 ) : (
                   <div className="space-y-1">
                     {/* Direction and message */}
-                    <div className="flex items-center gap-2">
-                      <span className={getTemperatureColor(percentOff)}>
+                    <div className="flex items-center gap-1 justify-end">
+                      <span className={`text-sm ${getTemperatureColor(percentOff)}`}>
                         {getTemperatureEmoji(percentOff)}
                       </span>
                       <span
                         className={`
-                          text-lg font-bold
+                          text-sm font-bold
                           ${isHigher ? 'text-red-bright' : 'text-blue-bright'}
                         `}
                       >
@@ -168,7 +168,7 @@ export function GuessHistory() {
                       </span>
                     </div>
                     {/* Direction indicator */}
-                    <div className="text-sm text-muted">
+                    <div className="text-xs text-muted">
                       <span className="font-bold">
                         Too {isHigher ? 'high' : 'low'}
                       </span>
