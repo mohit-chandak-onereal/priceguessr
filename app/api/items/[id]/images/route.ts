@@ -52,18 +52,54 @@ export async function GET(
         .single();
       
       if (!imageError && image && image.image_data) {
-        console.log(`[Image API] Found image data, returning binary`);
-        // Convert base64 to buffer
-        const imageBuffer = Buffer.from(image.image_data, 'base64');
+        console.log(`[Image API] Found image data, size: ${image.image_data.length}`);
         
-        // Return image with proper headers
-        return new NextResponse(imageBuffer, {
-          status: 200,
-          headers: {
-            'Content-Type': 'image/jpeg',
-            'Cache-Control': 'public, max-age=31536000, immutable',
-          },
-        });
+        try {
+          // The image_data might already be base64 or it might be a hex string
+          let imageBuffer: Buffer;
+          
+          // Check if it starts with typical base64 image prefix
+          if (image.image_data.startsWith('data:image')) {
+            // Extract base64 data from data URL
+            const base64Data = image.image_data.split(',')[1];
+            imageBuffer = Buffer.from(base64Data, 'base64');
+          } else if (image.image_data.startsWith('/9j/') || image.image_data.startsWith('iVBORw0')) {
+            // Raw base64 data
+            imageBuffer = Buffer.from(image.image_data, 'base64');
+          } else if (image.image_data.startsWith('\\x')) {
+            // PostgreSQL bytea hex format
+            const hexString = image.image_data.slice(2);
+            imageBuffer = Buffer.from(hexString, 'hex');
+          } else {
+            // Try base64 by default
+            imageBuffer = Buffer.from(image.image_data, 'base64');
+          }
+          
+          // Detect image type from buffer
+          let contentType = 'image/jpeg';
+          if (imageBuffer[0] === 0x89 && imageBuffer[1] === 0x50) {
+            contentType = 'image/png';
+          } else if (imageBuffer[0] === 0x47 && imageBuffer[1] === 0x49) {
+            contentType = 'image/gif';
+          } else if (imageBuffer[0] === 0x52 && imageBuffer[1] === 0x49) {
+            contentType = 'image/webp';
+          }
+          
+          console.log(`[Image API] Returning image, type: ${contentType}, size: ${imageBuffer.length}`);
+          
+          // Return image with proper headers
+          return new NextResponse(imageBuffer, {
+            status: 200,
+            headers: {
+              'Content-Type': contentType,
+              'Content-Length': imageBuffer.length.toString(),
+              'Cache-Control': 'public, max-age=31536000, immutable',
+            },
+          });
+        } catch (bufferError) {
+          console.error(`[Image API] Error processing image buffer:`, bufferError);
+          // Fall through to URL fallback
+        }
       } else {
         console.error(`[Image API] Failed to fetch image data:`, imageError);
       }
@@ -87,17 +123,32 @@ export async function GET(
       
       if (!mockError && categoryMock && categoryMock.image_data) {
         console.log(`[Image API] Found category mock image`);
-        // Convert base64 to buffer
-        const imageBuffer = Buffer.from(categoryMock.image_data, 'base64');
-        
-        // Return mock image with proper headers
-        return new NextResponse(imageBuffer, {
-          status: 200,
-          headers: {
-            'Content-Type': 'image/png',
-            'Cache-Control': 'public, max-age=86400', // 24 hours for mocks
-          },
-        });
+        try {
+          // Process mock image data
+          let imageBuffer: Buffer;
+          
+          if (categoryMock.image_data.startsWith('data:image')) {
+            const base64Data = categoryMock.image_data.split(',')[1];
+            imageBuffer = Buffer.from(base64Data, 'base64');
+          } else if (categoryMock.image_data.startsWith('\\x')) {
+            const hexString = categoryMock.image_data.slice(2);
+            imageBuffer = Buffer.from(hexString, 'hex');
+          } else {
+            imageBuffer = Buffer.from(categoryMock.image_data, 'base64');
+          }
+          
+          // Return mock image with proper headers
+          return new NextResponse(imageBuffer, {
+            status: 200,
+            headers: {
+              'Content-Type': 'image/png',
+              'Content-Length': imageBuffer.length.toString(),
+              'Cache-Control': 'public, max-age=86400', // 24 hours for mocks
+            },
+          });
+        } catch (bufferError) {
+          console.error(`[Image API] Error processing mock image:`, bufferError);
+        }
       } else {
         console.log(`[Image API] No category mock found:`, mockError);
       }
@@ -106,20 +157,19 @@ export async function GET(
     // Log what happened for debugging
     console.error(`[Image API] No image found for item ${itemId}: no item_image_id, no URL at index ${imageIndex}, no category mock`);
     
-    // Return 404 if no image found
-    return NextResponse.json(
-      { 
-        error: 'Image not found',
-        debug: {
-          itemId,
-          item_image_id: item.item_image_id,
-          has_images: !!item.images,
-          images_count: item.images?.length || 0,
-          category_id: item.category_id
-        }
-      },
-      { status: 404 }
+    // Return a 1x1 transparent PNG as fallback
+    const transparentPng = Buffer.from(
+      'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+      'base64'
     );
+    
+    return new NextResponse(transparentPng, {
+      status: 200,
+      headers: {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'no-cache',
+      },
+    });
   } catch (error) {
     console.error('[Image API] Unexpected error:', error);
     return NextResponse.json(
