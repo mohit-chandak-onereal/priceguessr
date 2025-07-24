@@ -165,13 +165,10 @@ export function GuessHistory() {
                         {isHigher ? '↑' : '↓'} {getHintMessage(percentOff, index)}
                       </span>
                     </div>
-                    {/* Percentage feedback */}
+                    {/* Direction indicator */}
                     <div className="text-sm text-muted">
-                      <span className={`font-mono font-bold ${getTemperatureColor(percentOff)}`}>
-                        {percentOff.toFixed(1)}%
-                      </span>
-                      <span className="ml-1">
-                        too {isHigher ? 'high' : 'low'}
+                      <span className="font-bold">
+                        Too {isHigher ? 'high' : 'low'}
                       </span>
                     </div>
                   </div>

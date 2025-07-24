@@ -96,10 +96,6 @@ export function TemperatureGauge({ percentOff, isVisible }: TemperatureGaugeProp
         </div>
       </div>
 
-      {/* Percentage display */}
-      <div className="text-xs font-mono font-bold text-muted">
-        {percentOff.toFixed(1)}% off
-      </div>
 
       <style jsx>{`
         @keyframes bubble {
