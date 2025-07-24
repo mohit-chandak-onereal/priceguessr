@@ -11,11 +11,13 @@ interface GameTimerProps {
 export function GameTimer({ enabled = true }: GameTimerProps) {
   const [timeLeft, setTimeLeft] = useState(15);
   const [showCountdown, setShowCountdown] = useState(false);
+  const [hasTimedOut, setHasTimedOut] = useState(false);
   const { recordMissedTurn, gameStatus, attemptsRemaining } = useGameStore();
   
   useEffect(() => {
     if (gameStatus !== 'playing' || !enabled) {
       setTimeLeft(15);
+      setHasTimedOut(false);
       return;
     }
 
@@ -46,16 +48,19 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
 
   // Handle timeout in a separate effect
   useEffect(() => {
-    if (timeLeft === 0 && gameStatus === 'playing' && enabled && attemptsRemaining > 0) {
+    if (timeLeft === 0 && gameStatus === 'playing' && enabled && attemptsRemaining > 0 && !hasTimedOut) {
+      // Set flag to prevent multiple timeouts
+      setHasTimedOut(true);
       // Record the missed turn
       recordMissedTurn();
       // Reset timer after a small delay to ensure state updates
       setTimeout(() => {
         setTimeLeft(15);
         setShowCountdown(false);
+        setHasTimedOut(false); // Reset flag for next turn
       }, 100);
     }
-  }, [timeLeft, gameStatus, enabled, attemptsRemaining, recordMissedTurn]);
+  }, [timeLeft, gameStatus, enabled, attemptsRemaining, hasTimedOut, recordMissedTurn]);
 
   // Reset timer when a new turn starts (excluding initial state)
   const guessCount = useGameStore((state) => state.guesses.length);
@@ -66,6 +71,7 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
     if (guessCount > prevGuessCount && timeLeft > 0) {
       setTimeLeft(15);
       setShowCountdown(false);
+      setHasTimedOut(false); // Reset timeout flag
     }
     setPrevGuessCount(guessCount);
   }, [guessCount, prevGuessCount, timeLeft]);
