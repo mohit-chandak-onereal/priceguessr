@@ -48,6 +48,9 @@ export function GameTimer({ enabled = true }: GameTimerProps) {
   useEffect(() => {
     if (timeLeft === 0 && gameStatus === 'playing' && enabled && attemptsRemaining > 0) {
       recordMissedTurn();
+      // Reset timer after recording missed turn
+      setTimeLeft(15);
+      setShowCountdown(false);
     }
   }, [timeLeft, gameStatus, enabled, attemptsRemaining, recordMissedTurn]);
 

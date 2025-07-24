@@ -86,13 +86,13 @@ export function GuessHistory() {
             return (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 rounded-lg border-2 border-border/30 bg-stage-dark/10 text-sm"
+                className="flex items-center justify-between p-3 rounded-lg border-2 border-border/30 bg-stage-dark/10 text-sm h-[60px]"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-stage-dark/50 text-muted border-2 border-border/50">
                     {index + 1}
                   </div>
-                  <div className="text-lg text-muted/50">
+                  <div className="text-lg text-muted/50 flex-1">
                     Not Used
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export function GuessHistory() {
             <div
               key={index}
               className={`
-                flex items-center justify-between p-3 rounded-lg border-2 text-sm transition-all
+                flex items-center justify-between p-3 rounded-lg border-2 text-sm transition-all h-[60px]
                 ${
                   guess.isWithinRange
                     ? 'bg-green-bright/20 border-green-bright'
@@ -133,9 +133,9 @@ export function GuessHistory() {
                 </div>
 
                 {/* Price or Missed Turn */}
-                <div className="font-mono font-bold text-white overflow-hidden">
-                  <span className={`block ${guess.value > 999999 ? 'text-base' : guess.value > 99999 ? 'text-lg' : 'text-xl'}`}>
-                    {guess.isMissedTurn ? 'Timed Out' : `$${guess.value.toLocaleString()}`}
+                <div className="font-mono font-bold text-white overflow-hidden flex-1 min-w-0">
+                  <span className={`block truncate ${guess.value > 999999 ? 'text-base' : guess.value > 99999 ? 'text-lg' : 'text-xl'}`}>
+                    {guess.isMissedTurn ? 'Timed Out!' : `$${guess.value.toLocaleString()}`}
                   </span>
                 </div>
               </div>
