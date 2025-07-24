@@ -133,8 +133,10 @@ export function GuessHistory() {
                 </div>
 
                 {/* Price or Missed Turn */}
-                <div className="text-xl font-mono font-bold text-white">
-                  {guess.isMissedTurn ? 'Missed Turn' : `$${guess.value.toLocaleString()}`}
+                <div className="font-mono font-bold text-white overflow-hidden">
+                  <span className={`block ${guess.value > 999999 ? 'text-base' : guess.value > 99999 ? 'text-lg' : 'text-xl'}`}>
+                    {guess.isMissedTurn ? 'Timed Out' : `$${guess.value.toLocaleString()}`}
+                  </span>
                 </div>
               </div>
 
@@ -142,7 +144,7 @@ export function GuessHistory() {
               <div className="text-right">
                 {guess.isMissedTurn ? (
                   <div className="flex items-center gap-2">
-                    <span className="text-muted font-bold">⏱️ Time Out</span>
+                    <span className="text-muted font-bold">⏱️ Timed Out</span>
                   </div>
                 ) : guess.isWithinRange ? (
                   <div className="flex items-center gap-2">
