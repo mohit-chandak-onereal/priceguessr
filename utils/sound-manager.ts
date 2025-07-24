@@ -21,6 +21,7 @@ class SoundManager {
       reveal: '/sounds/reveal.mp3',
       click: '/sounds/click.mp3',
       keypress: '/sounds/keypress.mp3',
+      start: '/sounds/reveal.mp3', // Using reveal sound for start
       // Temperature feedback sounds
       iceCold: '/sounds/ice-cold.mp3',
       cold: '/sounds/cold.mp3',

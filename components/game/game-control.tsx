@@ -15,7 +15,12 @@ export function GameControl() {
   
   const handleStartGame = () => {
     setGameStarted(true);
-    soundManager.play('correct');
+    // Play start sound with higher pitch for urgency
+    soundManager.play('start', { pitch: 1.3 });
+    // Add a quick tick sound after a short delay to enhance urgency
+    setTimeout(() => {
+      soundManager.play('tick', { pitch: 1.5 });
+    }, 200);
   };
 
   // Sparkle effect component
