@@ -174,7 +174,8 @@ export const useGameStore = create<GameState>((set, get) => ({
       const percentOff = 100 - accuracy;
       scoreEarned = calculateScore(percentOff, attempts);
       newStreak = state.currentStreak + 1;
-      soundManager.play('correct');
+      // Play softer win sound with lower volume and pitch for relaxing effect
+      soundManager.play('win', { pitch: 0.85, volume: 0.3 });
       
       // Trigger appropriate confetti
       setTimeout(() => {
@@ -204,7 +205,8 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (newHighScore > state.highScore) {
       localStorage.setItem('highScore', newHighScore.toString());
       if (gameStatus === 'won') {
-        soundManager.play('newHighScore');
+        // Play high score sound softly
+        soundManager.play('newHighScore', { pitch: 1.1, volume: 0.4 });
         setTimeout(() => {
           triggerHighScoreConfetti();
         }, 1000); // After regular confetti

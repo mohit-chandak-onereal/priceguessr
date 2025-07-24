@@ -22,6 +22,7 @@ class SoundManager {
       click: '/sounds/click.mp3',
       keypress: '/sounds/keypress.mp3',
       start: '/sounds/reveal.mp3', // Using reveal sound for start
+      win: '/sounds/high-score.mp3', // Using high-score sound for winning (softer)
       // Temperature feedback sounds
       iceCold: '/sounds/ice-cold.mp3',
       cold: '/sounds/cold.mp3',
@@ -46,15 +47,15 @@ class SoundManager {
     });
   }
 
-  // Play a sound effect with optional pitch and pan
-  play(soundName: string, options?: { pitch?: number; pan?: number }) {
+  // Play a sound effect with optional pitch, pan, and volume
+  play(soundName: string, options?: { pitch?: number; pan?: number; volume?: number }) {
     if (!this.enabled) return;
 
     const sound = this.sounds.get(soundName);
     if (sound) {
       // Clone the audio to allow overlapping sounds
       const soundClone = sound.cloneNode() as HTMLAudioElement;
-      soundClone.volume = sound.volume;
+      soundClone.volume = options?.volume !== undefined ? options.volume : sound.volume;
       
       // Apply pitch if supported (using Web Audio API if available)
       if (options?.pitch && typeof window !== 'undefined' && window.AudioContext) {
